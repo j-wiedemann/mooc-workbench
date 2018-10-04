@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
-#############################################
+################################################
 #
 #  InitGui.py
 #
-#  (c) Jonathan Wiedemann ( contact at freecad-france dot com) 2018                    
+#  Copyright 2018 Jonathan Wiedemann <contact at freecad-france dot com>
 #  
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -19,9 +19,9 @@
 #  along with this program; if not, write to the Free Software
 #  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #  MA 02110-1301, USA.
-#
-#
-#############################################
+#  
+#  
+################################################
 
 import os
 import moocwb_locator
