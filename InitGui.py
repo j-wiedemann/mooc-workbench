@@ -35,7 +35,7 @@ import FreeCAD as app
 import FreeCADGui as gui
 
 global MOOC_VERSION
-MOOC_VERSION = 'V0.1.0'
+MOOC_VERSION = 'V0.1.0a'
 
 moocWBpath = os.path.dirname(moocwb_locator.__file__)
 moocWBpath_medias = os.path.join(moocWBpath, 'medias')
@@ -93,8 +93,10 @@ class MoocWorkbench ( Workbench ):
                 else:
                     print('Please update Mooc Workbench !')
                     from PySide2 import QtWidgets
-                    reply = QtWidgets.QMessageBox.information(None, u"Test",
+                    reply = QtWidgets.QMessageBox.information(None, u"/!\ Mise à jour nécessaire... /!\",
                         u'''Votre version de l'atelier MOOC est obsolète.\nMerci de le mettre à jour à l'aide de l'addon manager.''')
+                # only check the first occurence
+                break
 
 
 
