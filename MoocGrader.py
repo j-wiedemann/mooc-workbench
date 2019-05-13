@@ -37,10 +37,12 @@ import os, moocwb_locator
 import FreeCAD as app
 import FreeCADGui as gui
 
-
-
 import datetime
 import base64
+
+moocWBpath = os.path.dirname(moocwb_locator.__file__)
+moocWBpath_medias = os.path.join(moocWBpath, 'medias')
+moocWB_icons_path = os.path.join( moocWBpath_medias, 'icons')
 
 def make_b64_hash(grader_dict):
     # construction du hash de l'évaluation
@@ -173,7 +175,7 @@ class Ui_FreeCADGrader(QtWidgets.QDialog):
 
         self.pushButton_refresh_docList = QtWidgets.QPushButton(self)
         self.pushButton_refresh_docList.setObjectName("pushButton_refresh_docList")
-        self.pushButton_refresh_docList.setIcon(QtGui.QIcon.fromTheme("view-refresh"))
+        self.pushButton_refresh_docList.setIcon(QtGui.QIcon(os.path.join(moocWB_icons_path, 'view-refresh.svg')))
         self.horizontalLayout_docs_row.addWidget(self.pushButton_refresh_docList)
 
         self.verticalLayout.addLayout(self.horizontalLayout_docs_row)
@@ -284,10 +286,10 @@ class Ui_FreeCADGrader(QtWidgets.QDialog):
                 self.listWidget.addItem(msg)
                 if self.grader_notes[n] == 0:
                     self.listWidget.item(n).setForeground(brush_red)
-                    self.listWidget.item(n).setIcon(QtGui.QIcon.fromTheme("dialog-cancel"))
+                    self.listWidget.item(n).setIcon(QtGui.QIcon(os.path.join(moocWB_icons_path, 'window-close.svg')))
                 else:
                     self.listWidget.item(n).setForeground(brush_green)
-                    self.listWidget.item(n).setIcon(QtGui.QIcon.fromTheme("dialog-ok"))
+                    self.listWidget.item(n).setIcon(QtGui.QIcon(os.path.join(moocWB_icons_path, 'dialog-apply.svg')))
                 n += 1
             self.listWidget.setFixedWidth(self.listWidget.sizeHintForColumn(0) + 2 * self.listWidget.frameWidth())
         else:
@@ -349,7 +351,7 @@ class Ui_FreeCADGraderResults(QtWidgets.QDialog):
         font.setPointSize(12)
         self.pushButton.setFont(font)
         self.pushButton.setObjectName("pushButton")
-        self.pushButton.setIcon(QtGui.QIcon.fromTheme("edit-copy"))
+        self.pushButton.setIcon(QtGui.QIcon(os.path.join(moocWB_icons_path, 'edit-copy.svg')))
         self.horizontalLayout.addWidget(self.pushButton)
         self.verticalLayout.addLayout(self.horizontalLayout)
         self.label_clipboard_copy = QtWidgets.QLabel(self)
@@ -392,7 +394,7 @@ class MoocGraderCommand():
             moocWBpath = os.path.dirname(moocwb_locator.__file__)
             moocWBpath_medias = os.path.join(moocWBpath, 'medias')
             moocWB_icons_path = os.path.join( moocWBpath_medias, 'icons')
-            return {'Pixmap'  : os.path.join( moocWB_icons_path , 'mooc-workbench.svg'),
+            return {'Pixmap'  : os.path.join( moocWB_icons_path , 'mooc-grader.svg'),
                     'MenuText': QtCore.QT_TRANSLATE_NOOP(u"Mooc",u"Évaluation de l'exercice."),
                     'ToolTip': QtCore.QT_TRANSLATE_NOOP(u"Mooc",u"Évaluation de l'exercice.")}
 

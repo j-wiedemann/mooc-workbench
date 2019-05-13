@@ -45,7 +45,7 @@ moocWB_icons_path = os.path.join( moocWBpath_medias, 'icons')
 #moocWB_images_path = os.path.join( moocWBpath_medias, 'gifs')
 
 global main_moocWB_Icon
-main_moocWB_Icon = os.path.join( moocWB_icons_path , 'mooc-workbench.svg')
+main_moocWB_Icon = os.path.join( moocWB_icons_path , 'mooc-workbench-v3.svg')
 
 class MoocWorkbench ( Workbench ):
 
@@ -93,7 +93,7 @@ class MoocWorkbench ( Workbench ):
                 else:
                     print('Please update Mooc Workbench !')
                     from PySide2 import QtWidgets
-                    reply = QtWidgets.QMessageBox.information(None, u"/!\ Mise à jour nécessaire... /!\",
+                    reply = QtWidgets.QMessageBox.information(None, u'Mise à jour nécessaire...',
                         u'''Votre version de l'atelier MOOC est obsolète.\nMerci de le mettre à jour à l'aide de l'addon manager.''')
                 # only check the first occurence
                 break

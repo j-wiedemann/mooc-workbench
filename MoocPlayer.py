@@ -65,6 +65,9 @@ TIMER = QtCore.QTimer()
 TIMER.start(200)
 if DEBUG:TIMER.timeout.connect(debug)
 
+moocWBpath = os.path.dirname(moocwb_locator.__file__)
+moocWBpath_medias = os.path.join(moocWBpath, 'medias')
+moocWB_icons_path = os.path.join( moocWBpath_medias, 'icons')
 
 class Ui_MoocPlayerChooser(QtWidgets.QDialog):
     '''The FreeCAd Player chooser'''
@@ -155,11 +158,11 @@ class Ui_FreeCADPlayer(QtWidgets.QDialog):
         self.horizontalLayout_play.setObjectName("horizontalLayout_play")
         self.btn_play = QtWidgets.QPushButton(self)
         self.btn_play.setObjectName("btn_play")
-        self.btn_play.setIcon(QtGui.QIcon.fromTheme("media-playback-start"))
+        self.btn_play.setIcon(QtGui.QIcon(os.path.join(moocWB_icons_path, 'media-playback-start.svg')))
         self.horizontalLayout_play.addWidget(self.btn_play)
         self.btn_help = QtWidgets.QPushButton(self)
         self.btn_help.setObjectName("btn_help")
-        self.btn_help.setIcon(QtGui.QIcon.fromTheme("help"))
+        self.btn_help.setIcon(QtGui.QIcon(os.path.join(moocWB_icons_path, 'help-contents.svg')))
         self.horizontalLayout_play.addWidget(self.btn_help)
         self.verticalLayout_left.addLayout(self.horizontalLayout_play)
         self.label_objectifs = QtWidgets.QLabel(self)
@@ -172,7 +175,7 @@ class Ui_FreeCADPlayer(QtWidgets.QDialog):
         self.horizontalLayout_change_step.setObjectName("horizontalLayout_change_step")
         self.btn_previous_step = QtWidgets.QPushButton(self)
         self.btn_previous_step.setObjectName("btn_previous_step")
-        self.btn_previous_step.setIcon(QtGui.QIcon.fromTheme("go-previous"))
+        self.btn_previous_step.setIcon(QtGui.QIcon(os.path.join(moocWB_icons_path, 'go-previous.svg')))
         self.horizontalLayout_change_step.addWidget(self.btn_previous_step)
         self.label_step = QtWidgets.QLabel(self)
         self.label_step.setAlignment(QtCore.Qt.AlignCenter)
@@ -180,7 +183,7 @@ class Ui_FreeCADPlayer(QtWidgets.QDialog):
         self.horizontalLayout_change_step.addWidget(self.label_step)
         self.btn_next_step = QtWidgets.QPushButton(self)
         self.btn_next_step.setObjectName("btn_next_step")
-        self.btn_next_step.setIcon(QtGui.QIcon.fromTheme("go-next"))
+        self.btn_next_step.setIcon(QtGui.QIcon(os.path.join(moocWB_icons_path, 'go-next.svg')))
         self.horizontalLayout_change_step.addWidget(self.btn_next_step)
         self.verticalLayout_left.addLayout(self.horizontalLayout_change_step)
 
@@ -327,10 +330,10 @@ class Ui_Manager():
             for x in results:
                 if x == 0 :
                     self.form.listWidget_objectifs.item(idx).setForeground(brush_red)
-                    self.form.listWidget_objectifs.item(idx).setIcon(QtGui.QIcon.fromTheme("dialog-cancel"))
+                    self.form.listWidget_objectifs.item(idx).setIcon(QtGui.QIcon(os.path.join(moocWB_icons_path , 'window-close.svg')))
                 elif x == 1 :
                     self.form.listWidget_objectifs.item(idx).setForeground(brush_green)
-                    self.form.listWidget_objectifs.item(idx).setIcon(QtGui.QIcon.fromTheme("dialog-ok"))
+                    self.form.listWidget_objectifs.item(idx).setIcon(QtGui.QIcon(os.path.join(moocWB_icons_path , 'dialog-apply.svg')))
                 idx += 1
 
 
