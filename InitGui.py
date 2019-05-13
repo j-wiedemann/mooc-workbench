@@ -34,8 +34,7 @@ import os, moocwb_locator
 import FreeCAD as app
 import FreeCADGui as gui
 
-global MOOC_VERSION
-MOOC_VERSION = 'V0.1.0'
+
 
 moocWBpath = os.path.dirname(moocwb_locator.__file__)
 moocWBpath_medias = os.path.join(moocWBpath, 'medias')
@@ -48,7 +47,7 @@ global main_moocWB_Icon
 main_moocWB_Icon = os.path.join( moocWB_icons_path , 'mooc-workbench.svg')
 
 class MoocWorkbench ( Workbench ):
-
+    MOOC_VERSION = 'V0.1.0'
     global main_moocWB_Icon
 
     MenuText = "MOOC"
