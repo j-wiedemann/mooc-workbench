@@ -27,17 +27,22 @@ __title__="MOOC Workbench"
 __author__ = "Jonathan Wiedemann"
 __url__ = "http://www.freecadweb.org"
 
-MOOC_VERSION = 'V0.1.0'
-
+# for handling paths
 import os, moocwb_locator
-import FreeCAD,  FreeCADGui
+
+# import freecad and its gui
+import FreeCAD as app
+import FreeCADGui as gui
+
+global MOOC_VERSION
+MOOC_VERSION = 'V0.1.0'
 
 moocWBpath = os.path.dirname(moocwb_locator.__file__)
 moocWBpath_medias = os.path.join(moocWBpath, 'medias')
 moocWB_icons_path = os.path.join( moocWBpath_medias, 'icons')
-moocWB_images_path = os.path.join( moocWBpath_medias, 'images')
-moocWB_images_path = os.path.join( moocWBpath_medias, 'videos')
-moocWB_images_path = os.path.join( moocWBpath_medias, 'gifs')
+#moocWB_images_path = os.path.join( moocWBpath_medias, 'images')
+#moocWB_images_path = os.path.join( moocWBpath_medias, 'videos')
+#moocWB_images_path = os.path.join( moocWBpath_medias, 'gifs')
 
 global main_moocWB_Icon
 main_moocWB_Icon = os.path.join( moocWB_icons_path , 'mooc-workbench.svg')
@@ -55,11 +60,12 @@ class MoocWorkbench ( Workbench ):
         import MoocPlayerChooser,  MoocGrader
         self.appendToolbar('MOOC',['Mooc_Player','Mooc_Grader'])
         self.appendMenu('MOOC',['Mooc_Player','Mooc_Grader'])
-        #FreeCADGui.addIconPath(":/icons")
-        print('Loading MOOC module... done\n')
+        print('Initialize MOOC module... done.')
 
     def Activated(self):
         "This function is executed when the workbench is activated"
+        self.checkMoocWBVersion()
+        print(u'Activated MoocWorkbench... done')
         return
 
     def Deactivated(self):
@@ -70,4 +76,26 @@ class MoocWorkbench ( Workbench ):
         # this function is mandatory if this is a full python workbench
         return "Gui::PythonWorkbench"
 
-FreeCADGui.addWorkbench(MoocWorkbench())
+    def checkMoocWBVersion(self):
+        '''Check version of workbench'''
+        print(u'Check workbench version...')
+        import urllib.request
+        webUrl  = urllib.request.urlopen('https://framagit.org/freecad-france/mooc-workbench/raw/master/InitGui.py')
+        for line in webUrl:
+            if 'MOOC_VERSION' in str(line, 'utf-8'):
+                mooc_version = str(line, 'utf-8').split(' = ')
+                mooc_version = mooc_version[1].split('\n')
+                mooc_version = mooc_version[0][1:-1]
+                print(u'MOOC dernière version : ' + str(mooc_version))
+                print(u'MOOC version installé : ' + str(MOOC_VERSION))
+                if str(mooc_version) == MOOC_VERSION:
+                    print('Mooc Workbench is up to date !')
+                else:
+                    print('Please update Mooc Workbench !')
+                    from PySide2 import QtWidgets
+                    reply = QtWidgets.QMessageBox.information(None, u"Test",
+                        u'''Votre version de l'atelier MOOC est obsolète.\nMerci de le mettre à jour à l'aide de l'addon manager.''')
+
+
+
+gui.addWorkbench(MoocWorkbench())
