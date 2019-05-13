@@ -34,7 +34,6 @@ import os, moocwb_locator
 import FreeCAD as app
 import FreeCADGui as gui
 
-global MOOC_VERSION
 MOOC_VERSION = 'V0.1.0'
 
 moocWBpath = os.path.dirname(moocwb_locator.__file__)
