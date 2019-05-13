@@ -82,7 +82,7 @@ class MoocWorkbench ( Workbench ):
         import urllib.request
         webUrl  = urllib.request.urlopen('https://framagit.org/freecad-france/mooc-workbench/raw/master/InitGui.py')
         for line in webUrl:
-            if 'MOOC_VERSION' in str(line, 'utf-8'):
+            if 'MOOC_VERSION = ' in str(line, 'utf-8'):
                 mooc_version = str(line, 'utf-8').split(' = ')
                 mooc_version = mooc_version[1].split('\n')
                 mooc_version = mooc_version[0][1:-1]
