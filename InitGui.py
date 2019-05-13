@@ -23,6 +23,12 @@
 #
 ################################################
 
+__title__="MOOC Workbench"
+__author__ = "Jonathan Wiedemann"
+__url__ = "http://www.freecadweb.org"
+
+MOOC_VERSION = 'V0.1.0'
+
 import os, moocwb_locator
 import FreeCAD,  FreeCADGui
 
@@ -34,7 +40,7 @@ moocWB_images_path = os.path.join( moocWBpath_medias, 'videos')
 moocWB_images_path = os.path.join( moocWBpath_medias, 'gifs')
 
 global main_moocWB_Icon
-main_moocWB_Icon = os.path.join( moocWB_icons_path , 'fun-mooc.svg')
+main_moocWB_Icon = os.path.join( moocWB_icons_path , 'mooc-workbench.svg')
 
 class MoocWorkbench ( Workbench ):
 

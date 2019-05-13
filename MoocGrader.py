@@ -392,7 +392,7 @@ class MoocGraderCommand():
             moocWBpath = os.path.dirname(moocwb_locator.__file__)
             moocWBpath_medias = os.path.join(moocWBpath, 'medias')
             moocWB_icons_path = os.path.join( moocWBpath_medias, 'icons')
-            return {'Pixmap'  : os.path.join( moocWB_icons_path , 'fun-mooc.svg'),
+            return {'Pixmap'  : os.path.join( moocWB_icons_path , 'mooc-workbench.svg'),
                     'MenuText': QtCore.QT_TRANSLATE_NOOP(u"Mooc",u"Évaluation de l'exercice."),
                     'ToolTip': QtCore.QT_TRANSLATE_NOOP(u"Mooc",u"Évaluation de l'exercice.")}
 
