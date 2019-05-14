@@ -69,66 +69,6 @@ moocWBpath = os.path.dirname(moocwb_locator.__file__)
 moocWBpath_medias = os.path.join(moocWBpath, 'medias')
 moocWB_icons_path = os.path.join( moocWBpath_medias, 'icons')
 
-class Ui_MoocPlayerChooser(QtWidgets.QDialog):
-    '''The FreeCAd Player chooser'''
-    def setupUi(self, MoocPlayerChooser):
-        MoocPlayerChooser.setObjectName("MoocPlayerChooser")
-        MoocPlayerChooser.resize(324, 339)
-        self.verticalLayout = QtWidgets.QVBoxLayout(MoocPlayerChooser)
-        self.verticalLayout.setObjectName("verticalLayout")
-        self.label_welcome = QtWidgets.QLabel(MoocPlayerChooser)
-        self.label_welcome.setObjectName("label_welcome")
-        self.verticalLayout.addWidget(self.label_welcome)
-        self.listWidget_trainings = QtWidgets.QListWidget(MoocPlayerChooser)
-        self.listWidget_trainings.setObjectName("listWidget_trainings")
-        QtWidgets.QListWidgetItem(self.listWidget_trainings)
-        QtWidgets.QListWidgetItem(self.listWidget_trainings)
-        QtWidgets.QListWidgetItem(self.listWidget_trainings)
-        QtWidgets.QListWidgetItem(self.listWidget_trainings)
-        self.verticalLayout.addWidget(self.listWidget_trainings)
-        self.label_2 = QtWidgets.QLabel(MoocPlayerChooser)
-        self.label_2.setObjectName("label_2")
-        self.verticalLayout.addWidget(self.label_2)
-        self.buttonBox = QtWidgets.QDialogButtonBox(MoocPlayerChooser)
-        self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
-        self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
-        self.buttonBox.setObjectName("buttonBox")
-        self.verticalLayout.addWidget(self.buttonBox)
-
-        self.retranslateUi(MoocPlayerChooser)
-        QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("accepted()"), MoocPlayerChooser.accept)
-        QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("rejected()"), MoocPlayerChooser.reject)
-        QtCore.QMetaObject.connectSlotsByName(MoocPlayerChooser)
-
-        self.show()
-
-    def retranslateUi(self, MoocPlayerChooser):
-        MoocPlayerChooser.setWindowTitle(QtWidgets.QApplication.translate("MoocPlayerChooser", "Dialog", None, -1))
-        self.label_welcome.setText(QtWidgets.QApplication.translate("MoocPlayerChooser", "Quelle leçon souhaitez vous travaillez aujourd\'hui ?", None, -1))
-        __sortingEnabled = self.listWidget_trainings.isSortingEnabled()
-        self.listWidget_trainings.setSortingEnabled(False)
-        self.listWidget_trainings.item(0).setText(QtWidgets.QApplication.translate("MoocPlayerChooser", "FUN Mooc Modélisation 3D Semaine 1", None, -1))
-        self.listWidget_trainings.item(1).setText(QtWidgets.QApplication.translate("MoocPlayerChooser", "FUN Mooc Modélisation 3D Semaine 2", None, -1))
-        self.listWidget_trainings.item(2).setText(QtWidgets.QApplication.translate("MoocPlayerChooser", "FUN Mooc Modélisation 3D Semaine 3", None, -1))
-        self.listWidget_trainings.item(3).setText(QtWidgets.QApplication.translate("MoocPlayerChooser", "FUN Mooc Modélisation 3D Semaine 4", None, -1))
-        self.listWidget_trainings.setSortingEnabled(__sortingEnabled)
-        self.label_2.setText(QtWidgets.QApplication.translate("MoocPlayerChooser", "Description de la leçon", None, -1))
-
-    def accept(self):
-        print(u"chooser")
-        print(self.listWidget_trainings.currentItem())
-        print(self.listWidget_trainings.currentRow())
-        if self.listWidget_trainings.currentRow() == 0:
-            command = FCPlayer1()
-        elif self.listWidget_trainings.currentRow() == 1:
-            command = FCPlayer2()
-        elif self.listWidget_trainings.currentRow() == 2:
-            command = FCPlayer3()
-        elif self.listWidget_trainings.currentRow() == 3:
-            command = FCPlayer4()
-        self.close()
-        command.Activated()
-
 
 class Ui_FreeCADPlayer(QtWidgets.QDialog):
     '''The FreeCAd Player interface'''
