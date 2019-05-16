@@ -5,12 +5,12 @@ ici qu'un outil support du propos. L'intérêt porté par l'apprenant pour le su
 qu'il procure, doit être le moteur de découverte de FreeCAD.
 
 # Sommaire
-*  [Utilisation](https://framagit.org/freecad-france/mooc-workbench/README.md#Utilisation)
-*  [Installation](https://framagit.org/freecad-france/mooc-workbench/README.md#Installation)
+*  [Utilisation](https://framagit.org/freecad-france/mooc-workbench#utilisation)
+*  [Installation](https://framagit.org/freecad-france/mooc-workbench#installation)
 
 # Utilisation
 
-L'atelier est disponible depuis le sélecteur d'atelier ![mooc-wb](/medias/icons/mooc-workbench.png)
+L'atelier est disponible depuis le sélecteur d'atelier ![mooc-wb](/medias/images/mooc-workbench.svg)
 
 L'atelier MOOC propose 2 outils :
 
