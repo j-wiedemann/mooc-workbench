@@ -51,7 +51,8 @@ except NameError:
     import importlib
     importlib.reload(MoocChecker)
 
-Check = MoocChecker             # name MoocChecker
+# name MoocChecker
+Check = MoocChecker
 
 # for debug purposes
 DEBUG = True
@@ -280,14 +281,13 @@ class Ui_Manager():
 
 class FCPlayer1():
     "the first week"
-    def __init__(self):
-        if DEBUG:print("init FCPlayer1")
-        pass
+    def IsActive(self):
+        if DEBUG:print("FCPlayer 1 is active")
+        return True
 
 
 class FCPlayer2():
     '''the second week'''
-
     def IsActive(self):
         if DEBUG:print("FCPlayer 2 is active")
         return True
@@ -303,16 +303,7 @@ class FCPlayer2():
         moocWBpath = os.path.dirname(moocwb_locator.__file__)
         moocWBpath_medias = os.path.join(moocWBpath, 'medias')
         moocWB_images_path = os.path.join(moocWBpath_medias, 'images')
-        #basepath = __file__.split('MoocPlayer.py')[0]
-        #basepath += 'medias/img/'
 
-        # img = basepath + 'img_name.ext'
-        #step["description"] = u'''<h3>Titre</h3> \
-        #    <p><img src= %s width="25"/> Créer un nouveau document : \
-        #    <ul><li>à l'aide du menu <i>Fichier</i> puis <i>Nouveau.</li> \
-        #    <li>à l'aide du raccourcis Ctrl + N</li></ul></p>''' % ( img )
-
-        #step1
         step = {}
         img1 = os.path.join(moocWB_images_path, 'Document-new.svg')
         img2 = os.path.join(moocWB_images_path, 'Workbench_PartDesign.svg')
