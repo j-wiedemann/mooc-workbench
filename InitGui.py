@@ -45,7 +45,7 @@ moocWB_icons_path = os.path.join( moocWBpath_medias, 'icons')
 #moocWB_images_path = os.path.join( moocWBpath_medias, 'gifs')
 
 global main_moocWB_Icon
-main_moocWB_Icon = os.path.join( moocWB_icons_path , 'mooc-workbench-v3.svg')
+main_moocWB_Icon = os.path.join( moocWB_icons_path , 'mooc-workbench.svg')
 
 class MoocWorkbench ( Workbench ):
 
