@@ -10,13 +10,13 @@ qu'il procure, doit être le moteur de découverte de FreeCAD.
 
 # Utilisation
 
-L'atelier est disponible depuis le sélecteur d'atelier ![mooc-wb](/medias/images/mooc-workbench.svg)
+L'atelier est disponible depuis le sélecteur d'atelier ![mooc-wb](/medias/images/mooc-workbench.png)
 
 L'atelier MOOC propose 2 outils :
 
-*  MOOC Player qui permet de lancer les tutoriels interactifs.
+*  ![mooc-wb](/medias/images/mooc-player.png) MOOC Player qui permet de lancer les tutoriels interactifs.
 
-*  MOOC Grader qui permet de faire une évaluation d'un exercice.
+*  ![mooc-wb](/medias/images/mooc-grader.png) MOOC Grader qui permet de faire une évaluation d'un exercice.
 
 ### MOOC Player
 
