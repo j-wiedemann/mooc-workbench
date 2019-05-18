@@ -27,19 +27,10 @@ __title__="MOOC Workbench"
 __author__ = "Jonathan Wiedemann"
 __url__ = "http://www.freecadweb.org"
 
-# import pyside2 module for ui
-from PySide2 import QtCore, QtGui, QtWidgets
 
 # for handling paths
 import os, moocwb_locator
 
-# import freecad and its gui
-import FreeCAD as app
-import FreeCADGui as gui
-import WebGui
-
-# import webbrowser to play video inside defaut web Browser
-import webbrowser
 
 # import MoocChecker
 import MoocChecker
@@ -54,14 +45,18 @@ except NameError:
 # name MoocChecker
 Check = MoocChecker
 
+def get_title():
+    title = u'[FR] Part Design Primitives Semaine 1'
+    return title
+
+def get_description():
+    description = u'''[FR] Part Design Primitives Semaine 1 : Cette semaine nous \
+allons voir comment modéliser l'hmidificateur de Steven avec des formes \
+primitives uniquement.'''
+    return description
+
 class AkounHumidificateur():
     '''tutorial with Part Design and Primitives opérations only'''
-    def IsActive(self):
-        if DEBUG:print("FCPlayer 2 is active")
-        return True
-
-    def Activated(self):
-        Ui_Manager(self.MakeDataTutorial())
 
     def MakeDataTutorial(self):
         data_tutorial = {}

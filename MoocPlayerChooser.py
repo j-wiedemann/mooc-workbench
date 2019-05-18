@@ -38,6 +38,10 @@ import FreeCAD as app
 import FreeCADGui as gui
 
 
+from os import listdir
+from os.path import isfile, join
+import importlib.util
+
 
 class Ui_MoocPlayerChooser(QtWidgets.QDialog):
     '''The FreeCAD Player chooser interface'''
@@ -51,19 +55,18 @@ class Ui_MoocPlayerChooser(QtWidgets.QDialog):
         self.verticalLayout.addWidget(self.label_welcome)
         self.listWidget_trainings = QtWidgets.QListWidget(MoocPlayerChooser)
         self.listWidget_trainings.setObjectName("listWidget_trainings")
-        QtWidgets.QListWidgetItem(self.listWidget_trainings)
-        QtWidgets.QListWidgetItem(self.listWidget_trainings)
-        QtWidgets.QListWidgetItem(self.listWidget_trainings)
-        QtWidgets.QListWidgetItem(self.listWidget_trainings)
         self.verticalLayout.addWidget(self.listWidget_trainings)
         self.label_description = QtWidgets.QLabel(MoocPlayerChooser)
         self.label_description.setObjectName("label_description")
+        self.label_description.setWordWrap(True)
         self.verticalLayout.addWidget(self.label_description)
         self.buttonBox = QtWidgets.QDialogButtonBox(MoocPlayerChooser)
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
         self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
         self.buttonBox.setObjectName("buttonBox")
         self.verticalLayout.addWidget(self.buttonBox)
+
+        self.get_lessons_title_list()
 
         self.retranslateUi(MoocPlayerChooser)
         QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("accepted()"), MoocPlayerChooser.accept)
@@ -77,32 +80,36 @@ class Ui_MoocPlayerChooser(QtWidgets.QDialog):
     def retranslateUi(self, MoocPlayerChooser):
         MoocPlayerChooser.setWindowTitle(QtWidgets.QApplication.translate("MoocPlayerChooser", "Choisir la leçon", None, -1))
         self.label_welcome.setText(QtWidgets.QApplication.translate("MoocPlayerChooser", u"Quelle leçon souhaitez vous étudier aujourd'hui ?", None, -1))
-        __sortingEnabled = self.listWidget_trainings.isSortingEnabled()
-        self.listWidget_trainings.setSortingEnabled(False)
-        self.listWidget_trainings.item(0).setText(QtWidgets.QApplication.translate("MoocPlayerChooser", "FUN Mooc Modélisation 3D Semaine 1", None, -1))
-        self.listWidget_trainings.item(1).setText(QtWidgets.QApplication.translate("MoocPlayerChooser", "FUN Mooc Modélisation 3D Semaine 2", None, -1))
-        self.listWidget_trainings.item(2).setText(QtWidgets.QApplication.translate("MoocPlayerChooser", "FUN Mooc Modélisation 3D Semaine 3", None, -1))
-        self.listWidget_trainings.item(3).setText(QtWidgets.QApplication.translate("MoocPlayerChooser", "FUN Mooc Modélisation 3D Semaine 4", None, -1))
-        self.listWidget_trainings.setSortingEnabled(__sortingEnabled)
         self.label_description.setText(QtWidgets.QApplication.translate("MoocPlayerChooser", "Cliquer sur un éléments de la liste pour obtenir la description de la leçon.", None, -1))
 
     def accept(self):
         self.launch_mooc(self.listWidget_trainings.currentItem())
 
+    def get_lessons_title_list(self):
+        self.lessons_infos_list = []
+        moocWBpath = os.path.dirname(moocwb_locator.__file__)
+        moocWBpath_lessons = os.path.join(moocWBpath, 'lessons')
+        onlyfiles = [f for f in listdir(moocWBpath_lessons) if isfile(join(moocWBpath_lessons, f))]
+        #print(onlyfiles)
+
+        for lesson in onlyfiles:
+            name = lesson.split('.')[0]
+            path = os.path.join(moocWBpath_lessons, lesson)
+            spec = importlib.util.spec_from_file_location(name, path)
+            foo = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(foo)
+            self.lessons_infos_list.append([foo.get_title(),foo.get_description(),name])
+            '''print(foo.get_title())
+            print(foo.get_description())
+            print(foo.__title__)'''
+
+            self.listWidget_trainings.addItem(foo.get_title())
+
     def get_description(self, item):
+        # get the row number from item
         row = self.listWidget_trainings.row(item)
-        if row==0:
-            self.label_description.setText(QtWidgets.QApplication.translate("MoocPlayerChooser",
-             "Tutoriel de la semaine 1 du mooc, modélisation 3D", None, -1))
-        if row==1:
-            self.label_description.setText(QtWidgets.QApplication.translate("MoocPlayerChooser",
-             "Tutoriel de la semaine 2 du mooc, modélisation 3D", None, -1))
-        if row==2:
-            self.label_description.setText(QtWidgets.QApplication.translate("MoocPlayerChooser",
-             "Tutoriel de la semaine 3 du mooc, modélisation 3D", None, -1))
-        if row==3:
-            self.label_description.setText(QtWidgets.QApplication.translate("MoocPlayerChooser",
-             "Tutoriel de la semaine 4 du mooc, modélisation 3D", None, -1))
+        # display descritpion in label from lessons list
+        self.label_description.setText(self.lessons_infos_list[row][1])
 
     def launch_mooc(self, item):
         row = self.listWidget_trainings.row(item)
