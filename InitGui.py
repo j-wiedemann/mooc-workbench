@@ -57,7 +57,7 @@ class MoocWorkbench ( Workbench ):
 
     def Initialize(self) :
         "This function is executed when FreeCAD starts"
-        import MoocPlayerChooser,  MoocGrader
+        import MoocPlayer,  MoocGrader
         self.appendToolbar('MOOC',['Mooc_Player','Mooc_Grader'])
         self.appendMenu('MOOC',['Mooc_Player','Mooc_Grader'])
         print('Initialize MOOC module... done.')

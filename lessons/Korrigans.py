@@ -31,7 +31,6 @@ __url__ = "http://www.freecadweb.org"
 # for handling paths
 import os, moocwb_locator
 
-
 # import MoocChecker
 import MoocChecker
 
@@ -55,11 +54,10 @@ allons voir comment modéliser le Korrigans de XXX XXX à l'aide d'esquisses \
 et de fonctions d'ajout et d'enlèvement de matière.'''
     return description
 
-
 def MakeDataTutorial():
     data_tutorial = {}
-    data_tutorial['episode'] = "FCPlayer2"
-    data_tutorial['title'] = u'MOOC Semaine 2 : Korrigans'
+    data_tutorial['title'] = get_title()
+    data_tutorial['description'] = get_description()
     data_tutorial['steps'] = []
     moocWBpath = os.path.dirname(moocwb_locator.__file__)
     moocWBpath_medias = os.path.join(moocWBpath, 'medias')
@@ -351,8 +349,6 @@ def MakeDataTutorial():
     return data_tutorial
 
 def CheckResult(step_id):
-    if DEBUG:print(u"FCPlayer02.CheckResult(step_id = %s)" % step_id)
-
     if step_id == 0:
         results = []
         results.append(Check.document_presence())
