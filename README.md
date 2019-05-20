@@ -20,18 +20,18 @@ Cet atelier FreeCAD vous suivra tous le long de ce mooc pour vous guider dans l'
 
 1. Télécharger l'archive zip à cette adresse : [Mooc-Workbench.zip](https://framagit.org/freecad-france/mooc-workbench/-/archive/master/mooc-workbench-master.zip)
 
-2. Extraire l'archive dans le dossier Mod de FreeCAD
+* Extraire l'archive dans le dossier Mod de FreeCAD
 L'emplacement du dossier Mod de FreeCAD dépend de votre système d'exploitation :
 
-*  Windows : habituellement C:\Users\username\AppData\Roaming\FreeCAD\Mod
+  *  Windows : habituellement C:\Users\username\AppData\Roaming\FreeCAD\Mod
 
-*  Mac : habituellement /Users/username/Library/Preferences/FreeCAD/Mod
+  *  Mac : habituellement /Users/username/Library/Preferences/FreeCAD/Mod
 
-*  Linux : habituellement /home/username/.FreeCAD/Mod
+  *  Linux : habituellement /home/username/.FreeCAD/Mod
 
-Si le dossier mod n'existe pas, créer le.
+  *  Si le dossier mod n'existe pas, créer le.
 
-3. (Re)Lancer FreeCAD
+* (Re)Lancer FreeCAD
 
 ## Utilisation
 
@@ -47,7 +47,7 @@ L'atelier MOOC propose 2 outils :
 
 ### MOOC Player
 
-Les tutoriaux interactif sont accessible en cliquant sur le bouton Play, juste ici.
+Les tutoriaux interactif sont accessible depuis le menu **MOOC** puis **Voir un tutoriel** en cliquant sur le bouton : ![mooc-wb](/medias/images/mooc-player.png)
 
 Une fenêtre s'ouvre avec une liste des tutoriel disponible :
 
@@ -61,6 +61,8 @@ Une nouvelle fenêtre s'ouvre et c'est le tutoriel qui commence.
 
 <img src="/medias/images/PlayerWindow.png" width=45% >
 
+<img src="/medias/images/OVPlayer.png" width=45% >
+
 Le premier panneaux vous donne les consignes à suivre pour l'étape en cours.
 
 Le bouton Vidéo ouvre une vidéo dans votre navigateur web par défaut.
@@ -70,7 +72,7 @@ Le bouton aide vous proposera les liens vers la documentation de chaque outils u
 Ensuite il y a la liste des objectifs qui s'affiche en rouge tant que l'objectif n'est pas remplie.
 
 L'objectif passe au vert dès que qu'il est atteint.
-Par exemple à cette étape la première chose à faire est de créer un nouveau document, dès que c'est fait, comme ceci, la ligne passe en vert.
+Par exemple à cette étape la première chose à faire est de créer un nouveau document, dès que c'est fait, la ligne passe en vert.
 
 Enfin vous avez des boutons pour passer à l'étape suivante ou pour revenir. Vous n'avez pas besoin de remplir tous les objectifs pour passer à l'étape suivante.
 
@@ -80,7 +82,7 @@ Lorsque vous avez atteint la fin du tutoriel vous pouvez fermer la fenêtre en c
 
 Lorsque vous avez terminer un exercice, vous allez pouvoir l'évaluer à l'aide du MOOC Grader.
 
-Accessible depuis le menu **MOOC** puis **Évaluer un exercice**.
+Accessible depuis le menu **MOOC** puis **Évaluer un exercice** ou en cliquant sur le bouton : ![mooc-wb](/medias/images/mooc-grader.png)
 
 <img src="/medias/images/FreeCADGraderWindow.png" width=45% >
 
@@ -97,3 +99,5 @@ Quand l'évaluation vous satisfait vous pouvez transmettre les résultats en cli
 <img src="/medias/images/EnvoieResult.png" width=45% >
 
 Une fenêtre s'ouvre avec une chaine de caratère qu'il faut copier/coller dans votre espace MOOC. Vous pouvez cliquer sur le bouton **Copier** pour copier la chaine de caractère dans le presse papier. Il vous restera juste à le coller (clic droit coller ou avec le raccouris Ctrl+V).
+
+<img src="/medias/images/CopyPasteResult.png" width=45% >
