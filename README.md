@@ -8,11 +8,11 @@ Cet atelier FreeCAD vous suivra tous le long de ce mooc pour vous guider dans l'
 
 ## Sommaire
 *  ### [Installation](https://framagit.org/freecad-france/mooc-workbench#installation)
-  * [Avec l'addon manager](https://framagit.org/freecad-france/mooc-workbench#installation-avec-laddon-manager)
-  * [Manuellement](https://framagit.org/freecad-france/mooc-workbench#installation-manuelle)
+    * [Avec l'addon manager](https://framagit.org/freecad-france/mooc-workbench#installation-avec-laddon-manager)
+    * [Manuellement](https://framagit.org/freecad-france/mooc-workbench#installation-manuelle)
 *  ### [Utilisation](https://framagit.org/freecad-france/mooc-workbench#utilisation)
-  * [Tutoriels](https://framagit.org/freecad-france/mooc-workbench#mooc-player)
-  * [Évaluation](https://framagit.org/freecad-france/mooc-workbench#mooc-grader)
+    * [Tutoriels](https://framagit.org/freecad-france/mooc-workbench#mooc-player)
+    * [Évaluation](https://framagit.org/freecad-france/mooc-workbench#mooc-grader)
 
 ## Installation
 
