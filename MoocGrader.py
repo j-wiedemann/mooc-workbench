@@ -389,14 +389,14 @@ class Ui_FreeCADGraderResults(QtWidgets.QDialog):
 
 
 class MoocGraderCommand():
-        "class to choose the lesson"
+        "command for the Grader"
         def GetResources(self):
             moocWBpath = os.path.dirname(moocwb_locator.__file__)
             moocWBpath_medias = os.path.join(moocWBpath, 'medias')
             moocWB_icons_path = os.path.join( moocWBpath_medias, 'icons')
             return {'Pixmap'  : os.path.join( moocWB_icons_path , 'mooc-grader.svg'),
-                    'MenuText': QtCore.QT_TRANSLATE_NOOP(u"Mooc",u"Évaluation de l'exercice."),
-                    'ToolTip': QtCore.QT_TRANSLATE_NOOP(u"Mooc",u"Évaluation de l'exercice.")}
+                    'MenuText': QtCore.QT_TRANSLATE_NOOP(u"Mooc",u"Évaluer un exercice."),
+                    'ToolTip': QtCore.QT_TRANSLATE_NOOP(u"Mooc",u"Éxécute l'outil d'analyse et vérification d'un docment FreeCAD.")}
 
         def IsActive(self):
             return True

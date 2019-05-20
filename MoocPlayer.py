@@ -329,8 +329,8 @@ class MoocChooser():
             moocWBpath_medias = os.path.join(moocWBpath, 'medias')
             moocWB_icons_path = os.path.join( moocWBpath_medias, 'icons')
             return {'Pixmap'  : os.path.join( moocWB_icons_path , 'mooc-player.svg'),
-                    'MenuText': QtCore.QT_TRANSLATE_NOOP(u"Mooc","Choisir la leçon."),
-                    'ToolTip': QtCore.QT_TRANSLATE_NOOP(u"Mooc","Choisir la leçon.")}
+                    'MenuText': QtCore.QT_TRANSLATE_NOOP(u"Mooc","Voir un tutoriel."),
+                    'ToolTip': QtCore.QT_TRANSLATE_NOOP(u"Mooc","Permet de choisir et voir un tutoriel interactif.")}
 
         def IsActive(self):
             return True

@@ -50,7 +50,7 @@ def get_title():
 
 def get_description():
     description = u'''[FR] Part Design Primitives Semaine 2 : Cette semaine nous \
-allons voir comment modéliser le Korrigans de XXX XXX à l'aide d'esquisses \
+allons voir comment modéliser le Korrigans de Valérian HENRY à l'aide d'esquisses \
 et de fonctions d'ajout et d'enlèvement de matière.'''
     return description
 
@@ -90,9 +90,13 @@ def MakeDataTutorial():
     step["description"] = u'''<h3>Esquisse</h3> \
         <p>Pour créer la base de l'objet, on va d'abord créer une esquisse \
         sur le plan XZ du corps de pièce.</p> \
-        <p><img src= %s width="25"/> Pour cela on clique sur l'icone \
-        Nouvelle Esquisse et on choisit le plan XZ dans la liste visible \
-        dans l'onglet Tâche de la vue combinée.</p>''' % (img1)
+        <p>Créer une nouvelle esquisse : \
+        <ul><li>sélectionner le corps de pièce (Body) dans l'arborescence</li> \
+        <li>clique sur l'icone <img src= %s width="25"/></li> \
+        <li>ou depuis le menu <i>Part Design</i> > <i>Nouvelle Esquisse</i></li> \
+        <li>dans l'onglet Tâche de la vue combinée, cliquer sur le plan XZ</li>\
+        <li>ou cliquer sur le plan XZ dans la vue 3D</li> \
+        <li>Enfin cliquer sur le bonton OK</li></lu></p>''' % (img1)
 
     step["video"] = 'https://d381hmu4snvm3e.cloudfront.net/videos/ogXi1cPygQ3H/HD.mp4'
     step["objectives"] = [u"1 esquisse (Sketch) sur le plan XZ.", u"TODO : Taille de la grille de 10 mm."]
@@ -103,14 +107,15 @@ def MakeDataTutorial():
     img1 = os.path.join(moocWB_images_path, 'Constraint_Horizontal.svg')
     img2 = os.path.join(moocWB_images_path, 'Constraint_Vertical.svg')
     img3 = os.path.join(moocWB_images_path, 'Constraint_PointOnPoint.svg')
+    img4 = os.path.join(moocWB_images_path, 'Sketcher_CreatePolyline.svg')
     step["description"] = u'''<h3>Géométries et contraintes</h3> \
         <p>Dessiner un contour fermé de 5 coté à l'aide de l'outil polyligne.<p> \
         <p><img src=%s width="25"/> L'outil polyligne ajoute \
-        automatiquement des contrainte de coïncidence entre chaque extrémités de segment.<p>\
+        automatiquement des contraintes de coïncidence <img src=%s width="25"/> entre chaque extrémités de segment.<p>\
         <p>Faire en sorte d'avoir des contraintes verticales <img src= %s width="25"/> \
          et horizontales <img src=%s width="25"/>  sur les bons éléments.</p> \
         <p>À ce stade l'esquisse dispose de 7 degrès de liberté \
-        restants.</p>''' % (img3, img1, img2)
+        restants.</p>''' % (img4, img3, img1, img2)
 
     step["video"] = 'https://d381hmu4snvm3e.cloudfront.net/videos/ogXi1cPygQ3H/HD.mp4'
     step["objectives"] = [u"1 contour fermé de 5 segments.", u"5 contraintes de coïncidence.", u"2 contraintes d'orientation verticales.",
