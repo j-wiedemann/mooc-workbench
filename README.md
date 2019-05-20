@@ -24,18 +24,18 @@ Cet atelier FreeCAD vous suivra tous le long de ce mooc pour vous guider dans l'
 
 1. Télécharger l'archive zip à cette adresse : [Mooc-Workbench.zip](https://framagit.org/freecad-france/mooc-workbench/-/archive/master/mooc-workbench-master.zip)
 
-* Extraire l'archive dans le dossier Mod de FreeCAD
+2. Extraire l'archive dans le dossier Mod de FreeCAD
 L'emplacement du dossier Mod de FreeCAD dépend de votre système d'exploitation :
 
-  *  Windows : habituellement C:\Users\username\AppData\Roaming\FreeCAD\Mod
+    *  Windows : habituellement C:\Users\username\AppData\Roaming\FreeCAD\Mod
 
-  *  Mac : habituellement /Users/username/Library/Preferences/FreeCAD/Mod
+    *  Mac : habituellement /Users/username/Library/Preferences/FreeCAD/Mod
 
-  *  Linux : habituellement /home/username/.FreeCAD/Mod
+    *  Linux : habituellement /home/username/.FreeCAD/Mod
 
-  *  Si le dossier mod n'existe pas, créer le.
+    *  Si le dossier mod n'existe pas, créer le.
 
-* (Re)Lancer FreeCAD
+3. (Re)Lancer FreeCAD
 
 ## Utilisation
 
