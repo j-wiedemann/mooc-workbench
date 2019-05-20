@@ -62,11 +62,12 @@ def MakeDataTutorial():
     moocWBpath = os.path.dirname(moocwb_locator.__file__)
     moocWBpath_medias = os.path.join(moocWBpath, 'medias')
     moocWB_images_path = os.path.join(moocWBpath_medias, 'images')
+    moocWB_icons_path = os.path.join(moocWBpath_medias, 'icons')
 
     step = {}
-    img1 = os.path.join(moocWB_images_path, 'Document-new.svg')
-    img2 = os.path.join(moocWB_images_path, 'Workbench_PartDesign.svg')
-    img3 = os.path.join(moocWB_images_path, 'PartDesign_Body.png')
+    img1 = os.path.join(moocWB_icons_path, 'Document-new.svg')
+    img2 = os.path.join(moocWB_icons_path, 'Workbench_PartDesign.svg')
+    img3 = os.path.join(moocWB_icons_path, 'PartDesign_Body.png')
     img4 = os.path.join(moocWB_images_path, 'korrigans_final.png')
     step["description"] = u'''<h3>Préparation</h3> \
         <p><img src= %s width="25"/> Créer un nouveau document : \
@@ -86,7 +87,7 @@ def MakeDataTutorial():
 
     #step2
     step = {}
-    img1 = os.path.join(moocWB_images_path, 'Sketcher_NewSketch.svg')
+    img1 = os.path.join(moocWB_icons_path, 'Sketcher_NewSketch.svg')
     step["description"] = u'''<h3>Esquisse</h3> \
         <p>Pour créer la base de l'objet, on va d'abord créer une esquisse \
         sur le plan XZ du corps de pièce.</p> \
@@ -104,10 +105,10 @@ def MakeDataTutorial():
 
     #step3
     step = {}
-    img1 = os.path.join(moocWB_images_path, 'Constraint_Horizontal.svg')
-    img2 = os.path.join(moocWB_images_path, 'Constraint_Vertical.svg')
-    img3 = os.path.join(moocWB_images_path, 'Constraint_PointOnPoint.svg')
-    img4 = os.path.join(moocWB_images_path, 'Sketcher_CreatePolyline.svg')
+    img1 = os.path.join(moocWB_icons_path, 'Constraint_Horizontal.svg')
+    img2 = os.path.join(moocWB_icons_path, 'Constraint_Vertical.svg')
+    img3 = os.path.join(moocWB_icons_path, 'Constraint_PointOnPoint.svg')
+    img4 = os.path.join(moocWB_icons_path, 'Sketcher_CreatePolyline.svg')
     step["description"] = u'''<h3>Géométries et contraintes</h3> \
         <p>Dessiner un contour fermé de 5 coté à l'aide de l'outil polyligne.<p> \
         <p><img src=%s width="25"/> L'outil polyligne ajoute \
@@ -124,7 +125,7 @@ def MakeDataTutorial():
 
     #step4
     step = {}
-    img1 = os.path.join(moocWB_images_path, 'Constraint_EqualLength.svg')
+    img1 = os.path.join(moocWB_icons_path, 'Constraint_EqualLength.svg')
     step["description"] =  u'''<h3>Contrainte d'égalité</h3> \
         <p>Nous pouvons contraindre 2 segments à être égaux, dans notre cas \
         on veut que les 2 segments verticaux soient égaux entre eux et de \
@@ -138,9 +139,9 @@ def MakeDataTutorial():
 
     #step5
     step = {}
-    img1 = os.path.join(moocWB_images_path, 'Constraint_HorizontalDistance.svg')
-    img2 = os.path.join(moocWB_images_path, 'Constraint_VerticalDistance.svg')
-    img3 = os.path.join(moocWB_images_path, 'Constraint_InternalAngle.svg')
+    img1 = os.path.join(moocWB_icons_path, 'Constraint_HorizontalDistance.svg')
+    img2 = os.path.join(moocWB_icons_path, 'Constraint_VerticalDistance.svg')
+    img3 = os.path.join(moocWB_icons_path, 'Constraint_InternalAngle.svg')
     step["description"] = u'''<h3>Dimensions</h3> \
         <p>Pour paramétrer précisement les mesures de notre esquisse,  \
         on va ajouter des contraintes de dimensions.</p> \
@@ -166,7 +167,7 @@ def MakeDataTutorial():
 
     #step6
     step = {}
-    img1 = os.path.join(moocWB_images_path, 'Constraint_Symmetric.svg')
+    img1 = os.path.join(moocWB_icons_path, 'Constraint_Symmetric.svg')
     step["description"] = u'''<h3>Contrainte de symétrie</h3> \
         <p>Il nous reste 2 degrès de libertés qui sont les positions X et Y  \
         de notre contour dans l'esquisse.<p> \
@@ -181,7 +182,7 @@ def MakeDataTutorial():
 
     #step7
     step = {}
-    img1 = os.path.join(moocWB_images_path, 'PartDesign_Pad.svg')
+    img1 = os.path.join(moocWB_icons_path, 'PartDesign_Pad.svg')
     step["description"] = u'''<h3>Faire une protrusion</h3> \
         <p>Nous allons maintenant créer une protrusion de 55 mm à partir de \
         cette esquisse afin de générer du volume.<p> \
@@ -199,7 +200,7 @@ def MakeDataTutorial():
 
     #step8
     step = {}
-    img1 = os.path.join(moocWB_images_path, 'Sketcher_External.svg')
+    img1 = os.path.join(moocWB_icons_path, 'Sketcher_External.svg')
     step["description"] = u'''<h3>Arêtes externe</h3> \
         <p>Dans cette étape nous allons créer une nouvelle esquisse sur le plan YZ \
         pour dessiner un triangle qui nous permettra d'enlever de la matière \
@@ -216,7 +217,7 @@ def MakeDataTutorial():
 
     #step9
     step = {}
-    img1 = os.path.join(moocWB_images_path, 'PartDesign_Pocket.svg')
+    img1 = os.path.join(moocWB_icons_path, 'PartDesign_Pocket.svg')
     step["description"] = u'''<h3>Faire une cavité</h3> \
         <p>Une cavité (pocket en anglais) est une fonction qui sert à enlever de la matière.</p> \
         <p>On commence par sélectionner l'esquisse qui servira de base à la \
@@ -232,7 +233,7 @@ def MakeDataTutorial():
 
     #step10
     step = {}
-    img1 = os.path.join(moocWB_images_path, 'PartDesign_Mirrored.svg')
+    img1 = os.path.join(moocWB_icons_path, 'PartDesign_Mirrored.svg')
     step["description"] = u'''<h3>Répétition</h3> \
         <p>Nous n'avons fais qu'un coté du chapeau. On pourrait répéter \
         l'opération (esquisse + cavité), on aurait pus dessiner une esquisse \
@@ -250,7 +251,7 @@ def MakeDataTutorial():
 
     #step11
     step = {}
-    img1 = os.path.join(moocWB_images_path, 'Sketcher_CreateSlot.svg')
+    img1 = os.path.join(moocWB_icons_path, 'Sketcher_CreateSlot.svg')
     step["description"] = u'''<h3>Contour oblong</h3> \
         <p>Esquisse avec un contour fermé formant un trou oblong.<p>'''
 
@@ -270,7 +271,7 @@ def MakeDataTutorial():
 
     #step13
     step = {}
-    img1 = os.path.join(moocWB_images_path, 'PartDesign_PolarPattern.svg')
+    img1 = os.path.join(moocWB_icons_path, 'PartDesign_PolarPattern.svg')
     step["description"] = u'''<h3>Répétition circulaire</h3> \
         <p>On va répéter la cavité 4 fois autour du centre pour obtenir les 4 jambes.<p>'''
 
@@ -300,7 +301,7 @@ def MakeDataTutorial():
 
     #step16
     step = {}
-    img1 = os.path.join(moocWB_images_path, 'PartDesign_Plane.svg')
+    img1 = os.path.join(moocWB_icons_path, 'PartDesign_Plane.svg')
     step["description"] = u'''<h3>Créer un plan de référence</h3> \
         <p>Nous avons besoin d'un plan de travail décalé par rapport \
         au plan YZ pour y appliquer une nouvelle esquisse.<p>
@@ -339,7 +340,7 @@ def MakeDataTutorial():
 
     #step19
     step = {}
-    img1 = os.path.join(moocWB_images_path, 'Document-save.svg')
+    img1 = os.path.join(moocWB_icons_path, 'Document-save.svg')
     img2 = os.path.join(moocWB_images_path, 'freecadSaveDetail.png')
     step["description"] = u'''<h3>Sauvegarder le document.</h3> \
         <p><img src=%s width="25"/> Sauvegader le document sous le nom <b>Korrigans</b> : \
