@@ -114,6 +114,7 @@ class Ui_MoocPlayer(QtWidgets.QDialog):
         self.verticalLayout_left.addWidget(self.label_objectifs)
         self.listWidget_objectifs = QtWidgets.QListWidget(self)
         self.listWidget_objectifs.setObjectName("listWidget_objectifs")
+        self.listWidget_objectifs.setSelectionMode(QtWidgets.QAbstractItemView.SelectionMode.NoSelection)
         self.verticalLayout_left.addWidget(self.listWidget_objectifs)
         self.horizontalLayout_change_step = QtWidgets.QHBoxLayout()
         self.horizontalLayout_change_step.setObjectName("horizontalLayout_change_step")
