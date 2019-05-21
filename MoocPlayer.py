@@ -33,6 +33,7 @@ from PySide2 import QtCore, QtGui, QtWidgets
 # for handling paths
 import os, moocwb_locator
 
+# for loading module from path
 from os import listdir
 from os.path import isfile, join
 import importlib.util

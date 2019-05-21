@@ -33,6 +33,11 @@ from PySide2 import QtCore, QtGui, QtWidgets
 # for handling paths
 import os, moocwb_locator
 
+# for loading module from path
+from os import listdir
+from os.path import isfile, join
+import importlib.util
+
 # import freecad and its gui
 import FreeCAD as app
 import FreeCADGui as gui
@@ -56,81 +61,6 @@ def make_b64_hash(grader_dict):
     #print(encoded_grader.decode())
     return encoded_grader
 
-def grader01(doc_name):
-    print("MOOC FreeCAD - Grader 01 ")
-    return None
-
-def grader02(doc_name):
-    print("MOOC FreeCAD - Grader 02 ")
-    print("importing MoocChecker")
-    # import MoocChecker
-    import MoocChecker
-    # make sure MoocChecker is reloaded
-    try :
-        reload(MoocChecker)
-    except NameError:
-        import importlib
-        importlib.reload(MoocChecker)
-    # name MoocChecker
-    Check = MoocChecker
-
-
-
-    grader_dict = {"notes": [], "messages": []}
-
-    doc = app.getDocument(doc_name)
-
-    step_id = 0
-    # Check for a Body presence
-    grader_dict["notes"].append(Check.body_presence(doc))
-    if grader_dict["notes"][step_id] == 1 :
-        grader_dict["messages"].append(u"Il y a un corps de pièce.")
-    elif grader_dict["notes"][step_id] == 0 :
-        grader_dict["messages"].append(u"Il n'y a pas de corps de pièce.")
-
-    step_id += 1
-    # Check for a Pad presence
-    grader_dict["notes"].append(Check.pad_presence(doc, name=None, type="Length", length=18.0, midplane=True))
-    if grader_dict["notes"][step_id] == 1 :
-        grader_dict["messages"].append(u"Il y a une protrusion de 18 mm.")
-    elif grader_dict["notes"][step_id] == 0 :
-        grader_dict["messages"].append(u"Il n'y a pas de protrusion de 18 mm.")
-
-    step_id += 1
-    # Check for a Pocket presence
-    grader_dict["notes"].append(Check.pocket_presence(doc, name=None, type="ThroughAll", length=None, midplane=None, reversed=None))
-    if grader_dict["notes"][step_id] == 1 :
-        grader_dict["messages"].append(u"Il y a une cavité de type À Travers Tout.")
-    elif grader_dict["notes"][step_id] == 0 :
-        grader_dict["messages"].append(u"Il n'y a pas de cavité de type À Travers Tout.")
-
-    step_id += 1
-    # Check volume
-    grader_dict["notes"].append(Check.volume(doc, name=None, obj_type='PartDesign::Body', target=28605.00))
-    if grader_dict["notes"][step_id] == 1 :
-        grader_dict["messages"].append(u"Le volume correspond.")
-    elif grader_dict["notes"][step_id] == 0 :
-        grader_dict["messages"].append(u"Le volume ne correspond pas.")
-
-    step_id += 1
-    # Check boundbox
-    grader_dict["notes"].append(Check.boundbox_dimensions(doc, name=None, obj_type='PartDesign::Body', x=40.00, y=18.00, z=65.00))
-    if grader_dict["notes"][step_id] == 1 :
-        grader_dict["messages"].append(u"Les dimensions de la boite englobante correpsondent.")
-    elif grader_dict["notes"][step_id] == 0 :
-        grader_dict["messages"].append(u"Les dimensions de la boite englobante ne correpsondent pas.")
-
-
-    return grader_dict
-
-def grader03(doc_name):
-    print("MOOC FreeCAD - Grader 03 ")
-    return None
-
-def grader04(doc_name):
-    print("MOOC FreeCAD - Grader 04 ")
-    return None
-
 
 class Ui_FreeCADGrader(QtWidgets.QDialog):
     def __init__(self, parent=gui.getMainWindow()):
@@ -152,10 +82,6 @@ class Ui_FreeCADGrader(QtWidgets.QDialog):
         self.verticalLayout.addWidget(self.label_2)
         self.comboBox = QtWidgets.QComboBox(self)
         self.comboBox.setObjectName("comboBox")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
         self.verticalLayout.addWidget(self.comboBox)
         self.label_3 = QtWidgets.QLabel(self)
         self.label_3.setObjectName("label_3")
@@ -204,6 +130,7 @@ class Ui_FreeCADGrader(QtWidgets.QDialog):
         self.verticalLayout_2.addWidget(self.pushButton_2)
         self.horizontalLayout.addLayout(self.verticalLayout_2)
 
+        self.get_exercises_title_list()
         self.fill_comboBox_2()
 
         self.retranslateUi(self)
@@ -217,14 +144,11 @@ class Ui_FreeCADGrader(QtWidgets.QDialog):
         FreeCADGrader.setWindowTitle(QtWidgets.QApplication.translate("FreeCADGrader", "FreeCAD Grader", None, -1))
         self.label.setText(QtWidgets.QApplication.translate("FreeCADGrader", "1. Évaluation", None, -1))
         self.label_2.setText(QtWidgets.QApplication.translate("FreeCADGrader", "Choisissez l\'exercice à évaluer dans la liste suivante :", None, -1))
-        self.comboBox.setItemText(0, QtWidgets.QApplication.translate("FreeCADGrader", "Semaine 1", None, -1))
-        self.comboBox.setItemText(1, QtWidgets.QApplication.translate("FreeCADGrader", "Semaine 2", None, -1))
-        self.comboBox.setItemText(2, QtWidgets.QApplication.translate("FreeCADGrader", "Semaine 3", None, -1))
-        self.comboBox.setItemText(3, QtWidgets.QApplication.translate("FreeCADGrader", "Semaine 4", None, -1))
         self.label_3.setText(QtWidgets.QApplication.translate("FreeCADGrader", "Choisissez le document à évaluer dans la liste suivante :", None, -1))
         self.pushButton.setText(QtWidgets.QApplication.translate("FreeCADGrader", "Lancer l\'évaluation", None, -1))
         self.label_4.setText(QtWidgets.QApplication.translate("FreeCADGrader", "2. Résultats", None, -1))
         self.pushButton_2.setText(QtWidgets.QApplication.translate("FreeCADGrader", "Envoyer les résultats", None, -1))
+
 
     def fill_comboBox_2(self):
         self.comboBox_2.clear()
@@ -262,16 +186,9 @@ class Ui_FreeCADGrader(QtWidgets.QDialog):
         self.listWidget.clear()
         mooc_session = self.comboBox.currentIndex()
         #document_label = self.comboBox_2.currentText()
-        if mooc_session == 0:
-            grader_result = grader02(doc_name)
-            print(grader_result)
-        elif mooc_session == 1:
-            grader_result = grader02(doc_name)
-        elif mooc_session == 2:
-            grader_result = grader03(doc_name)
-        elif mooc_session == 3:
-            grader_result = grader04(doc_name)
-        #elif mooc_session == 0:
+
+        exercise = self.exercises_infos_list[mooc_session][2]
+        grader_result = exercise.grader(doc_name)
 
         brush_green = QtGui.QBrush(QtGui.QColor(85, 170, 0))
         brush_green.setStyle(QtCore.Qt.NoBrush)
@@ -312,10 +229,36 @@ class Ui_FreeCADGrader(QtWidgets.QDialog):
             msgBox.exec_()
 
     def closeEvent(self,event):
-        #self.timer.stop()
-        #print("Stop timer")
-        #print(event)
         print(u"Closing FreeCAD Grader")
+
+    def get_exercises_title_list(self):
+        self.exercises_infos_list = []
+        moocWBpath = os.path.dirname(moocwb_locator.__file__)
+        moocWBpath_exercises = os.path.join(moocWBpath, 'exercises')
+        onlyfiles = [f for f in listdir(moocWBpath_exercises) if isfile(join(moocWBpath_exercises, f))]
+        for exercise in onlyfiles:
+            name = exercise.split('.')[0]
+            path = os.path.join(moocWBpath_exercises, exercise)
+            spec = importlib.util.spec_from_file_location(name, path)
+            foo = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(foo)
+            self.exercises_infos_list.append([foo.get_title(),foo.get_description(),foo])
+            self.comboBox.addItem(foo.get_title())
+
+    def launch_mooc(self, item):
+        row = self.listWidget_trainings.row(item)
+        self.close()
+        # import MoocPlayer
+        import MoocPlayer
+        # make sure MoocChecker is reloaded
+        try :
+            reload(MoocPlayer)
+        except NameError:
+            import importlib
+            importlib.reload(MoocPlayer)
+        lesson = self.lessons_infos_list[row][2]
+        MoocPlayer.Ui_Manager(lesson)
+
 
 class Ui_FreeCADGraderResults(QtWidgets.QDialog):
     def __init__(self, parent=None):
@@ -388,7 +331,6 @@ class Ui_FreeCADGraderResults(QtWidgets.QDialog):
                                                                           u" raccourcis clavier CTRL+V.", None, -1))
 
 
-
 class MoocGraderCommand():
         "command for the Grader"
         def GetResources(self):
@@ -405,6 +347,7 @@ class MoocGraderCommand():
         def Activated(self):
             dialog = Ui_FreeCADGrader()
             dialog.show()
+
 
 if app.GuiUp:
     gui.addCommand('Mooc_Grader', MoocGraderCommand())
