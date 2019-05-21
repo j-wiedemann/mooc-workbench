@@ -196,6 +196,7 @@ class Ui_FreeCADGrader(QtWidgets.QDialog):
         self.verticalLayout_2.addWidget(self.label_4)
         self.listWidget = QtWidgets.QListWidget(self)
         self.listWidget.setObjectName("listWidget")
+        self.listWidget.setSelectionMode(QtWidgets.QAbstractItemView.SelectionMode.NoSelection)
         #self.listWidget.setResizeMode(QtWidgets.QListView.Adjust)
         self.verticalLayout_2.addWidget(self.listWidget)
         self.pushButton_2 = QtWidgets.QPushButton(self)
