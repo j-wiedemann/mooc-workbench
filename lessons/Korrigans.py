@@ -93,7 +93,7 @@ def MakeDataTutorial():
         sur le plan XZ du corps de pièce.</p> \
         <p>Créer une nouvelle esquisse : \
         <ul><li>sélectionner le corps de pièce (Body) dans l'arborescence</li> \
-        <li>clique sur l'icone <img src= %s width="25"/></li> \
+        <li>cliquer sur l'icone <img src= %s width="25"/></li> \
         <li>ou depuis le menu <i>Part Design</i> > <i>Nouvelle Esquisse</i></li> \
         <li>dans l'onglet Tâche de la vue combinée, cliquer sur le plan XZ</li>\
         <li>ou cliquer sur le plan XZ dans la vue 3D</li> \
@@ -236,7 +236,7 @@ def MakeDataTutorial():
     img1 = os.path.join(moocWB_icons_path, 'PartDesign_Mirrored.svg')
     step["description"] = u'''<h3>Répétition</h3> \
         <p>Nous n'avons fais qu'un coté du chapeau. On pourrait répéter \
-        l'opération (esquisse + cavité), on aurait pus dessiner une esquisse \
+        l'opération (esquisse + cavité) ou alors dessiner une esquisse \
         plus complexe à l'étape précédente. Mais nous avons à disposition \
         des outils de répétition. Ainsi nous allons facilement répéter la \
         fonction cavité par mirroir.</p> \
@@ -253,7 +253,17 @@ def MakeDataTutorial():
     step = {}
     img1 = os.path.join(moocWB_icons_path, 'Sketcher_CreateSlot.svg')
     step["description"] = u'''<h3>Contour oblong</h3> \
-        <p>Esquisse avec un contour fermé formant un trou oblong.<p>'''
+        <p>Pour faire l'espace entre les jambes du Korrigan, nous allons \
+        enlever de la matière à l'aide d'une forme oblongue.</p> \
+        Nous devons donc dessiner le contour de cette forme dans une nouvelle \
+        esquisse sur le plan YZ. Dans cette esquisse, nous allons utiliser l'outil \
+        <b>Créer une rainure</b> : \
+        <ul><li>en cliquant sur le bouton <img src= %s width="25"/></li> \
+        <li>ou par le menu <i>Sketch > Géométries d'esquisse > Créer une rainure</i></li></ul><p> \
+        <p>Une fois l'outil actif, vous allez cliquer une première fois sur la \
+        position voulu du centre d'un des arc de cercle puis sur la position \
+        d'un des point du second cercle. L'outil ajoute automatiquement les \
+        contraintes géométrique.<p>''' % (img1)
 
     step["video"] = 'https://d381hmu4snvm3e.cloudfront.net/videos/ogXi1cPygQ3H/HD.mp4'
     step["objectives"] = [u"1 esquisse (Sketch002) sur le plan YZ.", u"1 contour fermé.", u"4 contraintes de tangence."]
