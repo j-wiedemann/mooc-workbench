@@ -46,7 +46,7 @@ import WebGui
 # import webbrowser to play video inside defaut web Browser
 import webbrowser
 
-# import MoocChecker
+"""# import MoocChecker
 import MoocChecker
 
 # make sure MoocChecker is reloaded
@@ -57,7 +57,7 @@ except NameError:
     importlib.reload(MoocChecker)
 
 # name MoocChecker
-Check = MoocChecker
+Check = MoocChecker"""
 
 # for debug purposes
 DEBUG = True
@@ -80,7 +80,7 @@ class Ui_MoocPlayer(QtWidgets.QDialog):
     def __init__(self, parent=gui.getMainWindow()):
         super(Ui_MoocPlayer, self).__init__(parent)
         self.setObjectName("MoocPlayer")
-        self.resize(380, 520)
+        self.resize(400, 640)
         mw_size = parent.size()
         mw_pos = parent.pos()
         move_x = mw_pos.x() + mw_size.width() - self.size().width()
@@ -314,7 +314,7 @@ class Ui_MoocChooser(QtWidgets.QDialog):
         self.close()
         # import MoocPlayer
         import MoocPlayer
-        # make sure MoocChecker is reloaded
+        # make sure MoocPlayer is reloaded
         try :
             reload(MoocPlayer)
         except NameError:

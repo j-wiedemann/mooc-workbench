@@ -39,13 +39,10 @@ MOOC_VERSION = 'V0.1.0b'
 
 moocWBpath = os.path.dirname(moocwb_locator.__file__)
 moocWBpath_medias = os.path.join(moocWBpath, 'medias')
-moocWB_icons_path = os.path.join( moocWBpath_medias, 'icons')
-#moocWB_images_path = os.path.join( moocWBpath_medias, 'images')
-#moocWB_images_path = os.path.join( moocWBpath_medias, 'videos')
-#moocWB_images_path = os.path.join( moocWBpath_medias, 'gifs')
+moocWB_icons_path = os.path.join(moocWBpath_medias, 'icons')
 
 global main_moocWB_Icon
-main_moocWB_Icon = os.path.join( moocWB_icons_path , 'mooc-workbench.svg')
+main_moocWB_Icon = os.path.join(moocWB_icons_path , 'mooc-workbench.svg')
 
 class MoocWorkbench ( Workbench ):
 
