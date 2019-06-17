@@ -173,6 +173,98 @@ def body_features(body):
     if DEBUG:print(body.OutList)
     pass
 
+
+def primitive_presence(doc=None, label=None, type=None, dimensions=None, support=None, offset=None):
+    '''check the presence of datum plane'''
+    '''type :   'PartDesign::SubstractiveCylinder'
+                'PartDesign::AdditiveBox' '''
+    r=[]
+    doc = get_document(doc)
+    reference = None
+    # if doc and name, get reference by name
+    if doc:
+        if label != None:
+            reference = doc.getObject(label)
+        else:
+            if DEBUG:print("TODO: make list of datum_plane")
+            pass
+    if reference:
+        if type != None:
+            if reference.TypeId == type:
+                r.append(1)
+            else:
+                r.append(0)
+        if dimensions:
+            if reference.TypeId == 'PartDesign::AdditiveBox' or reference.TypeId == 'PartDesign::SubstractiveBox':
+                    if dimensions[0] == reference.Length:
+                        r.append(1)
+                    else:
+                        r.append(0)
+                    if dimensions[1] == reference.Width:
+                        r.append(1)
+                    else:
+                        r.append(0)
+                    if dimensions[2] == reference.Height:
+                        r.append(1)
+                    else:
+                        r.append(0)
+
+            if reference.TypeId == 'PartDesign::AdditiveCylinder' or reference.TypeId == 'PartDesign::SubstractiveCylinder':
+                    if dimensions[0] == reference.Radius:
+                        r.append(1)
+                    else:
+                        r.append(0)
+                    if dimensions[1] == reference.Height:
+                        r.append(1)
+                    else:
+                        r.append(0)
+
+        if support != None:
+            if reference.Support[0][0].Name == support:
+                r.append(1)
+            else:
+                r.append(0)
+        if offset != None:
+            attachOffset = []
+            attachOffset.append(reference.AttachmentOffset.Base.x)
+            attachOffset.append(reference.AttachmentOffset.Base.y)
+            attachOffset.append(reference.AttachmentOffset.Base.z)
+            attachOffset.append(reference.AttachmentOffset.Rotation.Axis.x)
+            attachOffset.append(reference.AttachmentOffset.Rotation.Axis.y)
+            attachOffset.append(reference.AttachmentOffset.Rotation.Axis.z)
+            attachOffset.append(reference.AttachmentOffset.Rotation.Angle)
+            if DEBUG:print(attachOffset, offset)
+            if offset == attachOffset:
+                r.append(1)
+            else:
+                r.append(0)
+    else:
+        r.append(0)
+    return make_result(r)
+
+
+def fillet_presence(doc=None, label=None, radius=None):
+    '''check fillet presence'''
+    r=[]
+    doc = get_document(doc)
+    if doc:
+        if label != None:
+            reference = doc.getObject(label)
+        else:
+            if DEBUG:print("TODO: make list of fillet")
+            pass
+    if reference:
+        if reference.TypeId == 'PartDesign::Fillet':
+            r.append(1)
+        else:
+            r.append(0)
+        if reference.Radius == radius:
+            r.append(1)
+        else:
+            r.append(0)
+    return make_result(r)
+
+
 def datum_plane_presence(doc=None, label=None, support=None, offset=None):
     '''check the presence of datum plane'''
     r=[]
@@ -673,7 +765,7 @@ def navigation_style(style):
     param = app.ParamGet("User parameter:BaseApp/Preferences/View")
     nav = param.GetString('NavigationStyle')
     if nav != style:
-        result = 0, u"Le style de navigation n'est pas celui demandé (%s)" % style
+        result = 0
     else:
-        result = 1, u"Le style de navigation est bien celui demandé (%s)" % style
+        result = 1
     return result
