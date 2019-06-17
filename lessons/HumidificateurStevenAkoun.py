@@ -81,7 +81,7 @@ def MakeDataTutorial():
         <li>à l'aide du lien dans l'onglet Tâche de la vue combinée.</li> \
         </ul></p> ''' % (img1, img2, img3)
 
-    step["video"] = 'https://d381hmu4snvm3e.cloudfront.net/videos/JaSg66nimGFq/HD.mp4'
+    step["video"] = 'https://cloud.freecad-france.com/index.php/s/AxwZyMXmAxCAzHq'
     step["objectives"] = [u"Créer un nouveau document.", u"Basculer dans l'atelier PartDesign.", u"Mode de navigation : Gesture"]
     data_tutorial['steps'].append(step)
 
@@ -95,7 +95,7 @@ def MakeDataTutorial():
         Nouvelle Esquisse et on choisit le plan XZ dans la liste visible \
         dans l'onglet Tâche de la vue combinée.</p>''' % (img1)
 
-    step["video"] = 'https://d381hmu4snvm3e.cloudfront.net/videos/ogXi1cPygQ3H/HD.mp4'
+    step["video"] = 'https://cloud.freecad-france.com/index.php/s/AxwZyMXmAxCAzHq'
     step["objectives"] = [u"1 Corps de piece"]
     data_tutorial['steps'].append(step)
 
