@@ -315,37 +315,37 @@ def CheckResult(step_id):
 
     if step_id == 2:
         results = []
-        results.append(Check.primitive_presence(label="Box", type='PartDesign::AdditiveBox', dimensions=[100,80,140], support="XY_Plane", offset=[0,0,0,0,0,1,0]))
+        results.append(Check.primitive_presence(label="Box", typeId='PartDesign::AdditiveBox', dimensions=[100,80,140], support="XY_Plane", offset=[0,0,0,0,0,1,0]))
         return results
 
     if step_id == 3:
         results = []
-        results.append(Check.primitive_presence(label="Cylinder", type='PartDesign::AdditiveCylinder', dimensions=[40,140], support="XY_Plane", offset=[0,40,0,0,0,1,0]))
+        results.append(Check.primitive_presence(label="Cylinder", typeId='PartDesign::AdditiveCylinder', dimensions=[40,140], support="XY_Plane", offset=[0,40,0,0,0,1,0]))
         return results
 
     if step_id == 4:
         results = []
-        results.append(Check.primitive_presence(label="Cylinder001", type='PartDesign::AdditiveCylinder', dimensions=[40,140], support="XY_Plane", offset=[100,40,0,0,0,1,0]))
+        results.append(Check.primitive_presence(label="Cylinder001", typeId='PartDesign::AdditiveCylinder', dimensions=[40,140], support="XY_Plane", offset=[100,40,0,0,0,1,0]))
         return results
 
     if step_id == 5:
         results = []
-        results.append(Check.primitive_presence(label="Box001", type='PartDesign::SubtractiveBox', dimensions=[80,80,20], support="XY_Plane", offset=[10.0,0.0,0.0,0.0,0.0,1.0,0.0]))
+        results.append(Check.primitive_presence(label="Box001", typeId='PartDesign::SubtractiveBox', dimensions=[80,80,20], support="XY_Plane", offset=[10.0,0.0,0.0,0.0,0.0,1.0,0.0]))
         return results
 
     if step_id == 6:
         results = []
-        results.append(Check.primitive_presence(label="Cylinder002", type='PartDesign::SubtractiveCylinder', dimensions=[36,30], support="XY_Plane", offset=[0,40,110,0,0,1,0]))
+        results.append(Check.primitive_presence(label="Cylinder002", typeId='PartDesign::SubtractiveCylinder', dimensions=[36,30], support="XY_Plane", offset=[0,40,110,0,0,1,0]))
         return results
 
     if step_id == 7:
         results = []
-        results.append(Check.primitive_presence(label="Cylinder003", type='PartDesign::SubtractiveCylinder', dimensions=[36,30], support="XY_Plane", offset=[100,40,110,0,0,1,0]))
+        results.append(Check.primitive_presence(label="Cylinder003", typeId='PartDesign::SubtractiveCylinder', dimensions=[36,30], support="XY_Plane", offset=[100,40,110,0,0,1,0]))
         return results
 
     if step_id == 8:
         results = []
-        results.append(Check.primitive_presence(label="Box002", type='PartDesign::SubtractiveBox', dimensions=[100,72,30], support="XY_Plane", offset=[0,4,110,0,0,1,0]))
+        results.append(Check.primitive_presence(label="Box002", typeId='PartDesign::SubtractiveBox', dimensions=[100,72,30], support="XY_Plane", offset=[0,4,110,0,0,1,0]))
         return results
 
     if step_id == 9:

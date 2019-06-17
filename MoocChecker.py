@@ -54,6 +54,7 @@ def make_result(r):
     else:
         result = 0
     if DEBUG:print(u'result = ', result)
+    if DEBUG:print(u'End check')
     return result
 
 
@@ -102,6 +103,12 @@ def document_presence(name=None, label=None):
 
     return make_result(r)
 
+
+def get_object_by_typeId(doc=None, typeId=None):
+    for obj in doc.Objects:
+        if obj.TypeId==typeId:
+            return obj
+            break
 
 
 def document_save(name=None):
@@ -176,10 +183,11 @@ def body_features(body):
     pass
 
 
-def primitive_presence(doc=None, label=None, type=None, dimensions=None, support=None, offset=None):
+def primitive_presence(doc=None, label=None, typeId=None, dimensions=None, support=None, offset=None):
     '''check the presence of datum plane'''
     '''type :   'PartDesign::SubstractiveCylinder'
                 'PartDesign::AdditiveBox' '''
+    if DEBUG:print(u'Check primitive presence')
     r=[]
     doc = get_document(doc)
     reference = None
@@ -188,12 +196,13 @@ def primitive_presence(doc=None, label=None, type=None, dimensions=None, support
         if label != None:
             reference = doc.getObject(label)
         else:
-            if DEBUG:print("TODO: make list of datum_plane")
-            pass
+            #if DEBUG:print(u'label is None')
+            reference = get_object_by_typeId(doc, typeId)
+            #pass
     if reference:
         if type != None:
-            if DEBUG:print(type, reference.TypeId )
-            if reference.TypeId == type:
+            if DEBUG:print(u'target',typeId,u'actual',reference.TypeId )
+            if reference.TypeId == typeId:
                 r.append(1)
             else:
                 r.append(0)
@@ -698,15 +707,15 @@ def mirrored_pattern_presence(doc=None, name=None, plane_name=None, plane_axis=N
         result = 0
     return result
 
-def boundbox_dimensions(doc=None, name=None, obj_type=None, x=None, y=None, z=None):
+def boundbox_dimensions(doc=None, name=None, typeId=None, x=None, y=None, z=None):
     '''Check the length's dimensions of boundbox'''
     r = []
     doc = get_document(doc)
     features_list = []
     if doc:
         for feature in doc.Objects:
-            if obj_type:
-                if feature.TypeId == obj_type:
+            if typeId:
+                if feature.TypeId == typeId:
                     features_list.append(feature)
             else:
                 features_list.append(feaure)
@@ -735,23 +744,27 @@ def boundbox_dimensions(doc=None, name=None, obj_type=None, x=None, y=None, z=No
         r.append(0)
     return make_result(r)
 
-def volume(doc=None, name=None, obj_type=None, target=None):
+def volume(doc=None, name=None, typeId=None, target=None):
     '''Check the project volume'''
+    if DEBUG:print('Check volume')
     r=[]
     doc = get_document(doc)
     features_list = []
     if doc:
         for feature in doc.Objects:
-            if obj_type:
-                if feature.TypeId == obj_type:
+            if typeId:
+                if feature.TypeId == typeId:
                     features_list.append(feature)
             else:
                 features_list.append(feaure)
-    if features_list:
+    if features_list and target:
         got_it = 0
         for feature in features_list:
             if not feature.Shape.isNull():
-                if round(target,0) == round(feature.Shape.Volume,0):
+                if DEBUG:print('actual volume is : ', feature.Shape.Volume)
+                if DEBUG:print('target volume is between : ', target - 10, u'and' , target + 10)
+                if (target - 10) < feature.Shape.Volume < (target + 10):
+                #if round(target,0) == round(feature.Shape.Volume,0):
                     got_it = 1
         if got_it == 1:
             r.append(1)
