@@ -45,6 +45,7 @@ def make_result(r):
     r=[1,1,1,0] => result = 0
     r=[1,1,1,1] => result = 1
     '''
+    if DEBUG:print(u'r = ', r)
     if len(r)>0:
         if 0 in r:
             result = 0
@@ -52,6 +53,7 @@ def make_result(r):
             result = 1
     else:
         result = 0
+    if DEBUG:print(u'result = ', result)
     return result
 
 
@@ -190,12 +192,13 @@ def primitive_presence(doc=None, label=None, type=None, dimensions=None, support
             pass
     if reference:
         if type != None:
+            if DEBUG:print(type, reference.TypeId )
             if reference.TypeId == type:
                 r.append(1)
             else:
                 r.append(0)
         if dimensions:
-            if reference.TypeId == 'PartDesign::AdditiveBox' or reference.TypeId == 'PartDesign::SubstractiveBox':
+            if 'Box' in reference.TypeId :
                     if dimensions[0] == reference.Length:
                         r.append(1)
                     else:
@@ -209,7 +212,7 @@ def primitive_presence(doc=None, label=None, type=None, dimensions=None, support
                     else:
                         r.append(0)
 
-            if reference.TypeId == 'PartDesign::AdditiveCylinder' or reference.TypeId == 'PartDesign::SubstractiveCylinder':
+            if 'Cylinder' in reference.TypeId :
                     if dimensions[0] == reference.Radius:
                         r.append(1)
                     else:
