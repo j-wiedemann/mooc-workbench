@@ -51,6 +51,8 @@ L'atelier MOOC propose 2 outils :
 
 ### MOOC Player
 
+Voir la vidéo : https://cloud.freecad-france.com/index.php/s/ZHgrfos6zpmyf73
+
 Les tutoriaux interactif sont accessible depuis le menu **MOOC** puis **Voir un tutoriel** en cliquant sur le bouton : ![mooc-wb](/medias/images/mooc-player.png)
 
 Une fenêtre s'ouvre avec une liste des tutoriel disponible :
