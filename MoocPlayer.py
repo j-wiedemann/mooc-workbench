@@ -60,8 +60,8 @@ except NameError:
 Check = MoocChecker"""
 
 # for debug purposes
-DEBUG = True
-#DEBUG = False
+#DEBUG = True
+DEBUG = False
 
 def debug():
     if DEBUG:print("debug")
@@ -76,7 +76,7 @@ moocWB_icons_path = os.path.join( moocWBpath_medias, 'icons')
 
 
 class Ui_MoocPlayer(QtWidgets.QDialog):
-    '''The FreeCAd Player interface'''
+    '''The FreeCAD Player interface'''
     def __init__(self, parent=gui.getMainWindow()):
         super(Ui_MoocPlayer, self).__init__(parent)
         self.setObjectName("MoocPlayer")

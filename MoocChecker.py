@@ -34,8 +34,8 @@ import math
 
 
 # for debug purposes
-DEBUG = True
-#DEBUG = False
+#DEBUG = True
+DEBUG = False
 
 if DEBUG:print("MOOC CHECKER")
 
@@ -196,9 +196,7 @@ def primitive_presence(doc=None, label=None, typeId=None, dimensions=None, suppo
         if label != None:
             reference = doc.getObject(label)
         else:
-            #if DEBUG:print(u'label is None')
             reference = get_object_by_typeId(doc, typeId)
-            #pass
     if reference:
         if type != None:
             if DEBUG:print(u'target',typeId,u'actual',reference.TypeId )

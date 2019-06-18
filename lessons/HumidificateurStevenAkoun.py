@@ -81,7 +81,7 @@ def MakeDataTutorial():
         <li>à l'aide du lien dans l'onglet Tâche de la vue combinée.</li> \
         </ul></p> ''' % (img1, img2, img3)
 
-    step["video"] = 'https://cloud.freecad-france.com/index.php/s/AxwZyMXmAxCAzHq'
+    step["video"] = 'https://open.tube/videos/watch/f5773731-9864-470b-a3d5-9e805c419f96?start=0m00s'
     step["objectives"] = [u"Créer un nouveau document.", u"Basculer dans l'atelier PartDesign.", u"Mode de navigation : Gesture"]
     data_tutorial['steps'].append(step)
 
@@ -96,7 +96,7 @@ def MakeDataTutorial():
         <li>à l'aide du lien dans l'onglet Tâche de la vue combinée.</li> \
         </ul></p>''' % (img1)
 
-    step["video"] = 'https://cloud.freecad-france.com/index.php/s/AxwZyMXmAxCAzHq'
+    step["video"] = 'https://open.tube/videos/watch/f5773731-9864-470b-a3d5-9e805c419f96?start=1m03s'
     step["objectives"] = [u"1 Corps de piece"]
     data_tutorial['steps'].append(step)
 
@@ -117,7 +117,7 @@ def MakeDataTutorial():
         pièce en cliquant sur le plan XY dans la vue 3D.</p>
         <p>On valide la tâche en cours en cliquant sur OK''' % (img1)
 
-    step["video"] = 'https://d381hmu4snvm3e.cloudfront.net/videos/ogXi1cPygQ3H/HD.mp4'
+    step["video"] = 'https://open.tube/videos/watch/f5773731-9864-470b-a3d5-9e805c419f96?start=2m23s'
     step["objectives"] = [u"1 Cube additif 100 x 80 x 140 mm"]
     data_tutorial['steps'].append(step)
 
@@ -141,7 +141,7 @@ def MakeDataTutorial():
         <li>Z = 0 mm</li></ul></p>
         <p>On valide la tâche en cours en cliquant sur OK''' % ( img1 )
 
-    step["video"] = 'https://d381hmu4snvm3e.cloudfront.net/videos/ogXi1cPygQ3H/HD.mp4'
+    step["video"] = 'https://open.tube/videos/watch/f5773731-9864-470b-a3d5-9e805c419f96?start=3m32s'
     step["objectives"] = [u"1 Cylindre additif Ø40 x 140 mm"]
     data_tutorial['steps'].append(step)
 
@@ -166,7 +166,7 @@ def MakeDataTutorial():
         <li>Z = 0 mm</li></ul></p>
         <p>On valide la tâche en cours en cliquant sur OK''' % ( img1 )
 
-    step["video"] = 'https://d381hmu4snvm3e.cloudfront.net/videos/ogXi1cPygQ3H/HD.mp4'
+    step["video"] = 'https://open.tube/videos/watch/f5773731-9864-470b-a3d5-9e805c419f96?start=4m21s'
     step["objectives"] = [u"1 Cylindre additif Ø40 x 140 mm"]
     data_tutorial['steps'].append(step)
 
@@ -191,7 +191,7 @@ def MakeDataTutorial():
         <li>Z = 0 mm</li></ul></p>
         <p>On valide la tâche en cours en cliquant sur OK''' % (img1)
 
-    step["video"] = 'https://d381hmu4snvm3e.cloudfront.net/videos/ogXi1cPygQ3H/HD.mp4'
+    step["video"] = 'https://open.tube/videos/watch/f5773731-9864-470b-a3d5-9e805c419f96?start=4m52s'
     step["objectives"] = [u"1 Cube soustractif de 80 x 80 x 20 mm" ]
     data_tutorial['steps'].append(step)
 
@@ -215,7 +215,7 @@ def MakeDataTutorial():
         <li>Z = 110 mm</li></ul></p>
         <p>On valide la tâche en cours en cliquant sur OK''' % (img1)
 
-    step["video"] = 'https://d381hmu4snvm3e.cloudfront.net/videos/ogXi1cPygQ3H/HD.mp4'
+    step["video"] = 'https://open.tube/videos/watch/f5773731-9864-470b-a3d5-9e805c419f96?start=5m38s'
     step["objectives"] = [u"1 cylindre soustractif de Ø36 x 30 mm."]
     data_tutorial['steps'].append(step)
 
@@ -239,7 +239,7 @@ def MakeDataTutorial():
         <li>Z = 110 mm</li></ul></p>
         <p>On valide la tâche en cours en cliquant sur OK''' % (img1)
 
-    step["video"] = 'https://d381hmu4snvm3e.cloudfront.net/videos/ogXi1cPygQ3H/HD.mp4'
+    step["video"] = 'https://open.tube/videos/watch/f5773731-9864-470b-a3d5-9e805c419f96?start=6m20s'
     step["objectives"] = [u"1 cylindre soustractif de Ø36 x 30 mm."]
     data_tutorial['steps'].append(step)
 
@@ -264,7 +264,7 @@ def MakeDataTutorial():
         <li>Z = 110 mm</li></ul></p>
         <p>On valide la tâche en cours en cliquant sur OK''' % (img1)
 
-    step["video"] = 'https://d381hmu4snvm3e.cloudfront.net/videos/ogXi1cPygQ3H/HD.mp4'
+    step["video"] = 'https://open.tube/videos/watch/f5773731-9864-470b-a3d5-9e805c419f96?start=6m51s'
     step["objectives"] = [u"1 cube soustractif de 100 x 72 x 30 mm."]
     data_tutorial['steps'].append(step)
 
@@ -279,7 +279,7 @@ def MakeDataTutorial():
         <li>à l'aide du menu <i>Part Design</i> puis
         <i>Congé</i>.</li></ul><p>''' % (img1)
 
-    step["video"] = 'https://d381hmu4snvm3e.cloudfront.net/videos/ogXi1cPygQ3H/HD.mp4'
+    step["video"] = 'https://open.tube/videos/watch/f5773731-9864-470b-a3d5-9e805c419f96?start=7m47s'
     step["objectives"] = [u"1 congé de 9 mm de rayon"]
     data_tutorial['steps'].append(step)
 
@@ -293,7 +293,7 @@ def MakeDataTutorial():
         <li>à l'aide du raccourcis <b>Ctrl+Maj+S</b></li></lu></p> \
         <p><img src=%s width="360"/></p>''' % (img1, img2)
 
-    step["video"] = 'https://d381hmu4snvm3e.cloudfront.net/videos/ogXi1cPygQ3H/HD.mp4'
+    step["video"] = 'https://open.tube/videos/watch/f5773731-9864-470b-a3d5-9e805c419f96?start=9m45s'
     step["objectives"] = [u"1 Sauvegardé le document sous le nom Humidificateur."]
     data_tutorial['steps'].append(step)
 
