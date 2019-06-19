@@ -257,6 +257,7 @@ def fillet_presence(doc=None, label=None, radius=None):
     '''check fillet presence'''
     r=[]
     doc = get_document(doc)
+    reference = None
     if doc:
         if label != None:
             reference = doc.getObject(label)
