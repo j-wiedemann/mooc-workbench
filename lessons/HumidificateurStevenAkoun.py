@@ -64,6 +64,7 @@ def MakeDataTutorial():
     moocWB_images_path = os.path.join(moocWBpath_medias, 'images')
     moocWB_icons_path = os.path.join(moocWBpath_medias, 'icons')
 
+    #step 1
     step = {}
     img1 = os.path.join(moocWB_icons_path, 'Document-new.svg')
     img2 = os.path.join(moocWB_icons_path, 'Workbench_PartDesign.svg')
@@ -85,7 +86,7 @@ def MakeDataTutorial():
     step["objectives"] = [u"Créer un nouveau document.", u"Basculer dans l'atelier PartDesign.", u"Mode de navigation : Gesture"]
     data_tutorial['steps'].append(step)
 
-    #step2
+    #step 2
     step = {}
     img1 = os.path.join(moocWB_icons_path, 'PartDesign_Body.png')
     step["description"] = u'''<h3>Corps de pièce</h3>
@@ -100,7 +101,7 @@ def MakeDataTutorial():
     step["objectives"] = [u"1 Corps de piece"]
     data_tutorial['steps'].append(step)
 
-    #step2
+    #step 3
     step = {}
     img1 = os.path.join(moocWB_icons_path, 'PartDesign_Additive_Box.svg')
     step["description"] = u'''<h3>Cube additif</h3>
@@ -121,7 +122,7 @@ def MakeDataTutorial():
     step["objectives"] = [u"1 Cube additif 100 x 80 x 140 mm"]
     data_tutorial['steps'].append(step)
 
-    #step3
+    #step 4
     step = {}
     img1 = os.path.join(moocWB_icons_path, 'PartDesign_Additive_Cylinder.svg')
     step["description"] = u'''<h3>Cylindre additif</h3> \
@@ -135,7 +136,9 @@ def MakeDataTutorial():
         <li>Hauteur = 140 mm</li></ul></p>
         <p>Maintenant nous allons attacher la primitive au plan XY du corps de
         pièce en cliquant sur le plan XY dans la vue 3D.</p>
-        <p> Enfin il faut compenser la position de la primitives par rapport à sa référence :
+        <p>Pour déplacer le cylindre à la position désirée nous allons
+        compenser la position de la primitives par rapport à sa référence.
+        On peut faire ça dans le panneau Compensation d'accrochage en paramétrant les valeures suivantes :
         <ul><li>X = 0 mm</li>
         <li>Y = 40 mm</li>
         <li>Z = 0 mm</li></ul></p>
@@ -145,7 +148,7 @@ def MakeDataTutorial():
     step["objectives"] = [u"1 Cylindre additif Ø40 x 140 mm"]
     data_tutorial['steps'].append(step)
 
-    #step4
+    #step 5
     step = {}
     img1 = os.path.join(moocWB_icons_path, 'PartDesign_Additive_Cylinder.svg')
     step["description"] = u'''<h3>Cylindre additif</h3> \
@@ -170,7 +173,7 @@ def MakeDataTutorial():
     step["objectives"] = [u"1 Cylindre additif Ø40 x 140 mm"]
     data_tutorial['steps'].append(step)
 
-    #step5
+    #step 6
     step = {}
     img1 = os.path.join(moocWB_icons_path, 'PartDesign_Subtractive_Box.svg')
     step["description"] = u'''<h3>Cube soustractif</h3>
@@ -180,7 +183,7 @@ def MakeDataTutorial():
         <i>Créer une primitive soustractive</i> puis <i>Cube soustractif</i>.</li>
         <li>à l'aide du lien dans l'onglet Tâche de la vue combinée.</li></ul></p>
         <p>Dans l'onglet tâches de la vue combinée on paramètre les dimensions suivantes :
-        <ul><li>Longueur = 000 mm</li>
+        <ul><li>Longueur = 80 mm</li>
         <li>Largeur = 80 mm</li>
         <li>Hauteur = 20 mm</li></ul></p>
         <p>Maintenant nous allons attacher la primitive au plan XY du corps de
@@ -195,7 +198,7 @@ def MakeDataTutorial():
     step["objectives"] = [u"1 Cube soustractif de 80 x 80 x 20 mm" ]
     data_tutorial['steps'].append(step)
 
-    #step6
+    #step 7
     step = {}
     img1 = os.path.join(moocWB_icons_path, 'PartDesign_Subtractive_Cylinder.svg')
     step["description"] = u'''<h3>Cube soustractif</h3>
@@ -219,7 +222,7 @@ def MakeDataTutorial():
     step["objectives"] = [u"1 cylindre soustractif de Ø36 x 30 mm."]
     data_tutorial['steps'].append(step)
 
-    #step7
+    #step 8
     step = {}
     img1 = os.path.join(moocWB_icons_path, 'PartDesign_Subtractive_Cylinder.svg')
     step["description"] = u'''<h3>Cube soustractif</h3>
@@ -243,7 +246,7 @@ def MakeDataTutorial():
     step["objectives"] = [u"1 cylindre soustractif de Ø36 x 30 mm."]
     data_tutorial['steps'].append(step)
 
-    #step8
+    #step 9
     step = {}
     img1 = os.path.join(moocWB_icons_path, 'PartDesign_Subtractive_Box.svg')
     step["description"] = u'''<h3>Cube soustractif</h3>
@@ -268,7 +271,7 @@ def MakeDataTutorial():
     step["objectives"] = [u"1 cube soustractif de 100 x 72 x 30 mm."]
     data_tutorial['steps'].append(step)
 
-    #step9
+    #step 10
     step = {}
     img1 = os.path.join(moocWB_icons_path, 'PartDesign_Fillet.svg')
     step["description"] = u'''<h3>Faire une congé</h3> \
@@ -283,7 +286,7 @@ def MakeDataTutorial():
     step["objectives"] = [u"1 congé de 9 mm de rayon"]
     data_tutorial['steps'].append(step)
 
-    #step19
+    #step 11
     step = {}
     img1 = os.path.join(moocWB_icons_path, 'Document-save.svg')
     img2 = os.path.join(moocWB_images_path, 'freecadSaveDetail.png')
