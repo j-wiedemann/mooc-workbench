@@ -277,6 +277,7 @@ def MakeDataTutorial():
     step["description"] = u'''<h3>Faire une congé</h3> \
         <p>Pour arrondir les angles en bas de la pièce nous allons utiliser
         l'outil Congé qui créer un arrondi sur les arêtes sélectionné et selon le rayon demandé.</p>
+        <p>On sélectionne plusieurs arêtes à l'aide de la touche Ctrl (sur Windows et Linux) ou de la touche Cmd ⌘ (sur Mac).</p>
         <p><img src= %s width="25"/> Créer un congé :
         <ul><li>Sélectionner les arêtes à arrondir.</li>
         <li>à l'aide du menu <i>Part Design</i> puis
