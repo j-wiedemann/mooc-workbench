@@ -77,9 +77,7 @@ class MoocWorkbench ( Workbench ):
         '''Check version of workbench'''
         print(u'Check workbench version...')
         import urllib.request
-        import ssl
-        gcontext = ssl.SSLContext()  # Only for gangstars
-        webUrl  = urllib.request.urlopen('https://framagit.org/freecad-france/mooc-workbench/raw/master/InitGui.py', context=gcontext)
+        webUrl  = urllib.request.urlopen('http://framagit.org/freecad-france/mooc-workbench/raw/master/InitGui.py')
         for line in webUrl:
             if 'MOOC_VERSION = ' in str(line, 'utf-8'):
                 mooc_version = str(line, 'utf-8').split(' = ')
