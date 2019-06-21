@@ -35,7 +35,7 @@ import FreeCAD as app
 import FreeCADGui as gui
 
 global MOOC_VERSION
-MOOC_VERSION = 'V0.1.3'
+MOOC_VERSION = 'V0.1.4'
 
 moocWBpath = os.path.dirname(moocwb_locator.__file__)
 moocWBpath_medias = os.path.join(moocWBpath, 'medias')
@@ -61,7 +61,8 @@ class MoocWorkbench ( Workbench ):
 
     def Activated(self):
         "This function is executed when the workbench is activated"
-        self.checkMoocWBVersion()
+        import MoocInformations
+        MoocInformations.checkMoocWBVersion(MOOC_VERSION)
         print(u'Activated MoocWorkbench... done')
         return
 
@@ -72,29 +73,6 @@ class MoocWorkbench ( Workbench ):
     def GetClassName(self):
         # this function is mandatory if this is a full python workbench
         return "Gui::PythonWorkbench"
-
-    def checkMoocWBVersion(self):
-        '''Check version of workbench'''
-        print(u'Check workbench version...')
-        import urllib.request
-        webUrl  = urllib.request.urlopen('http://framagit.org/freecad-france/mooc-workbench/raw/master/InitGui.py')
-        for line in webUrl:
-            if 'MOOC_VERSION = ' in str(line, 'utf-8'):
-                mooc_version = str(line, 'utf-8').split(' = ')
-                mooc_version = mooc_version[1].split('\n')
-                mooc_version = mooc_version[0][1:-1]
-                print(u'MOOC last release : ' + str(mooc_version))
-                print(u'MOOC current release : ' + str(MOOC_VERSION))
-                if str(mooc_version) == MOOC_VERSION:
-                    print(u'Mooc Workbench is up to date !')
-                else:
-                    print(u'Please update Mooc Workbench !')
-                    from PySide2 import QtWidgets
-                    reply = QtWidgets.QMessageBox.information(None, u'Mise à jour nécessaire...',
-                        u'''Votre version de l'atelier MOOC est obsolète.\nMerci de le mettre à jour à l'aide de l'addon manager.''')
-                # only check the first occurence
-                break
-
 
 
 gui.addWorkbench(MoocWorkbench())
