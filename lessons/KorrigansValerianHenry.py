@@ -81,7 +81,7 @@ def MakeDataTutorial():
         <li>à l'aide du lien dans l'onglet Tâche de la vue combinée.</li>
         </ul></p> ''' % (img1, img2, img3)
 
-    step["video"] = 'https://open.tube/videos/watch/a9863ee3-a0d8-4919-8b28-8920246d22e6?start=0m00s'
+    step["video"] = 'https://open.tube/videos/embed/a9863ee3-a0d8-4919-8b28-8920246d22e6?start=0m00s'
     step["objectives"] = [u"Créer un nouveau document.", u"Basculer dans l'atelier PartDesign.", u"1 corps de pièce (Body)."]
     data_tutorial['steps'].append(step)
 
@@ -99,7 +99,7 @@ def MakeDataTutorial():
         <li>ou cliquer sur le plan XZ dans la vue 3D</li>
         <li>Enfin cliquer sur le bonton OK</li></lu></p>''' % (img1)
 
-    step["video"] = 'https://open.tube/videos/watch/a9863ee3-a0d8-4919-8b28-8920246d22e6?start=0m41s'
+    step["video"] = 'https://open.tube/videos/embed/a9863ee3-a0d8-4919-8b28-8920246d22e6?start=0m41s'
     step["objectives"] = [u"1 esquisse (Sketch) sur le plan XZ.", u"TODO : Taille de la grille de 10 mm."]
     data_tutorial['steps'].append(step)
 
@@ -120,7 +120,7 @@ def MakeDataTutorial():
         <p>À ce stade l'esquisse dispose de 7 degrès de liberté
         restants.</p><p><img src=%s/></p>''' % (img4, img3, img1, img2, img5)
 
-    step["video"] = 'https://open.tube/videos/watch/a9863ee3-a0d8-4919-8b28-8920246d22e6?start=2m23s'
+    step["video"] = 'https://open.tube/videos/embed/a9863ee3-a0d8-4919-8b28-8920246d22e6?start=2m23s'
     step["objectives"] = [u"1 contour fermé de 5 segments.", u"5 contraintes de coïncidence.", u"2 contraintes d'orientation verticales.",
                         u"1 contrainte d'orientation horizontale."]
     data_tutorial['steps'].append(step)
@@ -135,7 +135,7 @@ def MakeDataTutorial():
         <p>On sélectionne d'abord les 2 segments verticaux puis on clique
         sur l'icône <img src=%s width="25"/>. Et on recommence pour les 2 segments obliques.</p>''' %(img1)
 
-    step["video"] = 'https://open.tube/videos/watch/a9863ee3-a0d8-4919-8b28-8920246d22e6?start=3m32s'
+    step["video"] = 'https://open.tube/videos/embed/a9863ee3-a0d8-4919-8b28-8920246d22e6?start=3m32s'
     step["objectives"] = [u"2 paires de contraintes d'égalités", ]
     data_tutorial['steps'].append(step)
 
@@ -163,7 +163,7 @@ def MakeDataTutorial():
         <li>depuis le menu <i>Sketch</i> > <i>Contraintes d'esquisses</i> > <i>Contrainte angulaire.</i></li></ul>
         Ensuite il faut cliquer sur 2 segments et préciser la valeur de l'angle. <b>Ici c'est 55°.</b></p>''' % ( img1, img2, img3 )
 
-    step["video"] = 'https://open.tube/videos/watch/a9863ee3-a0d8-4919-8b28-8920246d22e6?start=4m00s'
+    step["video"] = 'https://open.tube/videos/embed/a9863ee3-a0d8-4919-8b28-8920246d22e6?start=4m00s'
     step["objectives"] = [u"1 contrainte de dimension verticale de 150mm.", u"1 contrainte de dimensions horizontale de 55 mm.", u"1 contrainte de valeure angulaire de 55°." ]
     data_tutorial['steps'].append(step)
 
@@ -182,7 +182,7 @@ def MakeDataTutorial():
         le mode édition en cliquant sur le bouton <b>Fermer</b> dans l'onglet
         tâche de la vue combinée.</p><p><img src= %s/></p>''' % (img1, img2)
 
-    step["video"] = 'https://open.tube/videos/watch/a9863ee3-a0d8-4919-8b28-8920246d22e6?start=5m07s'
+    step["video"] = 'https://open.tube/videos/embed/a9863ee3-a0d8-4919-8b28-8920246d22e6?start=5m07s'
     step["objectives"] = [u"1 contrainte de symétrie."]
     data_tutorial['steps'].append(step)
 
@@ -203,7 +203,7 @@ def MakeDataTutorial():
         <li>Inversée : décoché</li></ul></p>
         <p><img src= %s/><img src= %s/></p>''' % (img1, img3, img2)
 
-    step["video"] = 'https://open.tube/videos/watch/a9863ee3-a0d8-4919-8b28-8920246d22e6?start=5m55s'
+    step["video"] = 'https://open.tube/videos/embed/a9863ee3-a0d8-4919-8b28-8920246d22e6?start=5m55s'
     step["objectives"] = [u"1 protrusion (Pad) de 55 mm, symétrique au plan de l'esquisse."]
     data_tutorial['steps'].append(step)
 
@@ -220,7 +220,7 @@ def MakeDataTutorial():
         <p>On va cliquer sur l'icône <img src= %s width="25"/> et ensuite
         cliquer sur les arêtes du volume que l'on souhaite utiliser.</p>''' % (img1)
 
-    step["video"] = 'https://open.tube/videos/watch/a9863ee3-a0d8-4919-8b28-8920246d22e6?start=6m34s'
+    step["video"] = 'https://open.tube/videos/embed/a9863ee3-a0d8-4919-8b28-8920246d22e6?start=6m34s'
     step["objectives"] = [u"1 esquisse (Sketch001) sur le plan YZ.", u"1 contour fermé à 3 cotés.", "2 arêtes externe."]
     data_tutorial['steps'].append(step)
 
@@ -236,7 +236,7 @@ def MakeDataTutorial():
         <li>Symétrique au plan : coché</li>
         <li>Inversée : décoché</li></ul></p>''' % (img1)
 
-    step["video"] = 'https://open.tube/videos/watch/a9863ee3-a0d8-4919-8b28-8920246d22e6?start=7m35s'
+    step["video"] = 'https://open.tube/videos/embed/a9863ee3-a0d8-4919-8b28-8920246d22e6?start=7m35s'
     step["objectives"] = [u"1 cavité (Pocket), à travers tout, symétrique au plan."]
     data_tutorial['steps'].append(step)
 
@@ -254,7 +254,7 @@ def MakeDataTutorial():
         <p>Dans le panneau de l'onglet tâche on va définir les paramètres suivant :
         <ul><li>Plan : axe d'esquisse vertical</li></ul></p>''' % (img1)
 
-    step["video"] = 'https://open.tube/videos/watch/a9863ee3-a0d8-4919-8b28-8920246d22e6?start=8m02s'
+    step["video"] = 'https://open.tube/videos/embed/a9863ee3-a0d8-4919-8b28-8920246d22e6?start=8m02s'
     step["objectives"] = [u"1 répétition par symétrie (Mirrored)."]
     data_tutorial['steps'].append(step)
 
@@ -274,7 +274,7 @@ def MakeDataTutorial():
         d'un des point du second cercle. L'outil ajoute automatiquement les
         contraintes géométrique.</p>''' % (img1)
 
-    step["video"] = 'https://open.tube/videos/watch/a9863ee3-a0d8-4919-8b28-8920246d22e6?start=8m39s'
+    step["video"] = 'https://open.tube/videos/embed/a9863ee3-a0d8-4919-8b28-8920246d22e6?start=8m39s'
     step["objectives"] = [u"1 esquisse (Sketch002) sur le plan YZ.", u"1 contour fermé.", u"4 contraintes de tangence."]
     data_tutorial['steps'].append(step)
 
@@ -288,7 +288,7 @@ def MakeDataTutorial():
         <li>Symétrique au plan : décoché</li>
         <li>Inversée : coché</li></ul></p>'''
 
-    step["video"] = 'https://open.tube/videos/watch/a9863ee3-a0d8-4919-8b28-8920246d22e6?start=9m55s'
+    step["video"] = 'https://open.tube/videos/embed/a9863ee3-a0d8-4919-8b28-8920246d22e6?start=9m55s'
     step["objectives"] = [u"1 cavité (Pocket001), à travers tout, direction inversée."]
     data_tutorial['steps'].append(step)
 
@@ -306,7 +306,7 @@ def MakeDataTutorial():
         <li>Angle : 360°</li>
         <li>Occurences : 4</li></ul></p>''' % (img1)
 
-    step["video"] = 'https://open.tube/videos/watch/a9863ee3-a0d8-4919-8b28-8920246d22e6?start=10m21s'
+    step["video"] = 'https://open.tube/videos/embed/a9863ee3-a0d8-4919-8b28-8920246d22e6?start=10m21s'
     step["objectives"] = [u"1 répétition circulaire (PolarPattern) de 4 occurences autour de l'axe vertical."]
     data_tutorial['steps'].append(step)
 
@@ -324,7 +324,7 @@ def MakeDataTutorial():
         <li>Longueur : 15 mm</li>
         <li>Symétrique au plan : coché</li></ul></li></ul></p>'''
 
-    step["video"] = 'https://open.tube/videos/watch/a9863ee3-a0d8-4919-8b28-8920246d22e6?start=10m56s'
+    step["video"] = 'https://open.tube/videos/embed/a9863ee3-a0d8-4919-8b28-8920246d22e6?start=10m56s'
     step["objectives"] = [u"1 esquisse (Sketch003) sur le plan YZ.", u"1 protrusion (Pad001) de 15 mm symétrique au plan."]
     data_tutorial['steps'].append(step)
 
@@ -337,7 +337,7 @@ def MakeDataTutorial():
         répétition symétrique et appliquer les paramètres suivants :
         <ul><li>Plan : axe d'esquisse vertical</li></ul></p>'''
 
-    step["video"] = 'https://open.tube/videos/watch/a9863ee3-a0d8-4919-8b28-8920246d22e6?start=11m50s'
+    step["video"] = 'https://open.tube/videos/embed/a9863ee3-a0d8-4919-8b28-8920246d22e6?start=11m50s'
     step["objectives"] = [u"1 répétition par symétrie (Mirrored001)."]
     data_tutorial['steps'].append(step)
 
@@ -351,7 +351,7 @@ def MakeDataTutorial():
         (barre espace sur la fonction Origin), ensuite on clique sur l'icône
         <img src= %s width="25"/>.''' % (img1)
 
-    step["video"] = 'https://open.tube/videos/watch/a9863ee3-a0d8-4919-8b28-8920246d22e6?start=12m12s'
+    step["video"] = 'https://open.tube/videos/embed/a9863ee3-a0d8-4919-8b28-8920246d22e6?start=12m12s'
     step["objectives"] = [u"1 plan de référence (DatumPlane)."]
     data_tutorial['steps'].append(step)
 
@@ -365,7 +365,7 @@ def MakeDataTutorial():
         contraint le rayon à 3 mm puis on contraint le centre sur l'axe
         verticale de l'esquisse et à 120 mm de l'origine.</p>'''
 
-    step["video"] = 'https://open.tube/videos/watch/a9863ee3-a0d8-4919-8b28-8920246d22e6?start=12m50s'
+    step["video"] = 'https://open.tube/videos/embed/a9863ee3-a0d8-4919-8b28-8920246d22e6?start=12m50s'
     step["objectives"] = [u"1 esquisse (Sketch004) sur le plan de référence.", u"1 cercle de 3 mm de rayon", u"1 Protrusion (Pad002) de 12 mm."]
     data_tutorial['steps'].append(step)
 
@@ -376,7 +376,7 @@ def MakeDataTutorial():
         <ul><li>Un cercle dans une esquisse servira à percer le premier trou.
         <li>et on répètera cette opération par symétrie.</li></ul></p>'''
 
-    step["video"] = 'https://open.tube/videos/watch/a9863ee3-a0d8-4919-8b28-8920246d22e6?start=13m37s'
+    step["video"] = 'https://open.tube/videos/embed/a9863ee3-a0d8-4919-8b28-8920246d22e6?start=13m37s'
     step["objectives"] = [u"1 esquisse (Sketch005) sur le plan de référence.", u"1 cercle de rayon 1,5 mm.", u"1 cavité (Pocket002) de 10 mm.", u"1 Répétition de symétrie."]
     data_tutorial['steps'].append(step)
 
@@ -390,7 +390,7 @@ def MakeDataTutorial():
         <li>à l'aide du raccourcis <b>Ctrl+Maj+S</b></li></lu></p>
         <p><img src=%s width="360"/></p>''' % (img1, img2)
 
-    step["video"] = 'https://open.tube/videos/watch/a9863ee3-a0d8-4919-8b28-8920246d22e6?start=14m22s'
+    step["video"] = 'https://open.tube/videos/embed/a9863ee3-a0d8-4919-8b28-8920246d22e6?start=14m22s'
     step["objectives"] = [u"1 Sauvegardé le document sous le nom Korrigans."]
     data_tutorial['steps'].append(step)
 
