@@ -57,7 +57,6 @@ def make_result(r):
     if DEBUG:print(u'End check')
     return result
 
-
 def get_document(doc):
     '''get document from name or active doc if None'''
     if type(doc)=='str':
@@ -71,7 +70,6 @@ def get_sketch(sketch):
     # TODO: method to get sketch
     if DEBUG:print("TODO: method to get sketch")
     pass
-
 
 def document_presence(name=None, label=None):
     '''check if there is a specific doc or an active one'''
@@ -103,13 +101,11 @@ def document_presence(name=None, label=None):
 
     return make_result(r)
 
-
 def get_object_by_typeId(doc=None, typeId=None):
     for obj in doc.Objects:
         if obj.TypeId==typeId:
             return obj
             break
-
 
 def document_save(name=None):
     '''check if a doc is saved'''
@@ -127,7 +123,6 @@ def document_save(name=None):
                 r.append(1)
     return make_result(r)
 
-
 def active_workbench(wb):
     '''Check if the active workbench is the good one
     PartDesignWorkbench", "PartWorkbench", "DraftWorkbench", "SketcherWorkbench"
@@ -138,7 +133,6 @@ def active_workbench(wb):
     else:
         r.append(1)
     return make_result(r)
-
 
 def label_object(doc=None, obj=None, label_required=None):
     '''check if there is an object with the specific label'''
@@ -154,8 +148,6 @@ def label_object(doc=None, obj=None, label_required=None):
             else:
                 r.append(0)
     return make_result(r)
-
-
 
 def body_presence(doc=None):
     '''Check if there is a body in the document'''
@@ -181,7 +173,6 @@ def body_features(body):
     '''Check if the body contains required features'''
     if DEBUG:print(body.OutList)
     pass
-
 
 def primitive_presence(doc=None, label=None, typeId=None, dimensions=None, support=None, offset=None):
     '''check the presence of datum plane'''
@@ -252,7 +243,6 @@ def primitive_presence(doc=None, label=None, typeId=None, dimensions=None, suppo
         r.append(0)
     return make_result(r)
 
-
 def fillet_presence(doc=None, label=None, radius=None):
     '''check fillet presence'''
     r=[]
@@ -274,7 +264,6 @@ def fillet_presence(doc=None, label=None, radius=None):
         else:
             r.append(0)
     return make_result(r)
-
 
 def datum_plane_presence(doc=None, label=None, support=None, offset=None):
     '''check the presence of datum plane'''
@@ -404,7 +393,6 @@ def geometry_presence(doc=None, sketch_label=None, count=None, isclosed=None):
     else:
         r.append(0)
     return make_result(r)
-
 
 def external_geometry_presence(doc=None, sketch_label=None, count=None):
     '''Check if the skecth contain the count of geometrie and if the wire is closed'''
@@ -772,8 +760,6 @@ def volume(doc=None, name=None, typeId=None, target=None):
     else:
         r.append(0)
     return make_result(r)
-
-
 
 def navigation_style(style):
     '''Check navigation style'''
