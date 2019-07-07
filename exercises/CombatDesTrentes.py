@@ -89,7 +89,7 @@ def grader(doc_name):
 
     step_id += 1
     # Check volume
-    grader_dict["notes"].append(Check.volume(doc, name=None, obj_type='PartDesign::Body', target=28605.00))
+    grader_dict["notes"].append(Check.volume(doc, name=None, typeId='PartDesign::Body', target=29292.00))
     if grader_dict["notes"][step_id] == 1 :
         grader_dict["messages"].append(u"Le volume correspond.")
     elif grader_dict["notes"][step_id] == 0 :
@@ -97,7 +97,7 @@ def grader(doc_name):
 
     step_id += 1
     # Check boundbox
-    grader_dict["notes"].append(Check.boundbox_dimensions(doc, name=None, obj_type='PartDesign::Body', x=40.00, y=18.00, z=65.00))
+    grader_dict["notes"].append(Check.boundbox_dimensions(doc, name=None, typeId='PartDesign::Body', x=40.00, y=18.00, z=65.00))
     if grader_dict["notes"][step_id] == 1 :
         grader_dict["messages"].append(u"Les dimensions de la boite englobante correpsondent.")
     elif grader_dict["notes"][step_id] == 0 :
