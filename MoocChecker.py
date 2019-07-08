@@ -221,10 +221,17 @@ def primitive_presence(doc=None, label=None, typeId=None, dimensions=None, suppo
                         r.append(0)
 
         if support != None:
-            if reference.Support[0][0].Name == support:
-                r.append(1)
+            if reference:
+                if len(reference.Support) > 0:
+                    if reference.Support[0][0].Name == support:
+                        r.append(1)
+                    else:
+                        r.append(0)
+                else:
+                    r.append(0)
             else:
                 r.append(0)
+                
         if offset != None:
             attachOffset = []
             attachOffset.append(reference.AttachmentOffset.Base.x)
