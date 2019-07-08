@@ -298,7 +298,7 @@ def MakeDataTutorial():
         <p><img src=%s width="360"/></p>''' % (img1, img2)
 
     step["video"] = 'https://open.tube/videos/embed/f5773731-9864-470b-a3d5-9e805c419f96?start=9m45s'
-    step["objectives"] = [u"1 Sauvegardé le document sous le nom Humidificateur."]
+    step["objectives"] = [u"1 Sauvegarder le document sous le nom Humidificateur."]
     data_tutorial['steps'].append(step)
 
     return data_tutorial
