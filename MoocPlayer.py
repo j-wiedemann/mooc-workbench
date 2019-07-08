@@ -288,6 +288,7 @@ class Ui_MoocChooser(QtWidgets.QDialog):
         moocWBpath = os.path.dirname(moocwb_locator.__file__)
         moocWBpath_lessons = os.path.join(moocWBpath, 'lessons')
         onlyfiles = [f for f in listdir(moocWBpath_lessons) if isfile(join(moocWBpath_lessons, f))]
+        onlyfiles.sort()
         #print(onlyfiles)
 
         for lesson in onlyfiles:
