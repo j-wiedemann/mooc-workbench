@@ -68,7 +68,7 @@ def MakeDataTutorial():
     step = {}
     img1 = os.path.join(moocWB_icons_path, 'Document-new.svg')
     img2 = os.path.join(moocWB_icons_path, 'Workbench_PartDesign.svg')
-    img3 = os.path.join(moocWB_icons_path, 'PartDesign_Body.png')
+    img3 = os.path.join(moocWB_icons_path, 'NavigationGesture.svg')
     img4 = os.path.join(moocWB_images_path, 'korrigans_final.png')
     step["description"] = u'''<h3>Préparation</h3>
         <p><img src= %s width="25"/> Créer un nouveau document :
@@ -77,9 +77,9 @@ def MakeDataTutorial():
         <p><img src= %s width="25"/> Basculer dans l'atelier <b>Part Design</b> :
         <ul><li>à l'aide du sélecteur d'atelier.</li>
         <li>depuis le menu <i>Affichage</i> puis <i>Atelier</i></li></ul></p>
-        <p><img src= %s width="25"/>Créer un nouveau corps de pièce :
-        <ul><li>à l'aide du menu <i>Part Design</i> puis <i>Créer un corps</i>.</li>
-        <li>à l'aide du lien dans l'onglet Tâche de la vue combinée.</li> \
+        <p><img src= %s width="25"/>Changer le style de navigation :
+        <ul><li>à l'aide d'un clic droit dans l'espace de travail, style de navigation puis choisir Gesture.</li>
+        <li>à l'aide du sélecteur de style de navigation dans la barre de status en bas à droite de la fenêtre.</li> \
         </ul></p> ''' % (img1, img2, img3)
 
     step["video"] = 'https://open.tube/videos/embed/f5773731-9864-470b-a3d5-9e805c419f96?start=0m00s'
