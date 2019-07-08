@@ -197,7 +197,7 @@ def MakeDataTutorial():
         <p>On commence par sélectionner l'esquisse qui servira de base à la
         protrusion, puis on clique sur l'icone <img src= %s width="25"/>.</p>
         <p>Dans le panneau de l'onglet tâche on va définir les paramètres suivant :
-        <ul><li>Type : Dimension</li>
+        <ul><li>Type : Dimension ou Cote</li>
         <li>Longueur : 55 mm</li>
         <li>Symétrique au plan : coché</li>
         <li>Inversée : décoché</li></ul></p>
@@ -320,7 +320,7 @@ def MakeDataTutorial():
         <li>Dessiner le triangle rectangle à l'aide de l'outil polyligne.</li>
         <li>Récupérer des arêtes externe pour positionner le triangle.</li>
         <li>Réaliser une protrusion :
-        <ul><li>Type : Dimension</li>
+        <ul><li>Type : Dimension ou Cote</li>
         <li>Longueur : 15 mm</li>
         <li>Symétrique au plan : coché</li></ul></li></ul></p>'''
 

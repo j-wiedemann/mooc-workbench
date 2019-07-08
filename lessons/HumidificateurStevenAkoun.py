@@ -119,7 +119,7 @@ def MakeDataTutorial():
         <p>On valide la tâche en cours en cliquant sur OK''' % (img1)
 
     step["video"] = 'https://open.tube/videos/embed/f5773731-9864-470b-a3d5-9e805c419f96?start=2m23s'
-    step["objectives"] = [u"1 Cube additif 100 x 80 x 140 mm"]
+    step["objectives"] = [u"1 Cube additif (Box) 100 x 80 x 140 mm sur le plan XY"]
     data_tutorial['steps'].append(step)
 
     #step 4
@@ -145,7 +145,7 @@ def MakeDataTutorial():
         <p>On valide la tâche en cours en cliquant sur OK''' % ( img1 )
 
     step["video"] = 'https://open.tube/videos/embed/f5773731-9864-470b-a3d5-9e805c419f96?start=3m32s'
-    step["objectives"] = [u"1 Cylindre additif Ø80 x 140 mm"]
+    step["objectives"] = [u"1 Cylindre additif (Cylindre) Ø80 x 140 mm sur le plan XY et décalé de 40 mm selon Y."]
     data_tutorial['steps'].append(step)
 
     #step 5
