@@ -35,7 +35,7 @@ import FreeCAD as app
 import FreeCADGui as gui
 
 global MOOC_VERSION
-MOOC_VERSION = 'V0.1.5'
+MOOC_VERSION = 'V0.1.6'
 
 moocWBpath = os.path.dirname(moocwb_locator.__file__)
 moocWBpath_medias = os.path.join(moocWBpath, 'medias')
@@ -62,7 +62,7 @@ class MoocWorkbench ( Workbench ):
     def Activated(self):
         "This function is executed when the workbench is activated"
         import MoocInformations
-        MoocInformations.checkMoocWBVersion(MOOC_VERSION)
+        #MoocInformations.checkMoocWBVersion(MOOC_VERSION) #deactivated version check
         print(u'Activated MoocWorkbench... done')
         return
 
