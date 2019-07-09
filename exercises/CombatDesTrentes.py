@@ -73,7 +73,7 @@ def grader(doc_name):
 
     step_id += 1
     # Check for a Pad presence
-    grader_dict["notes"].append(Check.pad_presence(doc, name=None, type="Length", length=18.0, midplane=True))
+    grader_dict["notes"].append(Check.pad_presence(doc, name=None, type="Length", length=18.0, midplane=None))
     if grader_dict["notes"][step_id] == 1 :
         grader_dict["messages"].append(u"Il y a une protrusion de 18 mm.")
     elif grader_dict["notes"][step_id] == 0 :
