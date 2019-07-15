@@ -149,7 +149,7 @@ def label_object(doc=None, obj=None, label_required=None):
                 r.append(0)
     return make_result(r)
 
-def body_presence(doc=None):
+def body_presence(doc=None, label=None):
     '''Check if there is a body in the document'''
     r = []
     doc = get_document(doc)
@@ -160,7 +160,16 @@ def body_presence(doc=None):
                 if obj.TypeId == 'PartDesign::Body':
                     body_list.append(obj)
             if len(body_list)>0:
-                    r.append(1)
+                r.append(1)
+                if label != None:
+                    for obj in body_list:
+                        if obj.Label == label:
+                            label_ok = True
+                            break
+                    if label_ok == True:
+                        r.append(1)
+                    else:
+                        r.append(0)
             else:
                 r.append(0)
         else:
@@ -231,7 +240,7 @@ def primitive_presence(doc=None, label=None, typeId=None, dimensions=None, suppo
                     r.append(0)
             else:
                 r.append(0)
-                
+
         if offset != None:
             attachOffset = []
             attachOffset.append(reference.AttachmentOffset.Base.x)
