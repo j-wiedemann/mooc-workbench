@@ -34,8 +34,8 @@ import math
 
 
 # for debug purposes
-#DEBUG = True
-DEBUG = False
+DEBUG = True
+#DEBUG = False
 
 if DEBUG:print("MOOC CHECKER")
 
@@ -45,7 +45,7 @@ def make_result(r):
     r=[1,1,1,0] => result = 0
     r=[1,1,1,1] => result = 1
     '''
-    if DEBUG:print(u'r = ', r)
+    if DEBUG:print(u'Check.make_result(r = %s)' % r)
     if len(r)>0:
         if 0 in r:
             result = 0
@@ -53,26 +53,24 @@ def make_result(r):
             result = 1
     else:
         result = 0
-    if DEBUG:print(u'result = ', result)
-    if DEBUG:print(u'End check')
+    #if DEBUG:print(u'result = ', result)
+    #if DEBUG:print(u'End check')
     return result
 
 def get_document(doc):
     '''get document from name or active doc if None'''
+    if DEBUG:print('Check.get_document(doc=%s)' % doc)
     if type(doc)=='str':
         doc = app.getDocument(doc)
     elif doc is None:
         if document_presence() == 1:
             doc = app.activeDocument()
+    if DEBUG:print('doc.Name is %s, doc.Label is %s' % (doc.Name, doc.Label))
     return doc
-
-def get_sketch(sketch):
-    # TODO: method to get sketch
-    if DEBUG:print("TODO: method to get sketch")
-    pass
 
 def document_presence(name=None, label=None):
     '''check if there is a specific doc or an active one'''
+    if DEBUG:print(u'Check.document_presence(name=%s, label=%s)' % (name, label))
     r = []
     if name is None and label is None:
         if app.ActiveDocument:
@@ -109,6 +107,7 @@ def get_object_by_typeId(doc=None, typeId=None):
 
 def document_save(name=None):
     '''check if a doc is saved'''
+    if DEBUG:print("Check.document_save(name=%s)" % (name))
     r=[]
     if app.ActiveDocument == None:
         r.append(0)
@@ -127,6 +126,7 @@ def active_workbench(wb):
     '''Check if the active workbench is the good one
     PartDesignWorkbench", "PartWorkbench", "DraftWorkbench", "SketcherWorkbench"
     '''
+    if DEBUG:print("Check.active_workbench(wb=%s)" % (wb))
     r = []
     if gui.activeWorkbench().name() != wb:
         r.append(0)
@@ -162,6 +162,7 @@ def body_presence(doc=None, label=None):
             if len(body_list)>0:
                 r.append(1)
                 if label != None:
+                    label_ok = False
                     for obj in body_list:
                         if obj.Label == label:
                             label_ok = True
@@ -187,7 +188,7 @@ def primitive_presence(doc=None, label=None, typeId=None, dimensions=None, suppo
     '''check the presence of datum plane'''
     '''type :   'PartDesign::SubstractiveCylinder'
                 'PartDesign::AdditiveBox' '''
-    if DEBUG:print(u'Check primitive presence')
+    if DEBUG:print(u'Check.primitive_presence(doc=%s, label=%s, typeId=%s, dimensions=%s, support=%s, offset=%s)' % (doc, label, typeId, dimensions, support, offset))
     r=[]
     doc = get_document(doc)
     reference = None
@@ -283,50 +284,79 @@ def fillet_presence(doc=None, label=None, radius=None):
 
 def datum_plane_presence(doc=None, label=None, support=None, offset=None):
     '''check the presence of datum plane'''
+    if DEBUG:print("Check.datum_plane_presence(doc=%s, label=%s, support=%s, offset=%s)" % (doc,label,support,offset))
     r=[]
     doc = get_document(doc)
-    reference = None
+    datum_plane_list = []
+    #reference = None
+    references_label = []
+    references_support = []
+    references_offset = []
     # if doc and name, get reference by name
     if doc:
-        if label != None:
-            reference = doc.getObject(label)
-        else:
-            if DEBUG:print("TODO: make list of datum_plane")
-            pass
-    if reference:
+        for obj in doc.Objects:
+            if obj.TypeId == 'PartDesign::Plane':
+                datum_plane_list.append(obj)
+
+    if len(datum_plane_list) > 0:
+        # good there is at least 1 datum plane
         r.append(1)
+        if label != None:
+            # check if a datum plane got the right label
+            for datum_plane in datum_plane_list :
+                if datum_plane.Label == label:
+                    references_label.append(datum_plane)
+                    #break
+            if len(references_label) > 0:
+                r.append(1)
+            else:
+                r.append(0)
+
         if support != None:
-            if reference.Support[0][0].Name == support:
+            # check if a datum plane got the right support
+            for datum_plane in datum_plane_list :
+                if datum_plane.Support[0][0].Name == support:
+                    references_support.append(datum_plane)
+            if len(references_support) > 0:
                 r.append(1)
             else:
                 r.append(0)
+
         if offset != None:
-            attachOffset = []
-            attachOffset.append(reference.AttachmentOffset.Base.x)
-            attachOffset.append(reference.AttachmentOffset.Base.y)
-            attachOffset.append(reference.AttachmentOffset.Base.z)
-            attachOffset.append(reference.AttachmentOffset.Rotation.Axis.x)
-            attachOffset.append(reference.AttachmentOffset.Rotation.Axis.y)
-            attachOffset.append(reference.AttachmentOffset.Rotation.Axis.z)
-            attachOffset.append(reference.AttachmentOffset.Rotation.Angle)
-            if DEBUG:print(attachOffset, offset)
-            if offset == attachOffset:
+            # check if a datum plane got the right offset
+            for datum_plane in datum_plane_list :
+                attachOffset = []
+                attachOffset.append(datum_plane.AttachmentOffset.Base.x)
+                attachOffset.append(datum_plane.AttachmentOffset.Base.y)
+                attachOffset.append(datum_plane.AttachmentOffset.Base.z)
+                attachOffset.append(datum_plane.AttachmentOffset.Rotation.Axis.x)
+                attachOffset.append(datum_plane.AttachmentOffset.Rotation.Axis.y)
+                attachOffset.append(datum_plane.AttachmentOffset.Rotation.Axis.z)
+                attachOffset.append(datum_plane.AttachmentOffset.Rotation.Angle)
+                if DEBUG:print(attachOffset, offset)
+                if offset == attachOffset:
+                    references_offset.append(datum_plane)
+            if len(references_offset) > 0:
                 r.append(1)
             else:
                 r.append(0)
-    else:
-        r.append(0)
-    if len(r)>0:
-        if 0 in r:
-            result = 0
-        else:
-            result = 1
-    else:
-        result = 0
-    return result
+
+        if support != None and offset != None:
+            match = False
+            for x in references_support :
+                if x in references_offset:
+                    match = True
+                    break
+            if match == True:
+                r.append(1)
+            else:
+                r.append(0)
+
+    return make_result(r)
 
 def sketch_presence(doc=None, label=None, support=None):
     '''check the presence of sketch'''
+    if DEBUG:print("Check.sketch_presence(doc=%s, label=%s, support=%s)" % (doc,label,support))
     r = []
     doc = get_document(doc)
     sk = None
@@ -366,6 +396,7 @@ def sketch_presence(doc=None, label=None, support=None):
 
 def geometry_presence(doc=None, sketch_label=None, count=None, isclosed=None):
     '''check if the skecth contain the count of geometrie and if the wire is closed'''
+    if DEBUG:print("Check.geometry_presence(doc=%s, sketch_label=%s, count=%s, isclosed=%s)" % (doc,sketch_label,count,isclosed))
     r = []
     doc = get_document(doc)
     sk = None
@@ -412,6 +443,7 @@ def geometry_presence(doc=None, sketch_label=None, count=None, isclosed=None):
 
 def external_geometry_presence(doc=None, sketch_label=None, count=None):
     '''Check if the skecth contain the count of geometrie and if the wire is closed'''
+    if DEBUG:print("Check.external_geometry_presence(doc=%s, sketch_label=%s, count=%s)" % (doc,sketch_label,count))
     r = []
     doc = get_document(doc)
     sk = None
@@ -440,6 +472,7 @@ def external_geometry_presence(doc=None, sketch_label=None, count=None):
 
 def constraint_presence(doc=None, sketch_label=None, count=None, type=None, value=None):
     '''Check if the skecth contain the count of constraint's type and value'''
+    if DEBUG:print(u'Check.constraint_presence(doc=%s, sketch_label=%s, count=%s, type=%s, value=%s)' % (doc, sketch_label, count, type, value))
     r = []
     doc = get_document(doc)
     sk = None
@@ -477,6 +510,52 @@ def constraint_presence(doc=None, sketch_label=None, count=None, type=None, valu
                 r.append(1)
             else:
                 r.append(0)
+        else:
+            if sk.ConstraintCount.__int__() == count:
+                r.append(1)
+            else:
+                r.append(0)
+    else:
+        r.append(0)
+
+    return make_result(r)
+
+def dimension_constraint_presence(doc=None, sketch_label=None, type=None, value=None):
+    '''Check if the skecth contain the count of constraint's type and value'''
+    if DEBUG:print(u'Check.dimension_constraint_presence(doc=%s, sketch_label=%s, type=%s, value=%s)' % (doc, sketch_label, type, value))
+    r = []
+    doc = get_document(doc)
+    sk = None
+    if doc:
+        if sketch_label :
+            if len(doc.getObjectsByLabel(sketch_label)) > 0:
+                sk = doc.getObjectsByLabel(sketch_label)[0]
+        else:
+            sk = []
+            for obj in doc.Objects:
+                if obj.TypeId == 'Sketcher::SketchObject':
+                    sk.append(obj)
+
+    if sk:
+        if type != None:
+            constraints_list=[]
+            for constraint in sk.Constraints:
+                if constraint.Type == type:
+                    constraints_list.append(constraint) # list of constraint matching type
+            if value != None :
+                find_value = False
+                for constraint in constraints_list:
+                    if type == 'Angle':
+                        angle = constraint.Value * 180 / math.pi
+                        if angle == value:
+                            find_value = True
+                    else:
+                        if constraint.Value == value:
+                            find_value = True
+                if find_value == True:
+                    r.append(1)
+                else:
+                    r.append(0)
         else:
             if sk.ConstraintCount.__int__() == count:
                 r.append(1)
@@ -527,6 +606,7 @@ def pad_presence(doc=None, name=None, type=None, length=None, midplane=None):
 
 def pocket_presence(doc=None, name=None, type=None, length=None, midplane=None, reversed=None):
     '''check the presence of pocket'''
+    if DEBUG:print(u'Check.pocket_presence(doc=%s, name=%s, type=%s, length=%s, midplane=%s, reversed=%s)' % (doc, name, type, length, midplane, reversed))
     r=[]
     doc = get_document(doc)
     feature = None
@@ -584,6 +664,128 @@ def pocket_presence(doc=None, name=None, type=None, length=None, midplane=None, 
                     got_it.append(0)
             if reversed != None:
                 if feature.Reversed == reversed:
+                    got_it.append(1)
+                else:
+                    got_it.append(0)
+            if not 0 in got_it:
+                r.append(1)
+
+    else:
+        r.append(0)
+
+    return make_result(r)
+
+def additiveloft_presence(doc=None, name=None, outlist=None, ruled=None, closed=None):
+    '''check the presence of pocket'''
+    if DEBUG:print(u'Check.additiveloft_presence(doc=%s, name=%s, outlist=%s, ruled=%s, closed=%s)' % (doc, name, outlist, ruled, closed))
+    r=[]
+    doc = get_document(doc)
+    feature = None
+    features_list = None
+    if doc:
+        if name != None :
+            feature = doc.getObject(name)
+        else:
+            features_list = []
+            for obj in doc.Objects:
+                if obj.TypeId == 'PartDesign::AdditiveLoft':
+                    features_list.append(obj)
+
+    if feature:
+        r.append(1)
+        if outlist != None:
+            if len(feature.OutList) == int(outlist):
+                r.append(1)
+            else:
+                r.append(0)
+        if ruled != None:
+            if feature.Ruled == ruled:
+                r.append(1)
+            else:
+                r.append(0)
+        if closed != None:
+            if feature.Closed == closed:
+                r.append(1)
+            else:
+                r.append(0)
+
+    elif len(features_list) > 0:
+        r.append(1)
+        for feature in features_list:
+            got_it = []
+            if outlist != None:
+                if feature.OutList == int(outlist):
+                    got_it.append(1)
+                else:
+                    got_it.append(0)
+            if ruled != None:
+                if feature.Ruled == ruled:
+                    got_it.append(1)
+                else:
+                    got_it.append(0)
+            if closed != None:
+                if feature.Closed == closed:
+                    got_it.append(1)
+                else:
+                    got_it.append(0)
+            if not 0 in got_it:
+                r.append(1)
+
+    else:
+        r.append(0)
+
+    return make_result(r)
+
+def additivepipe_presence(doc=None, name=None, outlist=None, ruled=None, closed=None):
+    '''check the presence of pocket'''
+    if DEBUG:print(u'Check.additivepipe_presence(doc=%s, name=%s, outlist=%s, ruled=%s, closed=%s)' % (doc, name, outlist, ruled, closed))
+    r=[]
+    doc = get_document(doc)
+    feature = None
+    features_list = None
+    if doc:
+        if name != None :
+            feature = doc.getObject(name)
+        else:
+            features_list = []
+            for obj in doc.Objects:
+                if obj.TypeId == 'PartDesign::AdditivePipe':
+                    features_list.append(obj)
+
+    if feature:
+        r.append(1)
+        if outlist != None:
+            if len(feature.OutList) == int(outlist):
+                r.append(1)
+            else:
+                r.append(0)
+        if ruled != None:
+            if feature.Ruled == ruled:
+                r.append(1)
+            else:
+                r.append(0)
+        if closed != None:
+            if feature.Closed == closed:
+                r.append(1)
+            else:
+                r.append(0)
+
+    elif len(features_list) > 0:
+        r.append(1)
+        for feature in features_list:
+            got_it = []
+            if outlist != None:
+                if feature.OutList == int(outlist):
+                    got_it.append(1)
+                else:
+                    got_it.append(0)
+            if ruled != None:
+                if feature.Ruled == ruled:
+                    got_it.append(1)
+                else:
+                    got_it.append(0)
+            if closed != None:
+                if feature.Closed == closed:
                     got_it.append(1)
                 else:
                     got_it.append(0)
@@ -709,6 +911,17 @@ def mirrored_pattern_presence(doc=None, name=None, plane_name=None, plane_axis=N
     else:
         result = 0
     return result
+
+def fillet_presence(doc=None, name=None, radius=None ):
+    '''check the presence of fillet'''
+    r=[]
+    doc = get_document(doc)
+    for obj in doc.Objects:
+        if obj.TypeId == 'PartDesign::Fillet':
+            r.append(1)
+    #if radius != None:
+    #    if reference =
+    return make_result(r)
 
 def boundbox_dimensions(doc=None, name=None, typeId=None, x=None, y=None, z=None):
     '''Check the length's dimensions of boundbox'''

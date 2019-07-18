@@ -18,7 +18,15 @@ Cet atelier FreeCAD vous suivra tous le long de ce mooc pour vous guider dans l'
 
 ### Installation avec l'addon manager
 
-/!\ Pas encore disponible /!\
+1. Démarrer FreeCAD.
+2. Aller dans le menu Outils puis Addon Manager
+3. Si c'est la première fois un message vous informe que les addons sont développer par la communauté et peuvent contenir des bugs. Cliquer sur OK.
+4. Dans la fenêtre qui s'ouvre, attendre le chargement de la liste des addons.
+5. Chercher l'atelier MOOC et cliquer une fois dessus.
+6. Cliquer sur le bouton Install / update
+7. À la fin de l'installation quand la fenêtre dit "Succesfully installed ..." cliquer sur le bouton Close.
+8. Enfin REDÉMARRER FreeCAD.
+
 
 ### Installation manuelle
 

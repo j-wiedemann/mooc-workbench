@@ -210,7 +210,7 @@ class Ui_Manager():
         self.form.listWidget_objectifs.setFixedHeight(
             (self.form.listWidget_objectifs.sizeHintForRow(0)+10) *
             self.form.listWidget_objectifs.count() +
-            10 * self.form.listWidget_objectifs.frameWidth())
+            10 * self.form.listWidget_objectifs.frameWidth() + 8)
 
 
     def play_video(self):
