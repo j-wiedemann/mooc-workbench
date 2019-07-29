@@ -62,10 +62,15 @@ def get_document(doc):
     if DEBUG:print('Check.get_document(doc=%s)' % doc)
     if type(doc)=='str':
         doc = app.getDocument(doc)
+        if DEBUG:print('doc.Name is %s, doc.Label is %s' % (doc.Name, doc.Label))
     elif doc is None:
         if document_presence() == 1:
             doc = app.activeDocument()
-    if DEBUG:print('doc.Name is %s, doc.Label is %s' % (doc.Name, doc.Label))
+            if DEBUG:print('doc.Name is %s, doc.Label is %s' % (doc.Name, doc.Label))
+        else :
+            if DEBUG:print('doc is None' )
+            pass
+
     return doc
 
 def document_presence(name=None, label=None):
@@ -911,17 +916,6 @@ def mirrored_pattern_presence(doc=None, name=None, plane_name=None, plane_axis=N
     else:
         result = 0
     return result
-
-def fillet_presence(doc=None, name=None, radius=None ):
-    '''check the presence of fillet'''
-    r=[]
-    doc = get_document(doc)
-    for obj in doc.Objects:
-        if obj.TypeId == 'PartDesign::Fillet':
-            r.append(1)
-    #if radius != None:
-    #    if reference =
-    return make_result(r)
 
 def boundbox_dimensions(doc=None, name=None, typeId=None, x=None, y=None, z=None):
     '''Check the length's dimensions of boundbox'''
