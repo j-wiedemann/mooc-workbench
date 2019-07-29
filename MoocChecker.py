@@ -113,7 +113,7 @@ def document_save(name=None):
         r.append(0)
     else:
         if name != None:
-            if app.ActiveDocument.Label == name:
+            if name in app.ActiveDocument.Label:
                 r.append(1)
             else:
                 r.append(0)
@@ -999,3 +999,51 @@ def navigation_style(style):
     else:
         result = 1
     return result
+
+def workbench_presence(wb):
+    '''Check workbench presence in FreeCAD'''
+    r = [0]
+    for wb in gui.listWorkbenches():
+        if wb == wb:
+            r = [1]
+            break
+    return make_result(r)
+
+
+def a2p_importedPart_presence(doc=None, label=None):
+    doc = get_document(doc)
+    r = [0]
+    if doc:
+        for obj in doc.Objects:
+            if hasattr(obj, 'Proxy'):
+                if 'a2p' in obj.Proxy.__str__():
+                    if hasattr(obj, 'a2p_Version'):
+                        if label != None:
+                            if label.lower() in obj.Label.lower():
+                                r = [1]
+                                break
+                        else:
+                            r = [1]
+                            break
+
+    return make_result(r)
+
+def a2p_constraint_presence(doc=None, type=None):
+    '''
+    types :
+    plane
+    axial
+    planesParallel
+    '''
+    doc = get_document(doc)
+    r = [0]
+    if doc:
+        for obj in doc.Objects:
+            if hasattr(obj, 'Proxy'):
+                if 'a2p' in obj.Proxy.__str__():
+                    if not hasattr(obj, 'a2p_Version'):
+                        if obj.Type == type:
+                            r = [1]
+                            break
+
+    return make_result(r)
