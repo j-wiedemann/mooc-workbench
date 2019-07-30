@@ -236,6 +236,7 @@ class Ui_FreeCADGrader(QtWidgets.QDialog):
         moocWBpath = os.path.dirname(moocwb_locator.__file__)
         moocWBpath_exercises = os.path.join(moocWBpath, 'exercises')
         onlyfiles = [f for f in listdir(moocWBpath_exercises) if isfile(join(moocWBpath_exercises, f))]
+        onlyfiles.sort()
         for exercise in onlyfiles:
             name = exercise.split('.')[0]
             path = os.path.join(moocWBpath_exercises, exercise)

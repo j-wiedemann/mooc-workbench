@@ -36,7 +36,7 @@ import os, moocwb_locator
 
 
 def get_title():
-    title = u'[FR] Exercice Socle (Semaine 1)'
+    title = u'[FR] MOOC Semaine 1 - Socle Humidificateur'
     return title
 
 def get_description():
