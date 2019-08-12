@@ -59,10 +59,10 @@ def MakeDataTutorial():
     data_tutorial['title'] = get_title()
     data_tutorial['description'] = get_description()
     data_tutorial['steps'] = []
-    moocWBpath = os.path.dirname(moocwb_locator.__file__)
-    moocWBpath_medias = os.path.join(moocWBpath, 'medias')
-    moocWB_images_path = os.path.join(moocWBpath_medias, 'images')
-    moocWB_icons_path = os.path.join(moocWBpath_medias, 'icons')
+    moocWB_path = os.path.dirname(moocwb_locator.__file__)
+    moocWB_medias_path = os.path.join(moocWB_path, 'medias')
+    moocWB_images_path = os.path.join(moocWB_medias_path, 'images')
+    moocWB_icons_path = os.path.join(moocWB_medias_path, 'icons')
 
     #step 1
     step = {}
