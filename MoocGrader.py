@@ -246,20 +246,6 @@ class Ui_FreeCADGrader(QtWidgets.QDialog):
             self.exercises_infos_list.append([foo.get_title(),foo.get_description(),foo])
             self.comboBox.addItem(foo.get_title())
 
-    def launch_mooc(self, item):
-        row = self.listWidget_trainings.row(item)
-        self.close()
-        # import MoocPlayer
-        import MoocPlayer
-        # make sure MoocChecker is reloaded
-        try :
-            reload(MoocPlayer)
-        except NameError:
-            import importlib
-            importlib.reload(MoocPlayer)
-        lesson = self.lessons_infos_list[row][2]
-        MoocPlayer.Ui_Manager(lesson)
-
 
 class Ui_FreeCADGraderResults(QtWidgets.QDialog):
     def __init__(self, parent=None):
