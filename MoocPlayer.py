@@ -23,7 +23,7 @@
 #
 ################################################
 
-__title__="MOOC Workbench"
+__title__ = "MOOC Workbench"
 __author__ = "Jonathan Wiedemann"
 __url__ = "http://www.freecadweb.org"
 
@@ -31,9 +31,10 @@ __url__ = "http://www.freecadweb.org"
 from PySide2 import QtCore, QtGui, QtWidgets
 
 # for handling paths
-import os, moocwb_locator
+import os
+import moocwb_locator
 
-# for loading module from path
+# for loading module from a path
 from os import listdir
 from os.path import isfile, join
 import importlib.util
@@ -41,42 +42,45 @@ import importlib.util
 # import freecad and its gui
 import FreeCAD as app
 import FreeCADGui as gui
-import WebGui
 
 # import webbrowser to play video inside defaut web Browser
 import webbrowser
 
-"""# import MoocChecker
+# import MoocChecker
 import MoocChecker
 
-# make sure MoocChecker is reloaded
-try :
-    reload(MoocChecker)
-except NameError:
-    import importlib
-    importlib.reload(MoocChecker)
-
-# name MoocChecker
-Check = MoocChecker"""
 
 # for debug purposes
-#DEBUG = True
-DEBUG = False
+DEBUG = True
+# DEBUG = False
+
+# make sure MoocChecker is reloaded
+if DEBUG:
+    try:
+        reload(MoocChecker)
+    except NameError:
+        import importlib
+        importlib.reload(MoocChecker)
+
 
 def debug():
-    if DEBUG:print("debug")
+    if DEBUG:
+        print("debug")
+
 
 # set global timer
 TIMER = QtCore.QTimer()
-if DEBUG:TIMER.timeout.connect(debug)
+if DEBUG:
+    TIMER.timeout.connect(debug)
 
-moocWBpath = os.path.dirname(moocwb_locator.__file__)
-moocWBpath_medias = os.path.join(moocWBpath, 'medias')
-moocWB_icons_path = os.path.join( moocWBpath_medias, 'icons')
+moocWB_path = os.path.dirname(moocwb_locator.__file__)
+moocWB_medias_path = os.path.join(moocWB_path, 'medias')
+moocWB_icons_path = os.path.join(moocWB_medias_path, 'icons')
 
 
 class Ui_MoocPlayer(QtWidgets.QDialog):
     '''The FreeCAD Player interface'''
+
     def __init__(self, parent=gui.getMainWindow()):
         super(Ui_MoocPlayer, self).__init__(parent)
         self.setObjectName("MoocPlayer")
@@ -95,9 +99,6 @@ class Ui_MoocPlayer(QtWidgets.QDialog):
         self.text_resume = QtWidgets.QTextBrowser(self)
         self.text_resume.setAcceptRichText(True)
         self.text_resume.setObjectName("text_resume")
-        #self.text_resume.setOpenExternalLinks(True)
-        #self.text_resume.setOpenLinks(True)
-        ## TODO: should open link in external browser
         self.verticalLayout_left.addWidget(self.text_resume)
         self.horizontalLayout_play = QtWidgets.QHBoxLayout(self)
         self.horizontalLayout_play.setObjectName("horizontalLayout_play")
@@ -138,7 +139,6 @@ class Ui_MoocPlayer(QtWidgets.QDialog):
 
         self.show()
 
-
     def retranslateUi(self):
         self.setWindowTitle(QtWidgets.QApplication.translate("MoocPlayer", "FreeCAD Tutorials", None, -1))
         self.label_resume.setText(QtWidgets.QApplication.translate("MoocPlayer", "Résumé de la leçon", None, -1))
@@ -149,28 +149,29 @@ class Ui_MoocPlayer(QtWidgets.QDialog):
         self.btn_next_step.setText(QtWidgets.QApplication.translate("MoocPlayer", "Suivant", None, -1))
         self.btn_play.setText(QtWidgets.QApplication.translate("MoocPlayer", "Voir la vidéo", None, -1))
 
-
-    def closeEvent(self,  event):
+    def closeEvent(self, event):
         TIMER.stop()
-        if DEBUG:print("Closing")
+        if DEBUG:
+            print("Closing Mooc Player")
 
 
-class Ui_Manager():
+class Manager_MoocPlayer():
     '''functions to control and update the dialog'''
+
     def __init__(self, lesson):
         self.form = Ui_MoocPlayer()
         self.lesson = lesson
-        self.data_tutorial = lesson.MakeDataTutorial()
-        self.form.setWindowTitle(QtWidgets.QApplication.translate("MoocPlayer", self.data_tutorial['title'], None, -1))
+        self.form.setWindowTitle(self.lesson.get_title())
         self.current_step_id = 0
-        self.total_step = len(self.data_tutorial['steps'])
+        self.total_step = self.lesson.get_lesson_len()
         self.fill_data()
 
         self.form.btn_play.clicked.connect(self.play_video)
         self.form.btn_next_step.clicked.connect(self.forward_step)
         self.form.btn_previous_step.clicked.connect(self.backward_step)
-        if DEBUG:print(self.data_tutorial['title'])
-        if DEBUG:print(self.get_label_step())
+        if DEBUG:
+            print(self.lesson.get_title())
+            print(self.get_label_step())
 
         TIMER.start(200)
         TIMER.timeout.connect(self.update)
@@ -178,51 +179,61 @@ class Ui_Manager():
         self.form.exec_()
 
     def get_label_step(self):
-        label = "Étape " + str(self.current_step_id + 1) + " / "+ str(self.total_step)
+        label = "Étape " + str(self.current_step_id + 1) + " / " + str(self.total_step)
         return label
 
     def forward_step(self):
-        if self.current_step_id + 1 < self.total_step :
+        if self.current_step_id + 1 < self.total_step:
             self.current_step_id += 1
-            if DEBUG:print(self.get_label_step())
+            if DEBUG:
+                print(self.get_label_step())
             self.fill_data()
         else:
-            if DEBUG:print("This is the end !")
+            if DEBUG:
+                print("This is the end !")
             pass
 
     def backward_step(self):
-        if self.current_step_id > 0 :
+        if self.current_step_id > 0:
             self.current_step_id -= 1
-            if DEBUG:print(self.get_label_step())
+            if DEBUG:
+                print(self.get_label_step())
             self.fill_data()
         else:
-            if DEBUG:print("This is the begining !")
+            if DEBUG:
+                print("This is the begining !")
             pass
 
-
     def fill_data(self):
-        self.form.label_step.setText(QtWidgets.QApplication.translate("MoocPlayer", self.get_label_step(), None, -1))
-        step_data = self.data_tutorial['steps'][self.current_step_id]
+        self.form.label_step.setText(self.get_label_step())
+        step_data = self.lesson.get_data_step(self.current_step_id)
         self.form.text_resume.setHtml(step_data["description"])
         self.form.listWidget_objectifs.clear()
         for obj in step_data["objectives"]:
             self.form.listWidget_objectifs.addItem(obj)
         self.form.listWidget_objectifs.setFixedHeight(
-            (self.form.listWidget_objectifs.sizeHintForRow(0)+10) *
-            self.form.listWidget_objectifs.count() +
-            10 * self.form.listWidget_objectifs.frameWidth() + 8)
-
+            (self.form.listWidget_objectifs.sizeHintForRow(0) + 10)
+            * self.form.listWidget_objectifs.count()
+            + 10 * self.form.listWidget_objectifs.frameWidth() + 8)
 
     def play_video(self):
-        link_url = self.data_tutorial['steps'][self.current_step_id]["video"]
+        step_data = self.lesson.get_data_step(self.current_step_id)
+        link_url = step_data["video"]
         webbrowser.open(link_url, new=2)
 
     def get_results(self):
-        results = self.lesson.CheckResult(self.current_step_id)
-        return results
+        step_data = self.lesson.get_data_step(self.current_step_id)
+        results = []
+        for func in step_data["checks"]:
+            results.append(eval(func))
+        if len(results) > 0:
+            return results
+        else:
+            return [0]
 
     def update(self):
-        if DEBUG:print("Ui_Manager.update")
+        if DEBUG:
+            print("Manager_MoocPlayer.update")
         results = self.get_results()
         brush_green = QtGui.QBrush(QtGui.QColor(85, 170, 0))
         brush_green.setStyle(QtCore.Qt.NoBrush)
@@ -232,10 +243,10 @@ class Ui_Manager():
         idx = 0
         if results:
             for x in results:
-                if x == 0 :
+                if x == 0:
                     self.form.listWidget_objectifs.item(idx).setForeground(brush_red)
                     self.form.listWidget_objectifs.item(idx).setIcon(QtGui.QIcon(os.path.join(moocWB_icons_path , 'window-close.svg')))
-                elif x == 1 :
+                elif x == 1:
                     self.form.listWidget_objectifs.item(idx).setForeground(brush_green)
                     self.form.listWidget_objectifs.item(idx).setIcon(QtGui.QIcon(os.path.join(moocWB_icons_path , 'dialog-apply.svg')))
                 idx += 1
@@ -243,6 +254,7 @@ class Ui_Manager():
 
 class Ui_MoocChooser(QtWidgets.QDialog):
     '''The FreeCAD Player chooser interface'''
+
     def setupUi(self, MoocPlayerChooser):
         MoocPlayerChooser.setObjectName("MoocPlayerChooser")
         MoocPlayerChooser.resize(324, 339)
@@ -270,7 +282,7 @@ class Ui_MoocChooser(QtWidgets.QDialog):
         QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("accepted()"), MoocPlayerChooser.accept)
         QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("rejected()"), MoocPlayerChooser.reject)
         QtCore.QObject.connect(self.listWidget_trainings, QtCore.SIGNAL("itemDoubleClicked(QListWidgetItem *)"), MoocPlayerChooser.launch_mooc)
-        QtCore.QObject.connect(self.listWidget_trainings, QtCore.SIGNAL("itemClicked(QListWidgetItem *)"), MoocPlayerChooser.get_description)
+        QtCore.QObject.connect(self.listWidget_trainings, QtCore.SIGNAL("itemClicked(QListWidgetItem *)"), MoocPlayerChooser.display_lesson_description)
         QtCore.QMetaObject.connectSlotsByName(MoocPlayerChooser)
 
         self.show()
@@ -283,66 +295,61 @@ class Ui_MoocChooser(QtWidgets.QDialog):
     def accept(self):
         self.launch_mooc(self.listWidget_trainings.currentItem())
 
-    def get_lessons_title_list(self):
-        self.lessons_infos_list = []
-        moocWBpath = os.path.dirname(moocwb_locator.__file__)
-        moocWBpath_lessons = os.path.join(moocWBpath, 'lessons')
+    def get_lessons_list(self):
+        moocWB_path = os.path.dirname(moocwb_locator.__file__)
+        moocWBpath_lessons = os.path.join(moocWB_path, 'lessons')
         onlyfiles = [f for f in listdir(moocWBpath_lessons) if isfile(join(moocWBpath_lessons, f))]
         onlyfiles.sort()
-        #print(onlyfiles)
-
+        self.lessons_list = []
         for lesson in onlyfiles:
             name = lesson.split('.')[0]
             path = os.path.join(moocWBpath_lessons, lesson)
             spec = importlib.util.spec_from_file_location(name, path)
             foo = importlib.util.module_from_spec(spec)
             spec.loader.exec_module(foo)
-            self.lessons_infos_list.append([foo.get_title(),foo.get_description(),foo])
-            '''print(foo.get_title())
-            print(foo.get_description())
-            print(foo.__title__)'''
+            self.lessons_list.append(foo.lesson())
 
-            self.listWidget_trainings.addItem(foo.get_title())
+        # return lessons_list
 
-    def get_description(self, item):
+    def get_lessons_title_list(self):
+        self.get_lessons_list()
+        for lesson in self.lessons_list:
+            self.listWidget_trainings.addItem(lesson.get_title())
+
+    def display_lesson_description(self, item):
         # get the row number from item
         row = self.listWidget_trainings.row(item)
-        # display descritpion in label from lessons list
-        self.label_description.setText(self.lessons_infos_list[row][1])
+        # description is
+        desc = self.lessons_list[row].get_description()
+        # display descritpion in label_description
+        self.label_description.setText(desc)
 
     def launch_mooc(self, item):
         row = self.listWidget_trainings.row(item)
+        lesson = self.lessons_list[row]
         self.close()
-        # import MoocPlayer
-        import MoocPlayer
-        # make sure MoocPlayer is reloaded
-        try :
-            reload(MoocPlayer)
-        except NameError:
-            import importlib
-            importlib.reload(MoocPlayer)
-        lesson = self.lessons_infos_list[row][2]
-        MoocPlayer.Ui_Manager(lesson)
+        Manager_MoocPlayer(lesson)
 
 
-class MoocChooser():
-        "class to choose the lesson"
-        def GetResources(self):
-            moocWBpath = os.path.dirname(moocwb_locator.__file__)
-            moocWBpath_medias = os.path.join(moocWBpath, 'medias')
-            moocWB_icons_path = os.path.join( moocWBpath_medias, 'icons')
-            return {'Pixmap'  : os.path.join( moocWB_icons_path , 'mooc-player.svg'),
-                    'MenuText': QtCore.QT_TRANSLATE_NOOP(u"Mooc","Voir un tutoriel."),
-                    'ToolTip': QtCore.QT_TRANSLATE_NOOP(u"Mooc","Permet de choisir et voir un tutoriel interactif.")}
+class Command_MoocChooser():
+    "class to choose the lesson"
 
-        def IsActive(self):
-            return True
+    def GetResources(self):
+        moocWB_path = os.path.dirname(moocwb_locator.__file__)
+        moocWB_medias_path = os.path.join(moocWB_path, 'medias')
+        moocWB_icons_path = os.path.join(moocWB_medias_path, 'icons')
+        return {'Pixmap': os.path.join(moocWB_icons_path, 'mooc-player.svg'),
+                'MenuText': QtCore.QT_TRANSLATE_NOOP(u"Mooc", "Voir un tutoriel."),
+                'ToolTip': QtCore.QT_TRANSLATE_NOOP(u"Mooc", "Permet de choisir et voir un tutoriel interactif.")}
 
-        def Activated(self):
-            form = Ui_MoocChooser()
-            form.setupUi(form)
-            form.exec_()
+    def IsActive(self):
+        return True
+
+    def Activated(self):
+        form = Ui_MoocChooser()
+        form.setupUi(form)
+        form.exec_()
 
 
 if app.GuiUp:
-    gui.addCommand('Mooc_Player', MoocChooser())
+    gui.addCommand('Mooc_Player', Command_MoocChooser())

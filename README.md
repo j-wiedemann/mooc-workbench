@@ -115,3 +115,62 @@ Quand l'évaluation vous satisfait vous pouvez transmettre les résultats en cli
 Une fenêtre s'ouvre avec une chaine de caratère qu'il faut copier/coller dans votre espace MOOC. Vous pouvez cliquer sur le bouton **Copier** pour copier la chaine de caractère dans le presse papier. Il vous restera juste à le coller (clic droit coller ou avec le raccouris Ctrl+V).
 
 <img src="/medias/images/CopyPasteResult.png" width=45% >
+
+## Créer un tutoriel
+
+Dans le dossier "lessons" de l'atelier, faites une copie du fichier "Template Lesson.py".
+
+Renommé le avec un nouveau nom en gardant l"extension ".py".
+
+Ensuite il faut l'éditer :
+
+ligne 26
+
+    __author__ = "Votre nom"
+
+ligne 41
+
+        self.data_tutorial["title"] = "Le titre comme il apparaît dans la liste."
+
+ligne 42
+
+        self.data_tutorial["description"] = '''Mettre ICI la description du tutoriel : \
+        On met un slashback "\" à la  fin des lignes dans le code \
+        et on peut mettre "\n" pour faire un retour à la ligne.'''
+
+Ensuite il faut copié collé le code de la ligne 44 à 56 autant de fois qu'il y a d'étapes dans votre tutoriel.
+
+Une étape complète :
+    # Step 1
+    step = {}
+    img1 = os.path.join(self.moocWB_icons_path, "Document-new.svg")
+    step["video"] = "https://open.tube/videos/embed/f5773731-9864-470b-a3d5-9e805c419f96?start=0m00s"
+    step["objectives"] = ["Create a new document.",]
+    step["checks"] = ["MoocChecker.document_presence()",]
+
+    step["description"] = """<h3>Preparation</h3>
+        <p><img src= %s width="25"/> Create a new document :
+        <ul><li>with menu <i>File</i> then <i>New.</li>
+        <li>with the shortcut Ctrl + N</li></ul></p> """ % (img1, )
+
+    self.data_tutorial["steps"].append(step)
+
+
+Ajouter des variable pour les icônes et les images :
+
+    img1 = os.path.join(self.moocWB_icons_path, "icone.svg")
+    img2 = os.path.join(self.moocWB_images_path, "image.png")
+
+Définir le lien vers la vidéo de l'étape :
+
+    step["video"] = "https://lien_vers_la_video.com?start=0m00s"
+
+La liste des objectifs à atteindre (les lignes qui passent de rouge à vert) :
+
+    step["objectives"] = ["Objectif 1.",]
+
+Les commandes à effectuer pour vérifier les objectifs :
+
+    step["checks"] = ["MoocChecker.document_presence()",]
+
+Pour les commandes il faut étudier le fichier MoocChecker.py qui contient de nombreuse fonctions de vérification.
