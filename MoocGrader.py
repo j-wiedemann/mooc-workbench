@@ -28,7 +28,7 @@ __author__ = "Jonathan Wiedemann"
 __url__ = "http://www.freecadweb.org"
 
 # to make GUI
-from PySide2 import QtCore, QtGui, QtWidgets
+from PySide import QtCore, QtGui
 
 # to handle resources paths
 import os
@@ -66,6 +66,8 @@ def make_b64_hash(grader_dict):
     encoded_grader = base64.b64encode(grader_export_str.encode())
     return encoded_grader
 
+
+QtWidgets = QtGui
 
 class Ui_FreeCADGrader(QtWidgets.QDialog):
     def __init__(self, parent=gui.getMainWindow()):

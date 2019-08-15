@@ -64,8 +64,6 @@ class MoocWorkbench(Workbench):
 
     def Activated(self):
         "This function is executed when the workbench is activated"
-        # import MoocInformations
-        # MoocInformations.checkMoocWBVersion(MOOC_VERSION) #deactivated version check
         print('Activated MoocWorkbench... done')
         return
 

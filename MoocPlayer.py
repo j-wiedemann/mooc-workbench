@@ -28,7 +28,7 @@ __author__ = "Jonathan Wiedemann"
 __url__ = "http://www.freecadweb.org"
 
 # import pyside2 module for ui
-from PySide2 import QtCore, QtGui, QtWidgets
+from PySide import QtCore, QtGui
 
 # for handling paths
 import os
@@ -76,6 +76,7 @@ moocWB_path = os.path.dirname(moocwb_locator.__file__)
 moocWB_medias_path = os.path.join(moocWB_path, 'medias')
 moocWB_icons_path = os.path.join(moocWB_medias_path, 'icons')
 
+QtWidgets = QtGui
 
 class Ui_MoocPlayer(QtWidgets.QDialog):
     '''The FreeCAD Player interface'''
