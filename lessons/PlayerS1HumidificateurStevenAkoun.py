@@ -44,6 +44,7 @@ class lesson(object):
         self.data_tutorial["description"] = '''[FR] Part Design Primitives \
 Semaine 1 : \nCette semaine nous allons voir comment modéliser \
 l'humidificateur de Steven avec des formes primitives uniquement.'''
+        url = 'https://open.tube/videos/embed/f5773731-9864-470b-a3d5-9e805c419f96'
         self.data_tutorial["steps"] = []
 
         # Step 1
@@ -64,7 +65,7 @@ l'humidificateur de Steven avec des formes primitives uniquement.'''
             <li>à l'aide du sélecteur de style de navigation dans la barre de status en bas à droite de la fenêtre.</li> \
             </ul></p> ''' % (img1, img2, img3)
 
-        step["video"] = 'https://open.tube/videos/embed/f5773731-9864-470b-a3d5-9e805c419f96?start=0m00s'
+        step["video"] = str(url) + str('?start=0m00s')
         step["objectives"] = ["Créer un nouveau document.", "Basculer dans l'atelier PartDesign.", "Mode de navigation : Gesture"]
         step["checks"] = [
             "MoocChecker.document_presence()",
@@ -83,12 +84,12 @@ l'humidificateur de Steven avec des formes primitives uniquement.'''
             <li>à l'aide du lien dans l'onglet Tâche de la vue combinée.</li> \
             </ul></p>''' % (img1)
 
-        step["video"] = 'https://open.tube/videos/embed/f5773731-9864-470b-a3d5-9e805c419f96?start=1m03s'
+        step["video"] = str(url) + str('?start=1m03s')
         step["objectives"] = ["1 Corps de piece"]
         step["checks"] = ["MoocChecker.body_presence()"]
         self.data_tutorial["steps"].append(step)
 
-        #step 3
+        # Step 3
         step = {}
         img1 = os.path.join(moocWB_icons_path, 'PartDesign_Additive_Box.svg')
         step["description"] = u'''<h3>Cube additif</h3>
@@ -105,16 +106,16 @@ l'humidificateur de Steven avec des formes primitives uniquement.'''
             pièce en cliquant sur le plan XY dans la vue 3D.</p>
             <p>On valide la tâche en cours en cliquant sur OK''' % (img1)
 
-        step["video"] = 'https://open.tube/videos/embed/f5773731-9864-470b-a3d5-9e805c419f96?start=2m23s'
+        step["video"] = str(url) + str('?start=2m23s')
         step["objectives"] = ["1 Cube additif (Box) 100 x 80 x 140 mm sur le plan XY"]
         step["checks"] = ["MoocChecker.primitive_presence(label='Box', typeId='PartDesign::AdditiveBox', dimensions=[100,80,140], support='XY_Plane', offset=[0,0,0,0,0,1,0])"]
         self.data_tutorial["steps"].append(step)
 
-        #step 4
+        # Step 4
         step = {}
         img1 = os.path.join(moocWB_icons_path, 'PartDesign_Additive_Cylinder.svg')
         step["description"] = u'''<h3>Cylindre additif</h3> \
-            <p>Ensuite nous allons ajouter des cylindres pour faire les bords arrondi de l'objet.</p>
+            <p>Ensuite nous allons ajouter des cylindres pour faire les bords arrondis de l'objet.</p>
             <p><img src= %s width="25"/> Créer un cylindre additif :
             <ul><li>à l'aide du menu <i>Part Design</i> puis
             <i>Créer une primitive additive</i> puis <i>Cylindre additif</i>.</li>
@@ -125,19 +126,19 @@ l'humidificateur de Steven avec des formes primitives uniquement.'''
             <p>Maintenant nous allons attacher la primitive au plan XY du corps de
             pièce en cliquant sur le plan XY dans la vue 3D.</p>
             <p>Pour déplacer le cylindre à la position désirée nous allons
-            compenser la position de la primitives par rapport à sa référence.
-            On peut faire ça dans le panneau Compensation d'accrochage en paramétrant les valeures suivantes :
+            compenser la position de la primitive par rapport à sa référence.
+            On peut faire ça dans le panneau Compensation d'accrochage en paramétrant les valeurs suivantes :
             <ul><li>X = 0 mm</li>
             <li>Y = 40 mm</li>
             <li>Z = 0 mm</li></ul></p>
             <p>On valide la tâche en cours en cliquant sur OK''' % ( img1 )
 
-        step["video"] = 'https://open.tube/videos/embed/f5773731-9864-470b-a3d5-9e805c419f96?start=3m32s'
+        step["video"] = str(url) + str('?start=3m32s')
         step["objectives"] = ["1 Cylindre additif (Cylindre) Ø80 x 140 mm sur le plan XY et décalé de 40 mm selon Y."]
         step["checks"] = ["MoocChecker.primitive_presence(label='Cylinder', typeId='PartDesign::AdditiveCylinder', dimensions=[40,140], support='XY_Plane', offset=[0,40,0,0,0,1,0])"]
         self.data_tutorial["steps"].append(step)
 
-        #step 5
+        # Step 5
         step = {}
         img1 = os.path.join(moocWB_icons_path, 'PartDesign_Additive_Cylinder.svg')
         step["description"] = u'''<h3>Cylindre additif</h3> \
@@ -152,13 +153,13 @@ l'humidificateur de Steven avec des formes primitives uniquement.'''
             <li>Hauteur = 140 mm</li></ul></p>
             <p>Maintenant nous allons attacher la primitive au plan XY du corps de
             pièce en cliquant sur le plan XY dans la vue 3D.</p>
-            <p> Enfin il faut compenser la position de la primitives par rapport à sa référence :
+            <p> Enfin il faut compenser la position de la primitive par rapport à sa référence :
             <ul><li>X = 100 mm</li>
             <li>Y = 40 mm</li>
             <li>Z = 0 mm</li></ul></p>
             <p>On valide la tâche en cours en cliquant sur OK''' % ( img1 )
 
-        step["video"] = 'https://open.tube/videos/embed/f5773731-9864-470b-a3d5-9e805c419f96?start=4m21s'
+        step["video"] = str(url) + str('?start=4m21s')
         step["objectives"] = ["1 Cylindre additif Ø80 x 140 mm"]
         step["checks"] = ["MoocChecker.primitive_presence(label='Cylinder001', typeId='PartDesign::AdditiveCylinder', dimensions=[40,140], support='XY_Plane', offset=[100,40,0,0,0,1,0])"]
         self.data_tutorial["steps"].append(step)
@@ -178,13 +179,13 @@ l'humidificateur de Steven avec des formes primitives uniquement.'''
             <li>Hauteur = 20 mm</li></ul></p>
             <p>Maintenant nous allons attacher la primitive au plan XY du corps de
             pièce en cliquant sur le plan XY dans la vue 3D.</p>
-            <p> Enfin il faut compenser la position de la primitives par rapport à sa référence :
+            <p> Enfin il faut compenser la position de la primitive par rapport à sa référence :
             <ul><li>X = 10 mm</li>
             <li>Y = 0 mm</li>
             <li>Z = 0 mm</li></ul></p>
             <p>On valide la tâche en cours en cliquant sur OK''' % (img1)
 
-        step["video"] = 'https://open.tube/videos/embed/f5773731-9864-470b-a3d5-9e805c419f96?start=4m52s'
+        step["video"] = str(url) + str('?start=4m52s')
         step["objectives"] = ["1 Cube soustractif de 80 x 80 x 20 mm" ]
         step["checks"] = ["MoocChecker.primitive_presence(label='Box001', typeId='PartDesign::SubtractiveBox', dimensions=[80,80,20], support='XY_Plane', offset=[10.0,0.0,0.0,0.0,0.0,1.0,0.0])"]
         self.data_tutorial["steps"].append(step)
@@ -203,13 +204,13 @@ l'humidificateur de Steven avec des formes primitives uniquement.'''
             <li>Hauteur = 30 mm</li></ul></p>
             <p>Maintenant nous allons attacher la primitive au plan XY du corps de
             pièce en cliquant sur le plan XY dans la vue 3D.</p>
-            <p> Enfin il faut compenser la position de la primitives par rapport à sa référence :
+            <p> Enfin il faut compenser la position de la primitive par rapport à sa référence :
             <ul><li>X = 0 mm</li>
             <li>Y = 40 mm</li>
             <li>Z = 110 mm</li></ul></p>
             <p>On valide la tâche en cours en cliquant sur OK''' % (img1)
 
-        step["video"] = 'https://open.tube/videos/embed/f5773731-9864-470b-a3d5-9e805c419f96?start=5m38s'
+        step["video"] = str(url) + str('?start=5m38s')
         step["objectives"] = ["1 cylindre soustractif de Ø72 x 30 mm."]
         step["checks"] = ["MoocChecker.primitive_presence(label='Cylinder002', typeId='PartDesign::SubtractiveCylinder', dimensions=[36,30], support='XY_Plane', offset=[0,40,110,0,0,1,0])"]
         self.data_tutorial["steps"].append(step)
@@ -228,13 +229,13 @@ l'humidificateur de Steven avec des formes primitives uniquement.'''
             <li>Hauteur = 30 mm</li></ul></p>
             <p>Maintenant nous allons attacher la primitive au plan XY du corps de
             pièce en cliquant sur le plan XY dans la vue 3D.</p>
-            <p> Enfin il faut compenser la position de la primitives par rapport à sa référence :
+            <p> Enfin il faut compenser la position de la primitive par rapport à sa référence :
             <ul><li>X = 100 mm</li>
             <li>Y = 40 mm</li>
             <li>Z = 110 mm</li></ul></p>
             <p>On valide la tâche en cours en cliquant sur OK''' % (img1)
 
-        step["video"] = 'https://open.tube/videos/embed/f5773731-9864-470b-a3d5-9e805c419f96?start=6m20s'
+        step["video"] = str(url) + str('?start=6m20s')
         step["objectives"] = ["1 cylindre soustractif de Ø72 x 30 mm."]
         step["checks"] = ["MoocChecker.primitive_presence(label='Cylinder003', typeId='PartDesign::SubtractiveCylinder', dimensions=[36,30], support='XY_Plane', offset=[100,40,110,0,0,1,0])"]
         self.data_tutorial["steps"].append(step)
@@ -243,7 +244,7 @@ l'humidificateur de Steven avec des formes primitives uniquement.'''
         step = {}
         img1 = os.path.join(moocWB_icons_path, 'PartDesign_Subtractive_Box.svg')
         step["description"] = u'''<h3>Cube soustractif</h3>
-            <p>Pour enlever de la matière entre les deux trous cylindrique nous allons ajouter un cube soustractif.</p>
+            <p>Pour enlever de la matière entre les deux trous cylindriques nous allons ajouter un cube soustractif.</p>
             <p><img src= %s width="25"/> Créer un cube soustractif :
             <ul><li>à l'aide du menu <i>Part Design</i> puis
             <i>Créer une primitive soustractive</i> puis <i>Cube soustractif</i>.</li>
@@ -254,13 +255,13 @@ l'humidificateur de Steven avec des formes primitives uniquement.'''
             <li>Hauteur = 30 mm</li></ul></p>
             <p>Maintenant nous allons attacher la primitive au plan XY du corps de
             pièce en cliquant sur le plan XY dans la vue 3D.</p>
-            <p> Enfin il faut compenser la position de la primitives par rapport à sa référence :
+            <p> Enfin il faut compenser la position de la primitive par rapport à sa référence :
             <ul><li>X = 0 mm</li>
             <li>Y = 4 mm</li>
             <li>Z = 110 mm</li></ul></p>
             <p>On valide la tâche en cours en cliquant sur OK''' % (img1)
 
-        step["video"] = 'https://open.tube/videos/embed/f5773731-9864-470b-a3d5-9e805c419f96?start=6m51s'
+        step["video"] = str(url) + str('?start=6m51s')
         step["objectives"] = [u"1 cube soustractif de 100 x 72 x 30 mm."]
         step["checks"] = ["MoocChecker.primitive_presence(label='Box002', typeId='PartDesign::SubtractiveBox', dimensions=[100,72,30], support='XY_Plane', offset=[0,4,110,0,0,1,0])"]
         self.data_tutorial["steps"].append(step)
@@ -268,16 +269,16 @@ l'humidificateur de Steven avec des formes primitives uniquement.'''
         # Step 10
         step = {}
         img1 = os.path.join(moocWB_icons_path, 'PartDesign_Fillet.svg')
-        step["description"] = u'''<h3>Faire une congé</h3> \
+        step["description"] = u'''<h3>Faire un congé</h3> \
             <p>Pour arrondir les angles en bas de la pièce nous allons utiliser
-            l'outil Congé qui créer un arrondi sur les arêtes sélectionné et selon le rayon demandé.</p>
+            l'outil Congé qui créer un arrondi sur les arêtes sélectionnées et selon le rayon demandé.</p>
             <p>On sélectionne plusieurs arêtes à l'aide de la touche Ctrl (sur Windows et Linux) ou de la touche Cmd ⌘ (sur Mac).</p>
             <p><img src= %s width="25"/> Créer un congé :
             <ul><li>Sélectionner les arêtes à arrondir.</li>
             <li>à l'aide du menu <i>Part Design</i> puis
             <i>Congé</i>.</li></ul><p>''' % (img1)
 
-        step["video"] = 'https://open.tube/videos/embed/f5773731-9864-470b-a3d5-9e805c419f96?start=7m47s'
+        step["video"] = str(url) + str('?start=7m47s')
         step["objectives"] = ["1 congé de 9 mm de rayon"]
         step["checks"] = ["MoocChecker.fillet_presence(label='Fillet', radius=9)"]
         self.data_tutorial["steps"].append(step)
@@ -292,7 +293,7 @@ l'humidificateur de Steven avec des formes primitives uniquement.'''
             <li>à l'aide du raccourcis <b>Ctrl+Maj+S</b></li></lu></p> \
             <p><img src=%s width="360"/></p>''' % (img1, img2)
 
-        step["video"] = 'https://open.tube/videos/embed/f5773731-9864-470b-a3d5-9e805c419f96?start=9m45s'
+        step["video"] = str(url) + str('?start=9m45s')
         step["objectives"] = [u"1 Sauvegarder le document sous le nom Humidificateur."]
         step["checks"] = ["MoocChecker.document_save('Humidificateur')"]
         self.data_tutorial["steps"].append(step)
