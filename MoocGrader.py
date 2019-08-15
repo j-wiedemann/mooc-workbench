@@ -27,14 +27,14 @@ __title__ = "MOOC Workbench"
 __author__ = "Jonathan Wiedemann"
 __url__ = "http://www.freecadweb.org"
 
-# import pyside2 module for ui
+# to make GUI
 from PySide2 import QtCore, QtGui, QtWidgets
 
-# for handling paths
+# to handle resources paths
 import os
 import moocwb_locator
 
-# for loading module from path
+# to load module from path
 from os import listdir
 from os.path import isfile, join
 import importlib.util
@@ -43,14 +43,18 @@ import importlib.util
 import FreeCAD as app
 import FreeCADGui as gui
 
+# to hash results
 import datetime
 import base64
 
+# to open instructions in PDF
+import webbrowser
 
 moocWB_path = os.path.dirname(moocwb_locator.__file__)
 moocWB_medias_path = os.path.join(moocWB_path, 'medias')
 moocWB_icons_path = os.path.join(moocWB_medias_path, 'icons')
-
+moocWB_exercises_path = os.path.join(moocWB_path, 'exercises')
+moocWB_instructions_path = os.path.join(moocWB_medias_path, 'instructions')
 
 def make_b64_hash(grader_dict):
     # construction du hash de l'évaluation
@@ -84,6 +88,9 @@ class Ui_FreeCADGrader(QtWidgets.QDialog):
         self.comboBox = QtWidgets.QComboBox(self)
         self.comboBox.setObjectName("comboBox")
         self.verticalLayout.addWidget(self.comboBox)
+        self.pushButton_show_instructions = QtWidgets.QPushButton(self)
+        self.pushButton_show_instructions.setObjectName("pushButton_show_instructions")
+        self.verticalLayout.addWidget(self.pushButton_show_instructions)
         self.label_3 = QtWidgets.QLabel(self)
         self.label_3.setObjectName("label_3")
         self.verticalLayout.addWidget(self.label_3)
@@ -138,6 +145,7 @@ class Ui_FreeCADGrader(QtWidgets.QDialog):
         self.pushButton.clicked.connect(self.eval_button)
         self.pushButton_2.clicked.connect(self.show_hash)
         self.pushButton_refresh_docList.clicked.connect(self.fill_comboBox_2)
+        self.pushButton_show_instructions.clicked.connect(self.show_instructions)
 
     def retranslateUi(self, FreeCADGrader):
         FreeCADGrader.setWindowTitle(QtWidgets.QApplication.translate("FreeCADGrader", "FreeCAD Grader", None, -1))
@@ -147,6 +155,7 @@ class Ui_FreeCADGrader(QtWidgets.QDialog):
         self.pushButton.setText(QtWidgets.QApplication.translate("FreeCADGrader", "Lancer l\'évaluation", None, -1))
         self.label_4.setText(QtWidgets.QApplication.translate("FreeCADGrader", "2. Résultats", None, -1))
         self.pushButton_2.setText(QtWidgets.QApplication.translate("FreeCADGrader", "Envoyer les résultats", None, -1))
+        self.pushButton_show_instructions.setText(QtWidgets.QApplication.translate("FreeCADGrader", "Voir les instructions", None, -1))
 
     def fill_comboBox_2(self):
         self.comboBox_2.clear()
@@ -183,7 +192,6 @@ class Ui_FreeCADGrader(QtWidgets.QDialog):
         print("grader launch")
         self.listWidget.clear()
         mooc_session = self.comboBox.currentIndex()
-
         exercise = self.exercises_infos_list[mooc_session][2]
         grader_result = exercise.grader(doc_name)
 
@@ -229,18 +237,28 @@ class Ui_FreeCADGrader(QtWidgets.QDialog):
 
     def get_exercises_title_list(self):
         self.exercises_infos_list = []
-        moocWB_exercises_path = os.path.join(moocWB_path, 'exercises')
+        #moocWB_exercises_path = os.path.join(moocWB_path, 'exercises')
         onlyfiles = [f for f in listdir(moocWB_exercises_path) if isfile(join(moocWB_exercises_path, f))]
         onlyfiles.sort()
+        print(onlyfiles)
         for exercise in onlyfiles:
             name = exercise.split('.')[0]
+            print(name)
             path = os.path.join(moocWB_exercises_path, exercise)
+            print(path)
             spec = importlib.util.spec_from_file_location(name, path)
+            print(spec)
             foo = importlib.util.module_from_spec(spec)
+            print(foo)
             spec.loader.exec_module(foo)
-            self.exercises_infos_list.append([foo.get_title(), foo.get_description(), foo])
+            self.exercises_infos_list.append([foo.get_title(), foo.get_description(), foo, foo.get_instructions()])
             self.comboBox.addItem(foo.get_title())
 
+    def show_instructions(self):
+        mooc_session = self.comboBox.currentIndex()
+        instructions = self.exercises_infos_list[mooc_session][3]
+        file = os.path.join(moocWB_instructions_path, str(instructions))
+        webbrowser.open(file)
 
 class Ui_FreeCADGraderResults(QtWidgets.QDialog):
     def __init__(self, parent=None):
