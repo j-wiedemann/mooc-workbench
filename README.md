@@ -145,6 +145,7 @@ Ligne 43 : renseigner le lien vers la vidéo
 Ensuite il faut copié collé le code de la ligne 45 à 57 autant de fois qu'il y a d'étapes dans votre tutoriel.
 
 Une étape complète :
+
     # Step 1
     step = {}
     img1 = os.path.join(self.moocWB_icons_path, "Document-new.svg")
