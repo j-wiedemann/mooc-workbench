@@ -237,19 +237,14 @@ class Ui_FreeCADGrader(QtWidgets.QDialog):
 
     def get_exercises_title_list(self):
         self.exercises_infos_list = []
-        #moocWB_exercises_path = os.path.join(moocWB_path, 'exercises')
         onlyfiles = [f for f in listdir(moocWB_exercises_path) if isfile(join(moocWB_exercises_path, f))]
         onlyfiles.sort()
         print(onlyfiles)
         for exercise in onlyfiles:
             name = exercise.split('.')[0]
-            print(name)
             path = os.path.join(moocWB_exercises_path, exercise)
-            print(path)
             spec = importlib.util.spec_from_file_location(name, path)
-            print(spec)
             foo = importlib.util.module_from_spec(spec)
-            print(foo)
             spec.loader.exec_module(foo)
             self.exercises_infos_list.append([foo.get_title(), foo.get_description(), foo, foo.get_instructions()])
             self.comboBox.addItem(foo.get_title())
