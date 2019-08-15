@@ -23,7 +23,7 @@
 #
 ################################################
 
-__title__="MOOC Workbench"
+__title__ = "MOOC Workbench"
 __author__ = "Jonathan Wiedemann"
 __url__ = "http://www.freecadweb.org"
 
@@ -31,7 +31,8 @@ __url__ = "http://www.freecadweb.org"
 from PySide2 import QtCore, QtGui, QtWidgets
 
 # for handling paths
-import os, moocwb_locator
+import os
+import moocwb_locator
 
 # for loading module from path
 from os import listdir
@@ -45,20 +46,20 @@ import FreeCADGui as gui
 import datetime
 import base64
 
-moocWBpath = os.path.dirname(moocwb_locator.__file__)
-moocWBpath_medias = os.path.join(moocWBpath, 'medias')
-moocWB_icons_path = os.path.join( moocWBpath_medias, 'icons')
+
+moocWB_path = os.path.dirname(moocwb_locator.__file__)
+moocWB_medias_path = os.path.join(moocWB_path, 'medias')
+moocWB_icons_path = os.path.join(moocWB_medias_path, 'icons')
+
 
 def make_b64_hash(grader_dict):
     # construction du hash de l'évaluation
     now = datetime.datetime.now()
-    grader_export = [ now.year, now.month, now.day, now.hour, now.minute, now.second ]
+    grader_export = [now.year, now.month, now.day, now.hour, now.minute, now.second]
     for note in grader_dict:
         grader_export.append(note)
     grader_export_str = ''.join(map(str, grader_export))
     encoded_grader = base64.b64encode(grader_export_str.encode())
-    # impression de la chaine de caractere à coller
-    #print(encoded_grader.decode())
     return encoded_grader
 
 
@@ -96,7 +97,6 @@ class Ui_FreeCADGrader(QtWidgets.QDialog):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.comboBox_2.sizePolicy().hasHeightForWidth())
         self.comboBox_2.setSizePolicy(sizePolicy)
-        #TODO: set QtWidgets.QSizePolicy.Expanding
         self.horizontalLayout_docs_row.addWidget(self.comboBox_2)
 
         self.pushButton_refresh_docList = QtWidgets.QPushButton(self)
@@ -123,7 +123,6 @@ class Ui_FreeCADGrader(QtWidgets.QDialog):
         self.listWidget = QtWidgets.QListWidget(self)
         self.listWidget.setObjectName("listWidget")
         self.listWidget.setSelectionMode(QtWidgets.QAbstractItemView.SelectionMode.NoSelection)
-        #self.listWidget.setResizeMode(QtWidgets.QListView.Adjust)
         self.verticalLayout_2.addWidget(self.listWidget)
         self.pushButton_2 = QtWidgets.QPushButton(self)
         self.pushButton_2.setObjectName("pushButton_2")
@@ -149,23 +148,22 @@ class Ui_FreeCADGrader(QtWidgets.QDialog):
         self.label_4.setText(QtWidgets.QApplication.translate("FreeCADGrader", "2. Résultats", None, -1))
         self.pushButton_2.setText(QtWidgets.QApplication.translate("FreeCADGrader", "Envoyer les résultats", None, -1))
 
-
     def fill_comboBox_2(self):
         self.comboBox_2.clear()
         self.listWidget.clear()
         self.grader_messages = None
         self.grader_notes = None
         document_list = app.listDocuments()
-        if len(document_list)> 0 :
+        if len(document_list) > 0 :
             n = 0
             for doc in document_list.items():
                 self.comboBox_2.addItem(doc[1].Label)
                 n += 1
         else:
-            self.comboBox_2.addItem(u"Il n'y a pas de document à évaluer.")
+            self.comboBox_2.addItem("Il n'y a pas de document à évaluer.")
 
     def eval_button(self):
-        print(u"Eval button clicked")
+        print("Eval button clicked")
         doc_name = None
         document_list = app.listDocuments()
         for doc in document_list.items():
@@ -177,15 +175,14 @@ class Ui_FreeCADGrader(QtWidgets.QDialog):
             self.grader_notes = None
             self.listWidget.clear()
             msgBox = QtWidgets.QMessageBox()
-            msgBox.setText(u"Il n'y aucun document à évaluer !")
-            msgBox.setText(u"Veuillez ouvrir un document et relancer FreeCAD Grader")
+            msgBox.setText("Il n'y aucun document à évaluer !")
+            msgBox.setText("Veuillez ouvrir un document et relancer FreeCAD Grader")
             msgBox.exec_()
 
     def grader_launch(self, doc_name):
-        print(u"grader launch")
+        print("grader launch")
         self.listWidget.clear()
         mooc_session = self.comboBox.currentIndex()
-        #document_label = self.comboBox_2.currentText()
 
         exercise = self.exercises_infos_list[mooc_session][2]
         grader_result = exercise.grader(doc_name)
@@ -198,7 +195,6 @@ class Ui_FreeCADGrader(QtWidgets.QDialog):
         if grader_result :
             self.grader_messages = grader_result["messages"]
             self.grader_notes = grader_result["notes"]
-            #print(self.grader_notes)
             n = 0
             for msg in self.grader_messages:
                 self.listWidget.addItem(msg)
@@ -214,43 +210,41 @@ class Ui_FreeCADGrader(QtWidgets.QDialog):
             print("No results")
             self.grader_notes = None
             msgBox = QtWidgets.QMessageBox()
-            msgBox.setText(u"Cela n'a donné aucun résultat :(")
+            msgBox.setText("Cela n'a donné aucun résultat :(")
             msgBox.exec_()
 
     def show_hash(self):
-        if self.grader_notes :
+        if self.grader_notes:
             code = make_b64_hash(self.grader_notes)
             dialog = Ui_FreeCADGraderResults()
             dialog.lineEdit.setText(code.decode())
             dialog.exec_()
         else:
             msgBox = QtWidgets.QMessageBox()
-            msgBox.setText(u"Veuillez d'abord lancer l'évaluation pour obtenir des résultats.")
+            msgBox.setText("Veuillez d'abord lancer l'évaluation pour obtenir des résultats.")
             msgBox.exec_()
 
-    def closeEvent(self,event):
-        print(u"Closing FreeCAD Grader")
+    def closeEvent(self, event):
+        print("Closing FreeCAD Grader")
 
     def get_exercises_title_list(self):
         self.exercises_infos_list = []
-        moocWBpath = os.path.dirname(moocwb_locator.__file__)
-        moocWBpath_exercises = os.path.join(moocWBpath, 'exercises')
-        onlyfiles = [f for f in listdir(moocWBpath_exercises) if isfile(join(moocWBpath_exercises, f))]
+        moocWB_exercises_path = os.path.join(moocWB_path, 'exercises')
+        onlyfiles = [f for f in listdir(moocWB_exercises_path) if isfile(join(moocWB_exercises_path, f))]
         onlyfiles.sort()
         for exercise in onlyfiles:
             name = exercise.split('.')[0]
-            path = os.path.join(moocWBpath_exercises, exercise)
+            path = os.path.join(moocWB_exercises_path, exercise)
             spec = importlib.util.spec_from_file_location(name, path)
             foo = importlib.util.module_from_spec(spec)
             spec.loader.exec_module(foo)
-            self.exercises_infos_list.append([foo.get_title(),foo.get_description(),foo])
+            self.exercises_infos_list.append([foo.get_title(), foo.get_description(), foo])
             self.comboBox.addItem(foo.get_title())
 
 
 class Ui_FreeCADGraderResults(QtWidgets.QDialog):
     def __init__(self, parent=None):
         super(Ui_FreeCADGraderResults, self).__init__(parent)
-        #def setupUi(self, FreeCADGraderResults):
         self.setObjectName("FreeCADGraderResults")
         self.resize(600, 150)
         self.verticalLayout = QtWidgets.QVBoxLayout(self)
@@ -288,13 +282,6 @@ class Ui_FreeCADGraderResults(QtWidgets.QDialog):
         self.label_clipboard_copy = QtWidgets.QLabel(self)
         self.label_clipboard_copy.setObjectName("label_clipboard_copy")
         self.verticalLayout.addWidget(self.label_clipboard_copy)
-        """
-        self.buttonBox = QtWidgets.QDialogButtonBox(self)
-        self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
-        self.buttonBox.setObjectName("buttonBox")
-        self.verticalLayout.addWidget(self.buttonBox)
-        """
-
         self.retranslateUi(self)
         QtCore.QMetaObject.connectSlotsByName(self)
 
@@ -307,33 +294,25 @@ class Ui_FreeCADGraderResults(QtWidgets.QDialog):
 
     def copy_to_clipboard(self):
         cb = QtGui.QClipboard()
-        #self.lineEdit.copy()
-        #cb = QtGui.QClipboard
-        #print
-        #cb.clear(QtGui.QClipboard.Clipboard)
         cb.setText(self.lineEdit.text())
         self.pushButton.setText(QtWidgets.QApplication.translate("FreeCADGraderResults", "Copié !", None, -1))
-        self.label_clipboard_copy.setText(QtWidgets.QApplication.translate("FreeCADGraderResults", u"Le code est copié dans le presse papier."
-                                                                          u" Coller le à l'aide d'un clic droit ou du"
-                                                                          u" raccourcis clavier CTRL+V.", None, -1))
+        self.label_clipboard_copy.setText(QtWidgets.QApplication.translate("FreeCADGraderResults", "Le code est copié dans le presse papier.\nColler le à l'aide d'un clic droit ou du raccourcis clavier CTRL+V.", None, -1))
 
 
 class MoocGraderCommand():
-        "command for the Grader"
-        def GetResources(self):
-            moocWBpath = os.path.dirname(moocwb_locator.__file__)
-            moocWBpath_medias = os.path.join(moocWBpath, 'medias')
-            moocWB_icons_path = os.path.join( moocWBpath_medias, 'icons')
-            return {'Pixmap'  : os.path.join( moocWB_icons_path , 'mooc-grader.svg'),
-                    'MenuText': QtCore.QT_TRANSLATE_NOOP(u"Mooc",u"Évaluer un exercice."),
-                    'ToolTip': QtCore.QT_TRANSLATE_NOOP(u"Mooc",u"Éxécute l'outil d'analyse et vérification d'un docment FreeCAD.")}
+    """command for the Grader"""
 
-        def IsActive(self):
-            return True
+    def GetResources(self):
+        return {'Pixmap': os.path.join(moocWB_icons_path, 'mooc-grader.svg'),
+                'MenuText': QtCore.QT_TRANSLATE_NOOP("Mooc", "Évaluer un exercice."),
+                'ToolTip': QtCore.QT_TRANSLATE_NOOP("Mooc", "Éxécute l'outil d'analyse et vérification d'un docment FreeCAD.")}
 
-        def Activated(self):
-            dialog = Ui_FreeCADGrader()
-            dialog.show()
+    def IsActive(self):
+        return True
+
+    def Activated(self):
+        dialog = Ui_FreeCADGrader()
+        dialog.show()
 
 
 if app.GuiUp:

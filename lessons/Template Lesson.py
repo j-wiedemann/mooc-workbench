@@ -36,14 +36,14 @@ class lesson(object):
     def __init__(self):
         moocWB_path = os.path.dirname(moocwb_locator.__file__)
         moocWB_medias_path = os.path.join(moocWB_path, "medias")
-        self.moocWB_icons_path = os.path.join(moocWB_medias_path, "icons")
+        moocWB_icons_path = os.path.join(moocWB_medias_path, "icons")
         self.data_tutorial = {}
         self.data_tutorial["title"] = "[Test] Test1"
         self.data_tutorial["description"] = """One test with one objective."""
         self.data_tutorial["steps"] = []
         # Step 1
         step = {}
-        img1 = os.path.join(self.moocWB_icons_path, "Document-new.svg")
+        img1 = os.path.join(moocWB_icons_path, "Document-new.svg")
         step["video"] = "https://open.tube/videos/embed/f5773731-9864-470b-a3d5-9e805c419f96?start=0m00s"
         step["objectives"] = ["Create a new document."]
         step["checks"] = ["MoocChecker.document_presence()"]

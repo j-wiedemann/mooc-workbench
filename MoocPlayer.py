@@ -49,12 +49,11 @@ import webbrowser
 # import MoocChecker
 import MoocChecker
 
-
-# for debug purposes
+# DEBUG variable
 DEBUG = True
 # DEBUG = False
 
-# make sure MoocChecker is reloaded
+# if DEBUG make sure MoocChecker is reloaded
 if DEBUG:
     try:
         reload(MoocChecker)
@@ -65,7 +64,7 @@ if DEBUG:
 
 def debug():
     if DEBUG:
-        print("debug")
+        print("DEBUG:ping TIMER")
 
 
 # set global timer

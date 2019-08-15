@@ -23,28 +23,30 @@
 #
 ################################################
 
-__title__="MOOC Workbench"
+__title__ = "MOOC Workbench"
 __author__ = "Jonathan Wiedemann"
 __url__ = "http://www.freecadweb.org"
 
 # for handling paths
-import os, moocwb_locator
+import os
+import moocwb_locator
 
 # import freecad and its gui
 import FreeCAD as app
 import FreeCADGui as gui
 
 global MOOC_VERSION
-MOOC_VERSION = 'V0.1.6'
+MOOC_VERSION = 'V0.2.0'
 
-moocWBpath = os.path.dirname(moocwb_locator.__file__)
-moocWBpath_medias = os.path.join(moocWBpath, 'medias')
-moocWB_icons_path = os.path.join(moocWBpath_medias, 'icons')
+moocWB_path = os.path.dirname(moocwb_locator.__file__)
+moocWB_medias_path = os.path.join(moocWB_path, 'medias')
+moocWB_icons_path = os.path.join(moocWB_medias_path, 'icons')
 
 global main_moocWB_Icon
-main_moocWB_Icon = os.path.join(moocWB_icons_path , 'mooc-workbench.svg')
+main_moocWB_Icon = os.path.join(moocWB_icons_path, 'mooc-workbench.svg')
 
-class MoocWorkbench ( Workbench ):
+
+class MoocWorkbench(Workbench):
 
     global main_moocWB_Icon
 
@@ -52,18 +54,19 @@ class MoocWorkbench ( Workbench ):
     ToolTip = "Learn FreeCAD"
     Icon = main_moocWB_Icon
 
-    def Initialize(self) :
+    def Initialize(self):
         "This function is executed when FreeCAD starts"
-        import MoocPlayer,  MoocGrader
-        self.appendToolbar('MOOC',['Mooc_Player','Mooc_Grader'])
-        self.appendMenu('MOOC',['Mooc_Player','Mooc_Grader'])
+        import MoocPlayer
+        import MoocGrader
+        self.appendToolbar('MOOC', ['Mooc_Player', 'Mooc_Grader'])
+        self.appendMenu('MOOC', ['Mooc_Player', 'Mooc_Grader'])
         print('Initialize MOOC module... done.')
 
     def Activated(self):
         "This function is executed when the workbench is activated"
-        import MoocInformations
-        #MoocInformations.checkMoocWBVersion(MOOC_VERSION) #deactivated version check
-        print(u'Activated MoocWorkbench... done')
+        # import MoocInformations
+        # MoocInformations.checkMoocWBVersion(MOOC_VERSION) #deactivated version check
+        print('Activated MoocWorkbench... done')
         return
 
     def Deactivated(self):
