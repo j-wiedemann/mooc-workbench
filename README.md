@@ -124,27 +124,31 @@ Renommé le avec un nouveau nom en gardant l"extension ".py".
 
 Ensuite il faut l'éditer :
 
-ligne 26
+Ligne 26 : renseigner votre nom
 
     __author__ = "Votre nom"
 
-ligne 41
+Ligne 41 : Changer le titre du cours.
 
         self.data_tutorial["title"] = "Le titre comme il apparaît dans la liste."
 
-ligne 42
+Ligne 42 : Changer la description du cours.
 
         self.data_tutorial["description"] = '''Mettre ICI la description du tutoriel : \
         On met un slashback "\" à la  fin des lignes dans le code \
         et on peut mettre "\n" pour faire un retour à la ligne.'''
 
-Ensuite il faut copié collé le code de la ligne 44 à 56 autant de fois qu'il y a d'étapes dans votre tutoriel.
+Ligne 43 : renseigner le lien vers la vidéo
+
+        url = "https://video_url.com"
+
+Ensuite il faut copié collé le code de la ligne 45 à 57 autant de fois qu'il y a d'étapes dans votre tutoriel.
 
 Une étape complète :
     # Step 1
     step = {}
     img1 = os.path.join(self.moocWB_icons_path, "Document-new.svg")
-    step["video"] = "https://open.tube/videos/embed/f5773731-9864-470b-a3d5-9e805c419f96?start=0m00s"
+    step["video"] = str(url) + "?start=0m00s"
     step["objectives"] = ["Create a new document.",]
     step["checks"] = ["MoocChecker.document_presence()",]
 
@@ -161,9 +165,9 @@ Ajouter des variable pour les icônes et les images :
     img1 = os.path.join(self.moocWB_icons_path, "icone.svg")
     img2 = os.path.join(self.moocWB_images_path, "image.png")
 
-Définir le lien vers la vidéo de l'étape :
+Définir l'horodotage de la vidéo :
 
-    step["video"] = "https://lien_vers_la_video.com?start=0m00s"
+    step["video"] = str(url) + "?start=0m00s"
 
 La liste des objectifs à atteindre (les lignes qui passent de rouge à vert) :
 
