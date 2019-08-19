@@ -32,12 +32,17 @@ from PySide import QtCore, QtGui
 
 # to handle resources paths
 import os
+import sys
 import moocwb_locator
 
 # to load module from path
 from os import listdir
 from os.path import isfile, join
-import importlib.util
+
+if (sys.version_info > (3, 0)):  # py3
+    import importlib
+else:  # py2
+    import imp
 
 # import freecad and its gui
 import FreeCAD as app
@@ -49,6 +54,9 @@ import base64
 
 # to open instructions in PDF
 import webbrowser
+
+# to DEBUG purpose
+DEBUG = True
 
 moocWB_path = os.path.dirname(moocwb_locator.__file__)
 moocWB_medias_path = os.path.join(moocWB_path, 'medias')
@@ -239,15 +247,20 @@ class Ui_FreeCADGrader(QtWidgets.QDialog):
 
     def get_exercises_title_list(self):
         self.exercises_infos_list = []
-        onlyfiles = [f for f in listdir(moocWB_exercises_path) if isfile(join(moocWB_exercises_path, f))]
+        files = [f for f in listdir(moocWB_exercises_path) if isfile(join(moocWB_exercises_path, f))]
+        onlyfiles = [f for f in files if os.path.splitext(f)[1] == '.py']
         onlyfiles.sort()
-        print(onlyfiles)
+        if DEBUG:
+            print(onlyfiles)
         for exercise in onlyfiles:
-            name = exercise.split('.')[0]
+            name, ext = os.path.splitext(exercise)
             path = os.path.join(moocWB_exercises_path, exercise)
-            spec = importlib.util.spec_from_file_location(name, path)
-            foo = importlib.util.module_from_spec(spec)
-            spec.loader.exec_module(foo)
+            if (sys.version_info > (3, 0)):
+                spec = importlib.util.spec_from_file_location(name, path)
+                foo = importlib.util.module_from_spec(spec)
+                spec.loader.exec_module(foo)
+            else:
+                foo = imp.load_source(name, path)
             self.exercises_infos_list.append([foo.get_title(), foo.get_description(), foo, foo.get_instructions()])
             self.comboBox.addItem(foo.get_title())
 

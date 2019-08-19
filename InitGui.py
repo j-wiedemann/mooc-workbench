@@ -36,7 +36,7 @@ import FreeCAD as app
 import FreeCADGui as gui
 
 global MOOC_VERSION
-MOOC_VERSION = 'V0.2.0'
+MOOC_VERSION = 'V0.2.1'
 
 moocWB_path = os.path.dirname(moocwb_locator.__file__)
 moocWB_medias_path = os.path.join(moocWB_path, 'medias')

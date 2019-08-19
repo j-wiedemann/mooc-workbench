@@ -27,17 +27,22 @@ __title__ = "MOOC Workbench"
 __author__ = "Jonathan Wiedemann"
 __url__ = "http://www.freecadweb.org"
 
-# import pyside2 module for ui
+# to make gui
 from PySide import QtCore, QtGui
 
-# for handling paths
+# to handle resources paths
 import os
+import sys
 import moocwb_locator
 
-# for loading module from a path
+# to load module from path
 from os import listdir
 from os.path import isfile, join
-import importlib.util
+
+if (sys.version_info > (3, 0)):  # py3
+    import importlib
+else:  # py2
+    import imp
 
 # import freecad and its gui
 import FreeCAD as app
@@ -49,16 +54,14 @@ import webbrowser
 # import MoocChecker
 import MoocChecker
 
-# DEBUG variable
+# to DEBUG purpose
 DEBUG = True
-# DEBUG = False
 
 # if DEBUG make sure MoocChecker is reloaded
 if DEBUG:
     try:
         reload(MoocChecker)
     except NameError:
-        import importlib
         importlib.reload(MoocChecker)
 
 
@@ -298,18 +301,22 @@ class Ui_MoocChooser(QtWidgets.QDialog):
     def get_lessons_list(self):
         moocWB_path = os.path.dirname(moocwb_locator.__file__)
         moocWBpath_lessons = os.path.join(moocWB_path, 'lessons')
-        onlyfiles = [f for f in listdir(moocWBpath_lessons) if isfile(join(moocWBpath_lessons, f))]
+        files = [f for f in listdir(moocWBpath_lessons) if isfile(join(moocWBpath_lessons, f))]
+        onlyfiles = [f for f in files if os.path.splitext(f)[1] == '.py']
         onlyfiles.sort()
+        if DEBUG:
+            print(onlyfiles)
         self.lessons_list = []
         for lesson in onlyfiles:
-            name = lesson.split('.')[0]
+            name, ext = os.path.splitext(lesson)
             path = os.path.join(moocWBpath_lessons, lesson)
-            spec = importlib.util.spec_from_file_location(name, path)
-            foo = importlib.util.module_from_spec(spec)
-            spec.loader.exec_module(foo)
+            if (sys.version_info > (3, 0)):
+                spec = importlib.util.spec_from_file_location(name, path)
+                foo = importlib.util.module_from_spec(spec)
+                spec.loader.exec_module(foo)
+            else:
+                foo = imp.load_source(name, path)
             self.lessons_list.append(foo.lesson())
-
-        # return lessons_list
 
     def get_lessons_title_list(self):
         self.get_lessons_list()
