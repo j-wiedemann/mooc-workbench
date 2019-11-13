@@ -193,7 +193,7 @@ l'humidificateur de Steven avec des formes primitives uniquement.'''
         # Step 7
         step = {}
         img1 = os.path.join(moocWB_icons_path, 'PartDesign_Subtractive_Cylinder.svg')
-        step["description"] = u'''<h3>Cube soustractif</h3>
+        step["description"] = u'''<h3>Cylindre soustractif</h3>
             <p>Pour enlever de la matière en haut de la pièce nous allons ajouter un cylindre soustractif.</p>
             <p><img src= %s width="25"/> Créer un cylindre soustractif :
             <ul><li>à l'aide du menu <i>Part Design</i> puis
@@ -218,7 +218,7 @@ l'humidificateur de Steven avec des formes primitives uniquement.'''
         # Step 8
         step = {}
         img1 = os.path.join(moocWB_icons_path, 'PartDesign_Subtractive_Cylinder.svg')
-        step["description"] = u'''<h3>Cube soustractif</h3>
+        step["description"] = u'''<h3>Cylindre soustractif</h3>
             <p>Pour enlever de la matière en haut de la pièce nous allons ajouter un cylindre soustractif.</p>
             <p><img src= %s width="25"/> Créer un cylindre soustractif :
             <ul><li>à l'aide du menu <i>Part Design</i> puis
