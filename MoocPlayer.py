@@ -143,14 +143,14 @@ class Ui_MoocPlayer(QtWidgets.QDialog):
         self.show()
 
     def retranslateUi(self):
-        self.setWindowTitle(QtWidgets.QApplication.translate("MoocPlayer", "FreeCAD Tutorials", None, -1))
-        self.label_resume.setText(QtWidgets.QApplication.translate("MoocPlayer", "Résumé de la leçon", None, -1))
-        self.label_objectifs.setText(QtWidgets.QApplication.translate("MoocPlayer", "Objectifs à réaliser", None, -1))
-        self.btn_help.setText(QtWidgets.QApplication.translate("MoocPlayer", "Aide", None, -1))
-        self.btn_previous_step.setText(QtWidgets.QApplication.translate("MoocPlayer", "Précédent", None, -1))
-        self.label_step.setText(QtWidgets.QApplication.translate("MoocPlayer", "Étape X / X", None, -1))
-        self.btn_next_step.setText(QtWidgets.QApplication.translate("MoocPlayer", "Suivant", None, -1))
-        self.btn_play.setText(QtWidgets.QApplication.translate("MoocPlayer", "Voir la vidéo", None, -1))
+        self.setWindowTitle("FreeCAD Tutorials")
+        self.label_resume.setText("Résumé de la leçon")
+        self.label_objectifs.setText("Objectifs à réaliser")
+        self.btn_help.setText("Aide")
+        self.btn_previous_step.setText("Précédent")
+        self.label_step.setText("Étape X / X")
+        self.btn_next_step.setText("Suivant")
+        self.btn_play.setText("Voir la vidéo")
 
     def closeEvent(self, event):
         TIMER.stop()
@@ -291,9 +291,9 @@ class Ui_MoocChooser(QtWidgets.QDialog):
         self.show()
 
     def retranslateUi(self, MoocPlayerChooser):
-        MoocPlayerChooser.setWindowTitle(QtWidgets.QApplication.translate("MoocPlayerChooser", "Choisir la leçon", None, -1))
-        self.label_welcome.setText(QtWidgets.QApplication.translate("MoocPlayerChooser", u"Quelle leçon souhaitez vous étudier aujourd'hui ?", None, -1))
-        self.label_description.setText(QtWidgets.QApplication.translate("MoocPlayerChooser", "Cliquer sur un éléments de la liste pour obtenir la description de la leçon.", None, -1))
+        MoocPlayerChooser.setWindowTitle("Choisir la leçon")
+        self.label_welcome.setText(u"Quelle leçon souhaitez vous étudier aujourd'hui ?")
+        self.label_description.setText("Cliquer sur un éléments de la liste pour obtenir la description de la leçon.")
 
     def accept(self):
         self.launch_mooc(self.listWidget_trainings.currentItem())
