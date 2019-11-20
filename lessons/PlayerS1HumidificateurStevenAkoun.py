@@ -134,7 +134,7 @@ l'humidificateur de Steven avec des formes primitives uniquement.'''
             <p>On valide la tâche en cours en cliquant sur OK''' % ( img1 )
 
         step["video"] = str(url) + str('?start=3m32s')
-        step["objectives"] = ["1 Cylindre additif (Cylindre) Ø80 x 140 mm sur le plan XY et décalé de 40 mm selon Y."]
+        step["objectives"] = ["1 Cylindre additif (Cylindre) r40 x 140 mm sur le plan XY et décalé de 40 mm selon Y."]
         step["checks"] = ["MoocChecker.primitive_presence(label='Cylinder', typeId='PartDesign::AdditiveCylinder', dimensions=[40,140], support='XY_Plane', offset=[0,40,0,0,0,1,0])"]
         self.data_tutorial["steps"].append(step)
 
@@ -160,7 +160,7 @@ l'humidificateur de Steven avec des formes primitives uniquement.'''
             <p>On valide la tâche en cours en cliquant sur OK''' % ( img1 )
 
         step["video"] = str(url) + str('?start=4m21s')
-        step["objectives"] = ["1 Cylindre additif Ø80 x 140 mm sur le plan XY et décalé de 100mm selon X et 40 mm selon Y."]
+        step["objectives"] = ["1 Cylindre additif r40 x 140 mm sur le plan XY et décalé de 100 mm selon X et 40 mm selon Y."]
         step["checks"] = ["MoocChecker.primitive_presence(label='Cylinder001', typeId='PartDesign::AdditiveCylinder', dimensions=[40,140], support='XY_Plane', offset=[100,40,0,0,0,1,0])"]
         self.data_tutorial["steps"].append(step)
 
@@ -186,7 +186,7 @@ l'humidificateur de Steven avec des formes primitives uniquement.'''
             <p>On valide la tâche en cours en cliquant sur OK''' % (img1)
 
         step["video"] = str(url) + str('?start=4m52s')
-        step["objectives"] = ["1 Cube soustractif de 80 x 80 x 20 mm" ]
+        step["objectives"] = ["1 Cube soustractif de 80 x 80 x 20 mm sur le plan XY et décalé de 10 mm selon X." ]
         step["checks"] = ["MoocChecker.primitive_presence(label='Box001', typeId='PartDesign::SubtractiveBox', dimensions=[80,80,20], support='XY_Plane', offset=[10.0,0.0,0.0,0.0,0.0,1.0,0.0])"]
         self.data_tutorial["steps"].append(step)
 
@@ -211,7 +211,7 @@ l'humidificateur de Steven avec des formes primitives uniquement.'''
             <p>On valide la tâche en cours en cliquant sur OK''' % (img1)
 
         step["video"] = str(url) + str('?start=5m38s')
-        step["objectives"] = ["1 cylindre soustractif de Ø72 x 30 mm."]
+        step["objectives"] = ["1 cylindre soustractif de r36 x 30 mm sur le plan XY et décalé de 40 mm selon Y et 110 mm selon Z."]
         step["checks"] = ["MoocChecker.primitive_presence(label='Cylinder002', typeId='PartDesign::SubtractiveCylinder', dimensions=[36,30], support='XY_Plane', offset=[0,40,110,0,0,1,0])"]
         self.data_tutorial["steps"].append(step)
 
@@ -236,7 +236,7 @@ l'humidificateur de Steven avec des formes primitives uniquement.'''
             <p>On valide la tâche en cours en cliquant sur OK''' % (img1)
 
         step["video"] = str(url) + str('?start=6m20s')
-        step["objectives"] = ["1 cylindre soustractif de Ø72 x 30 mm."]
+        step["objectives"] = ["1 cylindre soustractif de r36 x 30 mm sur le plan XY et décalé de 100 mm selon X, 40 mm selon Y et 110 mm selon Z."]
         step["checks"] = ["MoocChecker.primitive_presence(label='Cylinder003', typeId='PartDesign::SubtractiveCylinder', dimensions=[36,30], support='XY_Plane', offset=[100,40,110,0,0,1,0])"]
         self.data_tutorial["steps"].append(step)
 
@@ -262,7 +262,7 @@ l'humidificateur de Steven avec des formes primitives uniquement.'''
             <p>On valide la tâche en cours en cliquant sur OK''' % (img1)
 
         step["video"] = str(url) + str('?start=6m51s')
-        step["objectives"] = [u"1 cube soustractif de 100 x 72 x 30 mm."]
+        step["objectives"] = [u"1 cube soustractif de 100 x 72 x 30 mm sur le plan XY et décalé de 4 mm selon Y et 110 mm selon Z."]
         step["checks"] = ["MoocChecker.primitive_presence(label='Box002', typeId='PartDesign::SubtractiveBox', dimensions=[100,72,30], support='XY_Plane', offset=[0,4,110,0,0,1,0])"]
         self.data_tutorial["steps"].append(step)
 
