@@ -34,7 +34,7 @@ import math
 
 
 # for debug purposes
-DEBUG = True
+DEBUG = False
 
 if DEBUG:
     print("MOOC CHECKER")

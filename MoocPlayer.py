@@ -55,7 +55,7 @@ import webbrowser
 import MoocChecker
 
 # to DEBUG purpose
-DEBUG = True
+DEBUG = False
 
 # if DEBUG make sure MoocChecker is reloaded
 if DEBUG:

@@ -56,7 +56,7 @@ import base64
 import webbrowser
 
 # to DEBUG purpose
-DEBUG = True
+DEBUG = False
 
 moocWB_path = os.path.dirname(moocwb_locator.__file__)
 moocWB_medias_path = os.path.join(moocWB_path, 'medias')
