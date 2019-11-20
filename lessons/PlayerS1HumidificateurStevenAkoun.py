@@ -160,7 +160,7 @@ l'humidificateur de Steven avec des formes primitives uniquement.'''
             <p>On valide la tâche en cours en cliquant sur OK''' % ( img1 )
 
         step["video"] = str(url) + str('?start=4m21s')
-        step["objectives"] = ["1 Cylindre additif Ø80 x 140 mm"]
+        step["objectives"] = ["1 Cylindre additif Ø80 x 140 mm sur le plan XY et décalé de 100mm selon X et 40 mm selon Y."]
         step["checks"] = ["MoocChecker.primitive_presence(label='Cylinder001', typeId='PartDesign::AdditiveCylinder', dimensions=[40,140], support='XY_Plane', offset=[100,40,0,0,0,1,0])"]
         self.data_tutorial["steps"].append(step)
 
