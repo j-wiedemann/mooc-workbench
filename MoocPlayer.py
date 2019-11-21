@@ -143,14 +143,14 @@ class Ui_MoocPlayer(QtWidgets.QDialog):
         self.show()
 
     def retranslateUi(self):
-        self.setWindowTitle("FreeCAD Tutorials")
-        self.label_resume.setText("Résumé de la leçon")
-        self.label_objectifs.setText("Objectifs à réaliser")
-        self.btn_help.setText("Aide")
-        self.btn_previous_step.setText("Précédent")
-        self.label_step.setText("Étape X / X")
-        self.btn_next_step.setText("Suivant")
-        self.btn_play.setText("Voir la vidéo")
+        self.setWindowTitle(u"FreeCAD Tutorials")
+        self.label_resume.setText(u"Résumé de la leçon")
+        self.label_objectifs.setText(u"Objectifs à réaliser")
+        self.btn_help.setText(u"Aide")
+        self.btn_previous_step.setText(u"Précédent")
+        self.label_step.setText(u"Étape X / X")
+        self.btn_next_step.setText(u"Suivant")
+        self.btn_play.setText(u"Voir la vidéo")
 
     def closeEvent(self, event):
         TIMER.stop()
@@ -182,7 +182,7 @@ class Manager_MoocPlayer():
         self.form.exec_()
 
     def get_label_step(self):
-        label = "Étape " + str(self.current_step_id + 1) + " / " + str(self.total_step)
+        label = u"Étape " + str(self.current_step_id + 1) + " / " + str(self.total_step)
         return label
 
     def forward_step(self):
@@ -291,9 +291,9 @@ class Ui_MoocChooser(QtWidgets.QDialog):
         self.show()
 
     def retranslateUi(self, MoocPlayerChooser):
-        MoocPlayerChooser.setWindowTitle("Choisir la leçon")
+        MoocPlayerChooser.setWindowTitle(u"Choisir la leçon")
         self.label_welcome.setText(u"Quelle leçon souhaitez vous étudier aujourd'hui ?")
-        self.label_description.setText("Cliquer sur un éléments de la liste pour obtenir la description de la leçon.")
+        self.label_description.setText(u"Cliquer sur un éléments de la liste pour obtenir la description de la leçon.")
 
     def accept(self):
         self.launch_mooc(self.listWidget_trainings.currentItem())
@@ -342,9 +342,9 @@ class Command_MoocChooser():
     "class to choose the lesson"
 
     def GetResources(self):
-        moocWB_path = os.path.dirname(moocwb_locator.__file__)
-        moocWB_medias_path = os.path.join(moocWB_path, 'medias')
-        moocWB_icons_path = os.path.join(moocWB_medias_path, 'icons')
+        # moocWB_path = os.path.dirname(moocwb_locator.__file__)
+        # moocWB_medias_path = os.path.join(moocWB_path, 'medias')
+        # moocWB_icons_path = os.path.join(moocWB_medias_path, 'icons')
         return {'Pixmap': os.path.join(moocWB_icons_path, 'mooc-player.svg'),
                 'MenuText': QtCore.QT_TRANSLATE_NOOP(u"Mooc", "Voir un tutoriel."),
                 'ToolTip': QtCore.QT_TRANSLATE_NOOP(u"Mooc", "Permet de choisir et voir un tutoriel interactif.")}

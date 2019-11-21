@@ -1192,7 +1192,6 @@ def volume(doc=None, name=None, typeId=None, target=None, offset=10):
             if not feature.Shape.isNull():
                 if DEBUG:
                     print('actual volume is : ', feature.Shape.Volume)
-                if DEBUG:
                     print('target volume is between : ', target - offset, 'and', target + offset)
                 if (target - offset) < feature.Shape.Volume < (target + offset):
                     # if round(target,0) == round(feature.Shape.Volume,0):

@@ -158,14 +158,14 @@ class Ui_FreeCADGrader(QtWidgets.QDialog):
         self.pushButton_show_instructions.clicked.connect(self.show_instructions)
 
     def retranslateUi(self, FreeCADGrader):
-        FreeCADGrader.setWindowTitle("FreeCAD Grader")
-        self.label.setText("1. Évaluation")
-        self.label_2.setText("Choisissez l'exercice à évaluer dans la liste suivante :")
-        self.label_3.setText("Choisissez le document à évaluer dans la liste suivante :")
-        self.pushButton.setText("Lancer l\'évaluation")
-        self.label_4.setText("2. Résultats")
-        self.pushButton_2.setText("Envoyer les résultats")
-        self.pushButton_show_instructions.setText("Voir les instructions")
+        FreeCADGrader.setWindowTitle(u"FreeCAD Grader")
+        self.label.setText(u"1. Évaluation")
+        self.label_2.setText(u"Choisissez l'exercice à évaluer dans la liste suivante :")
+        self.label_3.setText(u"Choisissez le document à évaluer dans la liste suivante :")
+        self.pushButton.setText(u"Lancer l\'évaluation")
+        self.label_4.setText(u"2. Résultats")
+        self.pushButton_2.setText(u"Envoyer les résultats")
+        self.pushButton_show_instructions.setText(u"Voir les instructions")
 
     def fill_comboBox_2(self):
         self.comboBox_2.clear()
@@ -179,10 +179,11 @@ class Ui_FreeCADGrader(QtWidgets.QDialog):
                 self.comboBox_2.addItem(doc[1].Label)
                 n += 1
         else:
-            self.comboBox_2.addItem("Il n'y a pas de document à évaluer.")
+            self.comboBox_2.addItem(u"Il n'y a pas de document à évaluer.")
 
     def eval_button(self):
-        print("Eval button clicked")
+        if DEBUG:
+            print("Eval button clicked")
         doc_name = None
         document_list = app.listDocuments()
         for doc in document_list.items():
@@ -194,12 +195,13 @@ class Ui_FreeCADGrader(QtWidgets.QDialog):
             self.grader_notes = None
             self.listWidget.clear()
             msgBox = QtWidgets.QMessageBox()
-            msgBox.setText("Il n'y aucun document à évaluer !")
-            msgBox.setText("Veuillez ouvrir un document et relancer FreeCAD Grader")
+            msgBox.setText(u"Il n'y aucun document à évaluer !")
+            msgBox.setText(u"Veuillez ouvrir un document et relancer FreeCAD Grader")
             msgBox.exec_()
 
     def grader_launch(self, doc_name):
-        print("grader launch")
+        if DEBUG:
+            print("grader launch")
         self.listWidget.clear()
         mooc_session = self.comboBox.currentIndex()
         exercise = self.exercises_infos_list[mooc_session][2]
@@ -225,10 +227,11 @@ class Ui_FreeCADGrader(QtWidgets.QDialog):
                 n += 1
             self.listWidget.setFixedWidth(self.listWidget.sizeHintForColumn(0) + 2 * self.listWidget.frameWidth())
         else:
-            print("No results")
+            if DEBUG:
+                print("No results")
             self.grader_notes = None
             msgBox = QtWidgets.QMessageBox()
-            msgBox.setText("Cela n'a donné aucun résultat :(")
+            msgBox.setText(u"Cela n'a donné aucun résultat :(")
             msgBox.exec_()
 
     def show_hash(self):
@@ -239,11 +242,12 @@ class Ui_FreeCADGrader(QtWidgets.QDialog):
             dialog.exec_()
         else:
             msgBox = QtWidgets.QMessageBox()
-            msgBox.setText("Veuillez d'abord lancer l'évaluation pour obtenir des résultats.")
+            msgBox.setText(u"Veuillez d'abord lancer l'évaluation pour obtenir des résultats.")
             msgBox.exec_()
 
     def closeEvent(self, event):
-        print("Closing FreeCAD Grader")
+        if DEBUG:
+            print("Closing FreeCAD Grader")
 
     def get_exercises_title_list(self):
         self.exercises_infos_list = []
@@ -316,15 +320,15 @@ class Ui_FreeCADGraderResults(QtWidgets.QDialog):
         self.pushButton.clicked.connect(self.copy_to_clipboard)
 
     def retranslateUi(self, FreeCADGraderResults):
-        FreeCADGraderResults.setWindowTitle("Envoyer les résultats")
-        self.label.setText("3. Copier/coller le code suivant dans l\'interface du MOOC")
-        self.pushButton.setText("Copier")
+        FreeCADGraderResults.setWindowTitle(u"Envoyer les résultats")
+        self.label.setText(u"3. Copier/coller le code suivant dans l\'interface du MOOC")
+        self.pushButton.setText(u"Copier")
 
     def copy_to_clipboard(self):
         cb = QtGui.QClipboard()
         cb.setText(self.lineEdit.text())
-        self.pushButton.setText("Copié !")
-        self.label_clipboard_copy.setText("Le code est copié dans le presse papier.\nColler le à l'aide d'un clic droit ou du raccourcis clavier CTRL+V.")
+        self.pushButton.setText(u"Copié !")
+        self.label_clipboard_copy.setText(u"Le code est copié dans le presse papier.\nColler le à l'aide d'un clic droit ou du raccourcis clavier CTRL+V.")
 
 
 class MoocGraderCommand():
