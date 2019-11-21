@@ -71,9 +71,9 @@ def grader(doc_name):
     # Check for a Body presence
     grader_dict["notes"].append(Check.body_presence(doc))
     if grader_dict["notes"][step_id] == 1 :
-        grader_dict["messages"].append("Il y a un corps de pièce.")
+        grader_dict["messages"].append(u"Il y a un corps de pièce.")
     elif grader_dict["notes"][step_id] == 0 :
-        grader_dict["messages"].append("Il n'y a pas de corps de pièce.")
+        grader_dict["messages"].append(u"Il n'y a pas de corps de pièce.")
 
     step_id += 1
     # Check for a Pad presence
@@ -110,15 +110,15 @@ def grader(doc_name):
     step_id += 1
     grader_dict["notes"].append(Check.boundbox_dimensions(doc, typeId='PartDesign::Body', x = 190, y = 90, z = 15))
     if grader_dict["notes"][step_id] == 1 :
-        grader_dict["messages"].append("Les dimensions extérieures correspondent avec l'objectif.")
+        grader_dict["messages"].append(u"Les dimensions extérieures correspondent avec l'objectif.")
     elif grader_dict["notes"][step_id] == 0 :
-        grader_dict["messages"].append("Les dimensions extérieures ne correspondent pas avec l'objectif.")
+        grader_dict["messages"].append(u"Les dimensions extérieures ne correspondent pas avec l'objectif.")
 
     step_id += 1
     grader_dict["notes"].append(Check.volume(doc, typeId='PartDesign::Body', target=82134))
     if grader_dict["notes"][step_id] == 1 :
-        grader_dict["messages"].append("Le volume du corps de pièce correspond avec l'objectif.")
+        grader_dict["messages"].append(u"Le volume du corps de pièce correspond avec l'objectif.")
     elif grader_dict["notes"][step_id] == 0 :
-        grader_dict["messages"].append("Le volume du corps de pièce ne correspond pas avec l'objectif.")
+        grader_dict["messages"].append(u"Le volume du corps de pièce ne correspond pas avec l'objectif.")
 
     return grader_dict

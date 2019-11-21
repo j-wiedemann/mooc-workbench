@@ -41,7 +41,7 @@ class lesson(object):
         moocWB_images_path = os.path.join(moocWB_medias_path, 'images')
         self.data_tutorial = {}
         self.data_tutorial["title"] = '[FR] MOOC Semaine 1 - Humidificateur de Steven Akoun'
-        self.data_tutorial["description"] = '''[FR] Part Design Primitives \
+        self.data_tutorial["description"] = u'''[FR] Part Design Primitives \
 Semaine 1 : \nCette semaine nous allons voir comment modéliser \
 l'humidificateur de Steven avec des formes primitives uniquement.'''
         url = 'https://open.tube/videos/embed/f5773731-9864-470b-a3d5-9e805c419f96'
@@ -66,7 +66,7 @@ l'humidificateur de Steven avec des formes primitives uniquement.'''
             </ul></p> ''' % (img1, img2, img3)
 
         step["video"] = str(url) + str('?start=0m00s')
-        step["objectives"] = ["Créer un nouveau document.", "Basculer dans l'atelier PartDesign.", "Mode de navigation : Gesture"]
+        step["objectives"] = [u"Créer un nouveau document.", "Basculer dans l'atelier PartDesign.", "Mode de navigation : Gesture"]
         step["checks"] = [
             "MoocChecker.document_presence()",
             "MoocChecker.active_workbench('PartDesignWorkbench')",
@@ -134,7 +134,7 @@ l'humidificateur de Steven avec des formes primitives uniquement.'''
             <p>On valide la tâche en cours en cliquant sur OK''' % ( img1 )
 
         step["video"] = str(url) + str('?start=3m32s')
-        step["objectives"] = ["1 Cylindre additif (Cylindre) r40 x 140 mm sur le plan XY et décalé de 40 mm selon Y."]
+        step["objectives"] = [u"1 Cylindre additif (Cylindre) r40 x 140 mm sur le plan XY et décalé de 40 mm selon Y."]
         step["checks"] = ["MoocChecker.primitive_presence(label='Cylinder', typeId='PartDesign::AdditiveCylinder', dimensions=[40,140], support='XY_Plane', offset=[0,40,0,0,0,1,0])"]
         self.data_tutorial["steps"].append(step)
 
@@ -160,7 +160,7 @@ l'humidificateur de Steven avec des formes primitives uniquement.'''
             <p>On valide la tâche en cours en cliquant sur OK''' % ( img1 )
 
         step["video"] = str(url) + str('?start=4m21s')
-        step["objectives"] = ["1 Cylindre additif r40 x 140 mm sur le plan XY et décalé de 100 mm selon X et 40 mm selon Y."]
+        step["objectives"] = [u"1 Cylindre additif r40 x 140 mm sur le plan XY et décalé de 100 mm selon X et 40 mm selon Y."]
         step["checks"] = ["MoocChecker.primitive_presence(label='Cylinder001', typeId='PartDesign::AdditiveCylinder', dimensions=[40,140], support='XY_Plane', offset=[100,40,0,0,0,1,0])"]
         self.data_tutorial["steps"].append(step)
 
@@ -186,7 +186,7 @@ l'humidificateur de Steven avec des formes primitives uniquement.'''
             <p>On valide la tâche en cours en cliquant sur OK''' % (img1)
 
         step["video"] = str(url) + str('?start=4m52s')
-        step["objectives"] = ["1 Cube soustractif de 80 x 80 x 20 mm sur le plan XY et décalé de 10 mm selon X." ]
+        step["objectives"] = [u"1 Cube soustractif de 80 x 80 x 20 mm sur le plan XY et décalé de 10 mm selon X." ]
         step["checks"] = ["MoocChecker.primitive_presence(label='Box001', typeId='PartDesign::SubtractiveBox', dimensions=[80,80,20], support='XY_Plane', offset=[10.0,0.0,0.0,0.0,0.0,1.0,0.0])"]
         self.data_tutorial["steps"].append(step)
 
@@ -211,7 +211,7 @@ l'humidificateur de Steven avec des formes primitives uniquement.'''
             <p>On valide la tâche en cours en cliquant sur OK''' % (img1)
 
         step["video"] = str(url) + str('?start=5m38s')
-        step["objectives"] = ["1 cylindre soustractif de r36 x 30 mm sur le plan XY et décalé de 40 mm selon Y et 110 mm selon Z."]
+        step["objectives"] = [u"1 cylindre soustractif de r36 x 30 mm sur le plan XY et décalé de 40 mm selon Y et 110 mm selon Z."]
         step["checks"] = ["MoocChecker.primitive_presence(label='Cylinder002', typeId='PartDesign::SubtractiveCylinder', dimensions=[36,30], support='XY_Plane', offset=[0,40,110,0,0,1,0])"]
         self.data_tutorial["steps"].append(step)
 
@@ -236,7 +236,7 @@ l'humidificateur de Steven avec des formes primitives uniquement.'''
             <p>On valide la tâche en cours en cliquant sur OK''' % (img1)
 
         step["video"] = str(url) + str('?start=6m20s')
-        step["objectives"] = ["1 cylindre soustractif de r36 x 30 mm sur le plan XY et décalé de 100 mm selon X, 40 mm selon Y et 110 mm selon Z."]
+        step["objectives"] = [u"1 cylindre soustractif de r36 x 30 mm sur le plan XY et décalé de 100 mm selon X, 40 mm selon Y et 110 mm selon Z."]
         step["checks"] = ["MoocChecker.primitive_presence(label='Cylinder003', typeId='PartDesign::SubtractiveCylinder', dimensions=[36,30], support='XY_Plane', offset=[100,40,110,0,0,1,0])"]
         self.data_tutorial["steps"].append(step)
 
@@ -279,7 +279,7 @@ l'humidificateur de Steven avec des formes primitives uniquement.'''
             <i>Congé</i>.</li></ul><p>''' % (img1)
 
         step["video"] = str(url) + str('?start=7m47s')
-        step["objectives"] = ["1 congé de 9 mm de rayon"]
+        step["objectives"] = [u"1 congé de 9 mm de rayon"]
         step["checks"] = ["MoocChecker.fillet_presence(label='Fillet', radius=9)"]
         self.data_tutorial["steps"].append(step)
 
