@@ -1045,7 +1045,10 @@ def polar_pattern_presence(doc=None,
                 else:
                     r.append(0)
             if axis:
-                if feature.Axis[1][0] == axis:
+                #print('Axis')
+                #print(feature.Axis[0].Name)
+                #print(axis)
+                if feature.Axis[0].Name == axis:
                     r.append(1)
                 else:
                     r.append(0)
