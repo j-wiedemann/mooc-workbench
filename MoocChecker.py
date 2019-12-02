@@ -69,13 +69,13 @@ def get_document(doc):
         print('Check.get_document(doc=%s)' % doc)
     if type(doc) == 'str':
         doc = app.getDocument(doc)
-        #doc.recompute()
+        # doc.recompute()
         if DEBUG:
             print('doc.Name is %s, doc.Label is %s' % (doc.Name, doc.Label))
     elif doc is None:
         if document_presence() == 1:
             doc = app.activeDocument()
-            #doc.recompute()
+            # doc.recompute()
             if DEBUG:
                 print('doc.Name is %s, doc.Label is %s' % (doc.Name, doc.Label))
         else:
@@ -323,12 +323,19 @@ def fillet_presence(doc=None, label=None, radius=None):
     '''fillet_presence(doc=None, label=None, radius=None) -> 0 or 1
     check fillet presence
     '''
+    if DEBUG:
+        print('Check.fillet_presence(doc=%s, label=%s, radius=%s)' % (
+            doc,
+            label,
+            radius))
     r = []
     doc = get_document(doc)
     reference = None
     if doc:
         if label is not None:
             reference = doc.getObject(label)
+            if DEBUG:
+                print(reference)
         else:
             if DEBUG:
                 print("TODO: make list of fillet")
@@ -338,10 +345,11 @@ def fillet_presence(doc=None, label=None, radius=None):
             r.append(1)
         else:
             r.append(0)
-        if reference.Radius == radius:
-            r.append(1)
-        else:
-            r.append(0)
+        if radius:
+            if reference.Radius == radius:
+                r.append(1)
+            else:
+                r.append(0)
     return make_result(r)
 
 

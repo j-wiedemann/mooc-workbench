@@ -23,15 +23,16 @@
 #
 ################################################
 
-__title__="MOOC Workbench"
+__title__ = "MOOC Workbench"
 __author__ = "Jonathan Wiedemann"
 __url__ = "http://www.freecadweb.org"
+
 
 def checkMoocWBVersion(MOOC_VERSION):
     '''Check version of workbench'''
     print(u'Check workbench version...')
     import urllib.request
-    webUrl  = urllib.request.urlopen('http://framagit.org/freecad-france/mooc-workbench/raw/master/InitGui.py')
+    webUrl = urllib.request.urlopen('http://framagit.org/freecad-france/mooc-workbench/raw/master/InitGui.py')
     for line in webUrl:
         if 'MOOC_VERSION = ' in str(line, 'utf-8'):
             mooc_version = str(line, 'utf-8').split(' = ')

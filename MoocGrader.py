@@ -321,7 +321,7 @@ class Ui_FreeCADGraderResults(QtWidgets.QDialog):
 
     def retranslateUi(self, FreeCADGraderResults):
         FreeCADGraderResults.setWindowTitle(u"Envoyer les résultats")
-        self.label.setText(u"3. Copier/coller le code suivant dans l\'interface du MOOC")
+        self.label.setText(u"3. Copier/coller le code suivant dans l\'interface FUN-MOOC")
         self.pushButton.setText(u"Copier")
 
     def copy_to_clipboard(self):
@@ -337,7 +337,7 @@ class MoocGraderCommand():
     def GetResources(self):
         return {'Pixmap': os.path.join(moocWB_icons_path, 'mooc-grader.svg'),
                 'MenuText': QtCore.QT_TRANSLATE_NOOP("Mooc", "Évaluer un exercice."),
-                'ToolTip': QtCore.QT_TRANSLATE_NOOP("Mooc", "Éxécute l'outil d'analyse et vérification d'un docment FreeCAD.")}
+                'ToolTip': QtCore.QT_TRANSLATE_NOOP("Mooc", "Éxécute l'outil d'analyse et vérification d'un document FreeCAD.")}
 
     def IsActive(self):
         return True
