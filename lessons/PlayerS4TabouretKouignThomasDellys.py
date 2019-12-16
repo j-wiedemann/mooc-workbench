@@ -185,7 +185,7 @@ class lesson(object):
             matière on ne voit pas notre esquisse alors on bascule en vue section
             avec le bouton <img src= %s width="25">.<br>
             Dessiner un rectangle <img src= %s width="25"> qui mesure 75 mm par
-            28.8 mm et dont un des segments est centré par rapport à l'origine.<br>
+            29 mm et dont un des segments est centré par rapport à l'origine.<br>
             Mon esquisse est entièrement contrainte je peux donc la valider en
             cliquant sur Fermer.<br>
             Réaliser une cavité <img src= %s width="25"> de type à travers tous, et inversé.<br>
