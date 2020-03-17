@@ -106,23 +106,31 @@ Choisir le document FreeCAD à évaluer.
 
 Cliquer sur le bouton **Lancer l'évaluation**.
 
-Dans le panneau de gauche vous verrez les différent critère d'évaluation listé. Si vert alors c'est ok si c'esst rouge c'est faux.
+Dans le panneau de gauche vous verrez les différent critère d'évaluation listé. Si vert alors c'est ok si c'est rouge c'est faux.
 
 Quand l'évaluation vous satisfait vous pouvez transmettre les résultats en cliquant sur le bouton **Envoyer les résultats**
 
 <img src="/medias/images/EnvoieResult.png" width=45% >
 
-Une fenêtre s'ouvre avec une chaine de caratère qu'il faut copier/coller dans votre espace MOOC. Vous pouvez cliquer sur le bouton **Copier** pour copier la chaine de caractère dans le presse papier. Il vous restera juste à le coller (clic droit coller ou avec le raccouris Ctrl+V).
+Une fenêtre s'ouvre avec une chaîne de caractère qu'il faut copier/coller dans votre espace MOOC. Vous pouvez cliquer sur le bouton **Copier** pour copier la chaine de caractère dans le presse papier. Il vous restera juste à le coller (clic droit coller ou avec le raccouris Ctrl+V).
 
 <img src="/medias/images/CopyPasteResult.png" width=45% >
 
+
+## Fonctionnement:
+
+Chaque leçon ou t
+
 ## Créer un tutoriel
 
-Dans le dossier "lessons" de l'atelier, faites une copie du fichier "Template Lesson.py".
+Il faut d'abord créer un dossier dans le dossier lessons.
 
-Renommé le avec un nouveau nom en gardant l"extension ".py".
+Dans ce dossier il y aura :
+ - un fichier python pour le contenu des étapes et les appels de vérification.
+ - un dossier images avec les médias nécessaire au contenu du tutoriel.
 
-Ensuite il faut l'éditer :
+
+Ensuite il faut l'éditer le fichier py :
 
 Ligne 26 : renseigner votre nom
 

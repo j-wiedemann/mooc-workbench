@@ -41,14 +41,14 @@ if DEBUG:
 
 
 def make_result(r):
-    '''make_result(r) -> 0 or 1
+    """make_result(r) -> 0 or 1
     make final result from list of result
     to get 1 there must not be 0 in r
     r=[1,1,1,0] => result = 0
     r=[1,1,1,1] => result = 1
-    '''
+    """
     if DEBUG:
-        print('Check.make_result(r = %s)' % r)
+        print("Check.make_result(r = %s)" % r)
     if len(r) > 0:
         if 0 in r:
             result = 0
@@ -62,36 +62,36 @@ def make_result(r):
 
 
 def get_document(doc):
-    '''get_document(doc) -> FreeCAD Document
+    """get_document(doc) -> FreeCAD Document
     get document from name or active doc if None
-    '''
+    """
     if DEBUG:
-        print('Check.get_document(doc=%s)' % doc)
-    if type(doc) == 'str':
+        print("Check.get_document(doc=%s)" % doc)
+    if type(doc) == "str":
         doc = app.getDocument(doc)
         # doc.recompute()
         if DEBUG:
-            print('doc.Name is %s, doc.Label is %s' % (doc.Name, doc.Label))
+            print("doc.Name is %s, doc.Label is %s" % (doc.Name, doc.Label))
     elif doc is None:
         if document_presence() == 1:
             doc = app.activeDocument()
             # doc.recompute()
             if DEBUG:
-                print('doc.Name is %s, doc.Label is %s' % (doc.Name, doc.Label))
+                print("doc.Name is %s, doc.Label is %s" % (doc.Name, doc.Label))
         else:
             if DEBUG:
-                print('doc is None')
+                print("doc is None")
             pass
 
     return doc
 
 
 def document_presence(name=None, label=None):
-    '''document_presence(name=None, label=None) -> 0 or 1
+    """document_presence(name=None, label=None) -> 0 or 1
     check if there is a specific doc or an active one
-    '''
+    """
     if DEBUG:
-        print('Check.document_presence(name=%s, label=%s)' % (name, label))
+        print("Check.document_presence(name=%s, label=%s)" % (name, label))
     r = []
     if name is None and label is None:
         if app.ActiveDocument:
@@ -122,9 +122,9 @@ def document_presence(name=None, label=None):
 
 
 def get_object_by_typeId(doc=None, typeId=None):
-    '''get_object_by_typeId(doc=None, typeId=None) -> 0 or 1
+    """get_object_by_typeId(doc=None, typeId=None) -> 0 or 1
     return obj with given TypeId in given doc
-    '''
+    """
     for obj in doc.Objects:
         if obj.TypeId == typeId:
             return obj
@@ -132,9 +132,9 @@ def get_object_by_typeId(doc=None, typeId=None):
 
 
 def document_save(name=None):
-    '''document_save(name=None) -> 0 or 1
+    """document_save(name=None) -> 0 or 1
     check if a doc is saved
-    '''
+    """
     if DEBUG:
         print("Check.document_save(name=%s)" % (name))
     r = []
@@ -153,13 +153,13 @@ def document_save(name=None):
 
 
 def active_workbench(wb):
-    '''active_workbench(wb) -> 0 or 1
+    """active_workbench(wb) -> 0 or 1
     Check if the active workbench is the good one
     "PartDesignWorkbench",
     "PartWorkbench",
     "DraftWorkbench",
     "SketcherWorkbench"
-    '''
+    """
     if DEBUG:
         print("Check.active_workbench(wb=%s)" % (wb))
     r = []
@@ -171,9 +171,9 @@ def active_workbench(wb):
 
 
 def label_object(doc=None, obj=None, label_required=None):
-    '''label_object(doc=None, obj=None, label_required=None) -> 0 or 1
+    """label_object(doc=None, obj=None, label_required=None) -> 0 or 1
     check if there is an object with the specific label
-    '''
+    """
     r = []
     doc = get_document(doc)
     if doc is not None:
@@ -189,16 +189,16 @@ def label_object(doc=None, obj=None, label_required=None):
 
 
 def body_presence(doc=None, label=None):
-    '''body_presence(doc=None, label=None) -> 0 or 1
+    """body_presence(doc=None, label=None) -> 0 or 1
     Check if there is a body in the document
-    '''
+    """
     r = []
     doc = get_document(doc)
     if doc is not None:
         if len(doc.Objects) > 0:
             body_list = []
             for obj in doc.Objects:
-                if obj.TypeId == 'PartDesign::Body':
+                if obj.TypeId == "PartDesign::Body":
                     body_list.append(obj)
             if len(body_list) > 0:
                 r.append(1)
@@ -221,13 +221,10 @@ def body_presence(doc=None, label=None):
     return make_result(r)
 
 
-def primitive_presence(doc=None,
-                       label=None,
-                       typeId=None,
-                       dimensions=None,
-                       support=None,
-                       offset=None):
-    '''primitive_presence(doc=None,
+def primitive_presence(
+    doc=None, label=None, typeId=None, dimensions=None, support=None, offset=None
+):
+    """primitive_presence(doc=None,
                            label=None,
                            typeId=None,
                            dimensions=None,
@@ -236,15 +233,13 @@ def primitive_presence(doc=None,
     check the presence of primitive
     types : "PartDesign::SubstractiveCylinder"
             "PartDesign::AdditiveBox"
-    '''
+    """
     if DEBUG:
-        print('Check.primitive_presence(doc=%s, label=%s, typeId=%s, \
-dimensions=%s, support=%s, offset=%s)' % (doc,
-                                          label,
-                                          typeId,
-                                          dimensions,
-                                          support,
-                                          offset))
+        print(
+            "Check.primitive_presence(doc=%s, label=%s, typeId=%s, \
+dimensions=%s, support=%s, offset=%s)"
+            % (doc, label, typeId, dimensions, support, offset)
+        )
     r = []
     doc = get_document(doc)
     reference = None
@@ -257,13 +252,13 @@ dimensions=%s, support=%s, offset=%s)' % (doc,
     if reference:
         if type is not None:
             if DEBUG:
-                print('target', typeId, 'actual', reference.TypeId)
+                print("target", typeId, "actual", reference.TypeId)
             if reference.TypeId == typeId:
                 r.append(1)
             else:
                 r.append(0)
         if dimensions:
-            if 'Box' in reference.TypeId:
+            if "Box" in reference.TypeId:
                 if dimensions[0] == reference.Length:
                     r.append(1)
                 else:
@@ -277,7 +272,7 @@ dimensions=%s, support=%s, offset=%s)' % (doc,
                 else:
                     r.append(0)
 
-            if 'Cylinder' in reference.TypeId:
+            if "Cylinder" in reference.TypeId:
                 if dimensions[0] == reference.Radius:
                     r.append(1)
                 else:
@@ -320,14 +315,13 @@ dimensions=%s, support=%s, offset=%s)' % (doc,
 
 
 def fillet_presence(doc=None, label=None, radius=None):
-    '''fillet_presence(doc=None, label=None, radius=None) -> 0 or 1
+    """fillet_presence(doc=None, label=None, radius=None) -> 0 or 1
     check fillet presence
-    '''
+    """
     if DEBUG:
-        print('Check.fillet_presence(doc=%s, label=%s, radius=%s)' % (
-            doc,
-            label,
-            radius))
+        print(
+            "Check.fillet_presence(doc=%s, label=%s, radius=%s)" % (doc, label, radius)
+        )
     r = []
     doc = get_document(doc)
     reference = None
@@ -341,7 +335,7 @@ def fillet_presence(doc=None, label=None, radius=None):
                 print("TODO: make list of fillet")
             pass
     if reference:
-        if reference.TypeId == 'PartDesign::Fillet':
+        if reference.TypeId == "PartDesign::Fillet":
             r.append(1)
         else:
             r.append(0)
@@ -354,15 +348,18 @@ def fillet_presence(doc=None, label=None, radius=None):
 
 
 def datum_plane_presence(doc=None, label=None, support=None, offset=None):
-    '''datum_plane_presence(doc=None,
+    """datum_plane_presence(doc=None,
                             label=None,
                             support=None,
                             offset=None) -> 0 or 1
     check the presence of datum plane
-    '''
+    """
     if DEBUG:
-        print("Check.datum_plane_presence(doc=%s, label=%s, support=%s, \
-        offset=%s)" % (doc, label, support, offset,))
+        print(
+            "Check.datum_plane_presence(doc=%s, label=%s, support=%s, \
+        offset=%s)"
+            % (doc, label, support, offset,)
+        )
     r = []
     doc = get_document(doc)
     datum_plane_list = []
@@ -373,7 +370,7 @@ def datum_plane_presence(doc=None, label=None, support=None, offset=None):
     # if doc and name, get reference by name
     if doc:
         for obj in doc.Objects:
-            if obj.TypeId == 'PartDesign::Plane':
+            if obj.TypeId == "PartDesign::Plane":
                 datum_plane_list.append(obj)
 
     if len(datum_plane_list) > 0:
@@ -435,12 +432,15 @@ def datum_plane_presence(doc=None, label=None, support=None, offset=None):
 
 
 def sketch_presence(doc=None, label=None, support=None):
-    '''sketch_presence(doc=None, label=None, support=None) -> 0 or 1
+    """sketch_presence(doc=None, label=None, support=None) -> 0 or 1
     check the presence of sketch
-    '''
+    """
     if DEBUG:
-        print("Check.sketch_presence(doc=%s, \
-        label=%s, support=%s)" % (doc, label, support))
+        print(
+            "Check.sketch_presence(doc=%s, \
+        label=%s, support=%s)"
+            % (doc, label, support)
+        )
     r = []
     doc = get_document(doc)
     sk = None
@@ -451,7 +451,7 @@ def sketch_presence(doc=None, label=None, support=None):
         else:
             sk = []
             for obj in doc.Objects:
-                if obj.TypeId == 'Sketcher::SketchObject':
+                if obj.TypeId == "Sketcher::SketchObject":
                     sk.append(obj)
     if sk:
         if support:
@@ -480,15 +480,18 @@ def sketch_presence(doc=None, label=None, support=None):
 
 
 def geometry_presence(doc=None, sketch_label=None, count=None, isclosed=None):
-    '''geometry_presence(doc=None,
+    """geometry_presence(doc=None,
                          sketch_label=None,
                          count=None,
                          isclosed=None) -> 0 or 1
     check if the skecth have the count of geometrie and if the wire is closed
-    '''
+    """
     if DEBUG:
-        print("Check.geometry_presence(doc=%s, sketch_label=%s, count=%s, \
-        isclosed=%s)" % (doc, sketch_label, count, isclosed))
+        print(
+            "Check.geometry_presence(doc=%s, sketch_label=%s, count=%s, \
+        isclosed=%s)"
+            % (doc, sketch_label, count, isclosed)
+        )
     r = []
     doc = get_document(doc)
     sk = None
@@ -499,7 +502,7 @@ def geometry_presence(doc=None, sketch_label=None, count=None, isclosed=None):
         else:
             sk = []
             for obj in doc.Objects:
-                if obj.TypeId == 'Sketcher::SketchObject':
+                if obj.TypeId == "Sketcher::SketchObject":
                     sk.append(obj)
     if sk:
         if type(sk) is list:
@@ -534,18 +537,19 @@ def geometry_presence(doc=None, sketch_label=None, count=None, isclosed=None):
     return make_result(r)
 
 
-def external_geometry_presence(doc=None,
-                               sketch_label=None,
-                               count=None):
-    '''external_geometry_presence(doc=None,
+def external_geometry_presence(doc=None, sketch_label=None, count=None):
+    """external_geometry_presence(doc=None,
                                   sketch_label=None,
                                   count=None) -> 0 or 1
     Check if the skecth contain the count of geometrie and if the wire is
      closed.
-     '''
+     """
     if DEBUG:
-        print("Check.external_geometry_presence(doc=%s, sketch_label=%s, \
-count=%s)" % (doc, sketch_label, count))
+        print(
+            "Check.external_geometry_presence(doc=%s, sketch_label=%s, \
+count=%s)"
+            % (doc, sketch_label, count)
+        )
     r = []
     doc = get_document(doc)
     sk = None
@@ -556,7 +560,7 @@ count=%s)" % (doc, sketch_label, count))
         else:
             sk = []
             for obj in doc.Objects:
-                if obj.TypeId == 'Sketcher::SketchObject':
+                if obj.TypeId == "Sketcher::SketchObject":
                     sk.append(obj)
 
     if sk:
@@ -573,21 +577,20 @@ count=%s)" % (doc, sketch_label, count))
     return make_result(r)
 
 
-def constraint_presence(doc=None,
-                        sketch_label=None,
-                        count=None,
-                        type=None,
-                        value=None):
-    '''constraint_presence(doc=None,
+def constraint_presence(doc=None, sketch_label=None, count=None, type=None, value=None):
+    """constraint_presence(doc=None,
                             sketch_label=None,
                             count=None,
                             type=None,
                             value=None) -> 0 or 1
     Check if the skecth contain the count of constraint's type and value.
-    '''
+    """
     if DEBUG:
-        print('Check.constraint_presence(doc=%s, sketch_label=%s, count=%s, \
-type=%s, value=%s)' % (doc, sketch_label, count, type, value))
+        print(
+            "Check.constraint_presence(doc=%s, sketch_label=%s, count=%s, \
+type=%s, value=%s)"
+            % (doc, sketch_label, count, type, value)
+        )
     r = []
     doc = get_document(doc)
     sk = None
@@ -598,7 +601,7 @@ type=%s, value=%s)' % (doc, sketch_label, count, type, value))
         else:
             sk = []
             for obj in doc.Objects:
-                if obj.TypeId == 'Sketcher::SketchObject':
+                if obj.TypeId == "Sketcher::SketchObject":
                     sk.append(obj)
 
     if sk:
@@ -606,11 +609,13 @@ type=%s, value=%s)' % (doc, sketch_label, count, type, value))
             constraints_list = []
             for constraint in sk.Constraints:
                 if constraint.Type == type:
-                    constraints_list.append(constraint)  # list of constraint matching type
+                    constraints_list.append(
+                        constraint
+                    )  # list of constraint matching type
             if value is not None:
                 find_value = False
                 for constraint in constraints_list:
-                    if type == 'Angle':
+                    if type == "Angle":
                         angle = constraint.Value * 180 / math.pi
                         if angle == value:
                             find_value = True
@@ -636,21 +641,22 @@ type=%s, value=%s)' % (doc, sketch_label, count, type, value))
     return make_result(r)
 
 
-def dimension_constraint_presence(doc=None,
-                                  sketch_label=None,
-                                  type=None,
-                                  value=None,
-                                  count=None):
-    '''dimension_constraint_presence(doc=None,
+def dimension_constraint_presence(
+    doc=None, sketch_label=None, type=None, value=None, count=None
+):
+    """dimension_constraint_presence(doc=None,
                                       sketch_label=None,
                                       type=None,
                                       value=None,
                                       count=None) -> 0 or 1
     Check if the skecth contain the count of constraint's type and value.
-    '''
+    """
     if DEBUG:
-        print('Check.dimension_constraint_presence(doc=%s, sketch_label=%s, \
-type=%s, value=%s)' % (doc, sketch_label, type, value))
+        print(
+            "Check.dimension_constraint_presence(doc=%s, sketch_label=%s, \
+type=%s, value=%s)"
+            % (doc, sketch_label, type, value)
+        )
     r = []
     doc = get_document(doc)
     sk = None
@@ -661,7 +667,7 @@ type=%s, value=%s)' % (doc, sketch_label, type, value))
         else:
             sk = []
             for obj in doc.Objects:
-                if obj.TypeId == 'Sketcher::SketchObject':
+                if obj.TypeId == "Sketcher::SketchObject":
                     sk.append(obj)
 
     if sk:
@@ -673,7 +679,7 @@ type=%s, value=%s)' % (doc, sketch_label, type, value))
             if value is not None:
                 find_value = False
                 for constraint in constraints_list:
-                    if type == 'Angle':
+                    if type == "Angle":
                         angle = constraint.Value * 180 / math.pi
                         if angle == value:
                             find_value = True
@@ -697,18 +703,14 @@ type=%s, value=%s)' % (doc, sketch_label, type, value))
     return make_result(r)
 
 
-def pad_presence(doc=None,
-                 name=None,
-                 type=None,
-                 length=None,
-                 midplane=None):
-    '''pad_presence(doc=None,
+def pad_presence(doc=None, name=None, type=None, length=None, midplane=None):
+    """pad_presence(doc=None,
                      name=None,
                      type=None,
                      length=None,
                      midplane=None) -> 0 or 1
     Check the presence of pad.
-    '''
+    """
     r = []
     doc = get_document(doc)
     if DEBUG:
@@ -720,7 +722,7 @@ def pad_presence(doc=None,
         else:
             objs = []
             for obj in doc.Objects:
-                if obj.TypeId == 'PartDesign::Pad':
+                if obj.TypeId == "PartDesign::Pad":
                     objs.append(obj)
             if len(objs) > 0:
                 feature = objs[0]
@@ -747,23 +749,23 @@ def pad_presence(doc=None,
     return make_result(r)
 
 
-def pocket_presence(doc=None,
-                    name=None,
-                    type=None,
-                    length=None,
-                    midplane=None,
-                    reversed=None):
-    '''pocket_presence(doc=None,
+def pocket_presence(
+    doc=None, name=None, type=None, length=None, midplane=None, reversed=None
+):
+    """pocket_presence(doc=None,
                         name=None,
                         type=None,
                         length=None,
                         midplane=None,
                         reversed=None) -> 0 or 1
     Check the presence of pocket.
-    '''
+    """
     if DEBUG:
-        print('Check.pocket_presence(doc=%s, name=%s, type=%s, length=%s, \
-midplane=%s, reversed=%s)' % (doc, name, type, length, midplane, reversed))
+        print(
+            "Check.pocket_presence(doc=%s, name=%s, type=%s, length=%s, \
+midplane=%s, reversed=%s)"
+            % (doc, name, type, length, midplane, reversed)
+        )
     r = []
     doc = get_document(doc)
     feature = None
@@ -774,7 +776,7 @@ midplane=%s, reversed=%s)' % (doc, name, type, length, midplane, reversed))
         else:
             features_list = []
             for obj in doc.Objects:
-                if obj.TypeId == 'PartDesign::Pocket':
+                if obj.TypeId == "PartDesign::Pocket":
                     features_list.append(obj)
 
     if feature:
@@ -833,21 +835,20 @@ midplane=%s, reversed=%s)' % (doc, name, type, length, midplane, reversed))
     return make_result(r)
 
 
-def additiveloft_presence(doc=None,
-                          name=None,
-                          outlist=None,
-                          ruled=None,
-                          closed=None):
-    '''additiveloft_presence(doc=None,
+def additiveloft_presence(doc=None, name=None, outlist=None, ruled=None, closed=None):
+    """additiveloft_presence(doc=None,
                               name=None,
                               outlist=None,
                               ruled=None,
                               closed=None) -> 0 or 1
     Check the presence of pocket.
-    '''
+    """
     if DEBUG:
-        print('Check.additiveloft_presence(doc=%s, name=%s, outlist=%s, \
-ruled=%s, closed=%s)' % (doc, name, outlist, ruled, closed))
+        print(
+            "Check.additiveloft_presence(doc=%s, name=%s, outlist=%s, \
+ruled=%s, closed=%s)"
+            % (doc, name, outlist, ruled, closed)
+        )
     r = []
     doc = get_document(doc)
     feature = None
@@ -857,7 +858,7 @@ ruled=%s, closed=%s)' % (doc, name, outlist, ruled, closed))
             feature = doc.getObject(name)
         else:
             for obj in doc.Objects:
-                if obj.TypeId == 'PartDesign::AdditiveLoft':
+                if obj.TypeId == "PartDesign::AdditiveLoft":
                     features_list.append(obj)
 
     if feature:
@@ -906,21 +907,20 @@ ruled=%s, closed=%s)' % (doc, name, outlist, ruled, closed))
     return make_result(r)
 
 
-def additivepipe_presence(doc=None,
-                          name=None,
-                          outlist=None,
-                          ruled=None,
-                          closed=None):
-    '''additivepipe_presence(doc=None,
+def additivepipe_presence(doc=None, name=None, outlist=None, ruled=None, closed=None):
+    """additivepipe_presence(doc=None,
                               name=None,
                               outlist=None,
                               ruled=None,
                               closed=None) -> 0 or 1
     Check the presence of pocket.
-    '''
+    """
     if DEBUG:
-        print('Check.additivepipe_presence(doc=%s, name=%s, outlist=%s, \
-ruled=%s, closed=%s)' % (doc, name, outlist, ruled, closed))
+        print(
+            "Check.additivepipe_presence(doc=%s, name=%s, outlist=%s, \
+ruled=%s, closed=%s)"
+            % (doc, name, outlist, ruled, closed)
+        )
     r = []
     doc = get_document(doc)
     feature = None
@@ -930,7 +930,7 @@ ruled=%s, closed=%s)' % (doc, name, outlist, ruled, closed))
             feature = doc.getObject(name)
         else:
             for obj in doc.Objects:
-                if obj.TypeId == 'PartDesign::AdditivePipe':
+                if obj.TypeId == "PartDesign::AdditivePipe":
                     features_list.append(obj)
 
     if feature:
@@ -980,14 +980,14 @@ ruled=%s, closed=%s)' % (doc, name, outlist, ruled, closed))
 
 
 def revolution_presence(doc=None):
-    '''revolution_presence(doc=None) -> 0 or 1
+    """revolution_presence(doc=None) -> 0 or 1
     Check the presence of revolution.
-    '''
+    """
     r = []
     doc = get_document(doc)
     if doc:
         for obj in doc.Objects:
-            if obj.TypeId == 'PartDesign::Revolution':
+            if obj.TypeId == "PartDesign::Revolution":
                 r.append(1)
     else:
         r.append(0)
@@ -995,34 +995,31 @@ def revolution_presence(doc=None):
 
 
 def groove_presence(doc=None):
-    '''groove_presence(doc=None) -> 0 or 1
+    """groove_presence(doc=None) -> 0 or 1
     Check the presence of groove.
-    '''
+    """
     r = []
     doc = get_document(doc)
     if doc:
         for obj in doc.Objects:
-            if obj.TypeId == 'PartDesign::Groove':
+            if obj.TypeId == "PartDesign::Groove":
                 r.append(1)
     else:
         r.append(0)
     return make_result(r)
 
 
-def polar_pattern_presence(doc=None,
-                           name=None,
-                           reversed=None,
-                           angle=None,
-                           occurrences=None,
-                           axis=None):
-    '''polar_pattern_presence(doc=None,
+def polar_pattern_presence(
+    doc=None, name=None, reversed=None, angle=None, occurrences=None, axis=None
+):
+    """polar_pattern_presence(doc=None,
                                name=None,
                                reversed=None,
                                angle=None,
                                occurrences=None,
                                axis=None) -> 0 or 1
     Check the presence of polar pattern.
-    '''
+    """
     r = []
     doc = get_document(doc)
     feature = None
@@ -1032,7 +1029,7 @@ def polar_pattern_presence(doc=None,
         else:
             objs = []
             for obj in doc.Objects:
-                if obj.TypeId == 'PartDesign::PolarPattern':
+                if obj.TypeId == "PartDesign::PolarPattern":
                     objs.append(obj)
             if len(objs) > 0:
                 feature = objs[0]
@@ -1053,9 +1050,9 @@ def polar_pattern_presence(doc=None,
                 else:
                     r.append(0)
             if axis:
-                #print('Axis')
-                #print(feature.Axis[0].Name)
-                #print(axis)
+                # print('Axis')
+                # print(feature.Axis[0].Name)
+                # print(axis)
                 if feature.Axis[0].Name == axis:
                     r.append(1)
                 else:
@@ -1068,32 +1065,30 @@ def polar_pattern_presence(doc=None,
 
 
 def linear_pattern_presence(doc=None):
-    '''linear_pattern_presence(doc=None) -> 0 or 1
+    """linear_pattern_presence(doc=None) -> 0 or 1
     Check the presence of linear pattern.
-    '''
+    """
     r = []
     doc = get_document(doc)
     if doc:
         for obj in doc.Objects:
-            if obj.TypeId == 'PartDesign::LinearPattern':
+            if obj.TypeId == "PartDesign::LinearPattern":
                 r.append(1)
     else:
         r.append(0)
     return make_result(r)
 
 
-def mirrored_pattern_presence(doc=None,
-                              name=None,
-                              plane_name=None,
-                              plane_axis=None,
-                              bf_name=None):
-    '''mirrored_pattern_presence(doc=None,
+def mirrored_pattern_presence(
+    doc=None, name=None, plane_name=None, plane_axis=None, bf_name=None
+):
+    """mirrored_pattern_presence(doc=None,
                                   name=None,
                                   plane_name=None,
                                   plane_axis=None,
                                   bf_name=None) -> 0 or 1
     Check the presence of mirrored pattern.
-    '''
+    """
     r = []
     doc = get_document(doc)
     if doc:
@@ -1102,7 +1097,7 @@ def mirrored_pattern_presence(doc=None,
         else:
             objs = []
             for obj in doc.Objects:
-                if obj.TypeId == 'PartDesign::Mirrored':
+                if obj.TypeId == "PartDesign::Mirrored":
                     objs.append(obj)
             if len(objs) > 0:
                 feature = objs[0]
@@ -1130,20 +1125,15 @@ def mirrored_pattern_presence(doc=None,
     return make_result(r)
 
 
-def boundbox_dimensions(doc=None,
-                        name=None,
-                        typeId=None,
-                        x=None,
-                        y=None,
-                        z=None):
-    '''boundbox_dimensions(doc=None,
+def boundbox_dimensions(doc=None, name=None, typeId=None, x=None, y=None, z=None):
+    """boundbox_dimensions(doc=None,
                             name=None,
                             typeId=None,
                             x=None,
                             y=None,
                             z=None) -> 0 or 1
     Check the length's dimensions of boundbox.
-    '''
+    """
     r = []
     doc = get_document(doc)
     features_list = []
@@ -1158,7 +1148,11 @@ def boundbox_dimensions(doc=None,
         got_it = 0
         for feature in features_list:
             if not feature.Shape.isNull():
-                bb_lengths = [round(feature.Shape.BoundBox.XLength, 2), round(feature.Shape.BoundBox.YLength, 2), round(feature.Shape.BoundBox.ZLength, 2)]
+                bb_lengths = [
+                    round(feature.Shape.BoundBox.XLength, 2),
+                    round(feature.Shape.BoundBox.YLength, 2),
+                    round(feature.Shape.BoundBox.ZLength, 2),
+                ]
                 dim_count = 0
                 if x in bb_lengths:
                     bb_lengths.remove(x)
@@ -1181,12 +1175,12 @@ def boundbox_dimensions(doc=None,
 
 
 def volume(doc=None, name=None, typeId=None, target=None, offset=10):
-    '''volume(doc=None, name=None, typeId=None,
+    """volume(doc=None, name=None, typeId=None,
      target=None, offset=10) -> 0 or 1
     Check the project volume
-    '''
+    """
     if DEBUG:
-        print('Check volume')
+        print("Check volume")
     r = []
     doc = get_document(doc)
     features_list = []
@@ -1202,8 +1196,13 @@ def volume(doc=None, name=None, typeId=None, target=None, offset=10):
         for feature in features_list:
             if not feature.Shape.isNull():
                 if DEBUG:
-                    print('actual volume is : ', feature.Shape.Volume)
-                    print('target volume is between : ', target - offset, 'and', target + offset)
+                    print("actual volume is : ", feature.Shape.Volume)
+                    print(
+                        "target volume is between : ",
+                        target - offset,
+                        "and",
+                        target + offset,
+                    )
                 if (target - offset) < feature.Shape.Volume < (target + offset):
                     # if round(target,0) == round(feature.Shape.Volume,0):
                     got_it = 1
@@ -1217,11 +1216,11 @@ def volume(doc=None, name=None, typeId=None, target=None, offset=10):
 
 
 def navigation_style(style):
-    '''navigation_style(style) -> 0 or 1
+    """navigation_style(style) -> 0 or 1
     Check navigation style
-    '''
+    """
     param = app.ParamGet("User parameter:BaseApp/Preferences/View")
-    nav = param.GetString('NavigationStyle')
+    nav = param.GetString("NavigationStyle")
     if nav != style:
         r = [0]
     else:
@@ -1230,9 +1229,9 @@ def navigation_style(style):
 
 
 def workbench_presence(wb):
-    '''workbench_presence(wb) -> 0 or 1
+    """workbench_presence(wb) -> 0 or 1
     Check workbench presence in FreeCAD
-    '''
+    """
     r = [0]
     for wb in gui.listWorkbenches():
         if wb == wb:
@@ -1242,16 +1241,16 @@ def workbench_presence(wb):
 
 
 def a2p_importedPart_presence(doc=None, label=None):
-    '''a2p_importedPart_presence(doc=None, label=None) -> 0 or 1
+    """a2p_importedPart_presence(doc=None, label=None) -> 0 or 1
     check if object with corresponding label is an a2p import
-    '''
+    """
     doc = get_document(doc)
     r = [0]
     if doc:
         for obj in doc.Objects:
-            if hasattr(obj, 'Proxy'):
-                if 'a2p' in obj.Proxy.__str__():
-                    if hasattr(obj, 'a2p_Version'):
+            if hasattr(obj, "Proxy"):
+                if "a2p" in obj.Proxy.__str__():
+                    if hasattr(obj, "a2p_Version"):
                         if label is not None:
                             if label.lower() in obj.Label.lower():
                                 r = [1]
@@ -1264,18 +1263,108 @@ def a2p_importedPart_presence(doc=None, label=None):
 
 
 def a2p_constraint_presence(doc=None, type=None):
-    '''a2p_constraint_presence(doc=None, type=None) -> 0 or 1
+    """a2p_constraint_presence(doc=None, type=None) -> 0 or 1
     types : plane, axial, planesParallel
-    '''
+    """
     doc = get_document(doc)
     r = [0]
     if doc:
         for obj in doc.Objects:
-            if hasattr(obj, 'Proxy'):
-                if 'a2p' in obj.Proxy.__str__():
-                    if not hasattr(obj, 'a2p_Version'):
+            if hasattr(obj, "Proxy"):
+                if "a2p" in obj.Proxy.__str__():
+                    if not hasattr(obj, "a2p_Version"):
                         if obj.Type == type:
                             r = [1]
                             break
 
+    return make_result(r)
+
+
+def checkLabel(name=None, label=None):
+    r = []
+    doc = app.ActiveDocument
+    if doc:
+        if name and label:
+            obj = app.ActiveDocument.getObject(name)
+            if obj:
+                if obj.Label == label:
+                    r.append(1)
+    return make_result(r)
+
+
+def checkParameter(name=None, parameter=None, value=None):
+    if DEBUG:
+        print(
+            "checkParameter(name=%s, parameter=%s, value=%s)" % (name, parameter, value)
+        )
+    r = []
+    doc = app.ActiveDocument
+    if doc:
+        if name:
+            obj = app.ActiveDocument.getObject(name)
+            if hasattr(obj, parameter):
+                if DEBUG:
+                    print("obj.%s = %s" % (obj.getPropertyByName(parameter), parameter))
+                if obj.getPropertyByName(parameter) == value:
+                    r.append(1)
+    return make_result(r)
+
+
+"""
+def checkPlacement(name=None, placement=None):
+    if DEBUG:
+        print(
+            "checkPlacement(name=%s, parameter=%s)" % (name, parameter)
+        )
+    r = []
+    doc = app.ActiveDocument
+    if doc:
+        if name:
+            obj = app.ActiveDocument.getObject(name)
+            if placement and hasattr(obj, 'Placement'):
+                if placement == obj.Placement:
+                    r.append(1)
+    return make_result(r)
+"""
+
+
+def checkExpression(name=None, parameter=None, exp=None):
+    if DEBUG:
+        print("checkExpression(name=%s, parameter=%s, exp=%s)" % (name, parameter, exp))
+    r = []
+    doc = app.ActiveDocument
+    if doc:
+        if name:
+            obj = app.ActiveDocument.getObject(name)
+            if hasattr(obj, "ExpressionEngine") and parameter and exp:
+                if len(obj.ExpressionEngine) > 0:
+                    if DEBUG:
+                        print("obj.Expression : %s" % obj.ExpressionEngine)
+                    for expression in obj.ExpressionEngine:
+                        if parameter in expression:
+                            if DEBUG:
+                                print(expression[0], expression[1])
+                            if expression[1] == exp:
+                                r.append(1)
+    return make_result(r)
+
+
+def checkTypeIdPresence(typeId="Part::Box"):
+    r = []
+    doc = app.ActiveDocument
+    if doc:
+        for obj in app.ActiveDocument.Objects:
+            if obj.TypeId == typeId:
+                r.append(1)
+    return make_result(r)
+
+
+def checkObjectPresence(name=None, label=None):
+    r = []
+    doc = app.ActiveDocument
+    if doc:
+        if name:
+            for obj in app.ActiveDocument.Objects:
+                if obj.Name == name:
+                    r.append(1)
     return make_result(r)

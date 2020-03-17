@@ -36,14 +36,14 @@ import FreeCAD as app
 import FreeCADGui as gui
 
 global MOOC_VERSION
-MOOC_VERSION = 'V1.0.0'
+MOOC_VERSION = "V1.2.0"
 
 moocWB_path = os.path.dirname(moocwb_locator.__file__)
-moocWB_medias_path = os.path.join(moocWB_path, 'medias')
-moocWB_icons_path = os.path.join(moocWB_medias_path, 'icons')
+moocWB_medias_path = os.path.join(moocWB_path, "medias")
+moocWB_icons_path = os.path.join(moocWB_medias_path, "icons")
 
 global main_moocWB_Icon
-main_moocWB_Icon = os.path.join(moocWB_icons_path, 'mooc-workbench.svg')
+main_moocWB_Icon = os.path.join(moocWB_icons_path, "mooc-workbench.svg")
 
 
 class MoocWorkbench(Workbench):
@@ -58,13 +58,14 @@ class MoocWorkbench(Workbench):
         "This function is executed when FreeCAD starts"
         import MoocPlayer
         import MoocGrader
-        self.appendToolbar('MOOC', ['Mooc_Player', 'Mooc_Grader'])
-        self.appendMenu('MOOC', ['Mooc_Player', 'Mooc_Grader'])
-        print('Initialize MOOC module... done.')
+
+        self.appendToolbar("MOOC", ["Mooc_Player", "Mooc_Grader"])
+        self.appendMenu("MOOC", ["Mooc_Player", "Mooc_Grader"])
+        print("Initialize MOOC module... done.")
 
     def Activated(self):
         "This function is executed when the workbench is activated"
-        print('Activated MoocWorkbench... done')
+        print("Activated MoocWorkbench... done")
         return
 
     def Deactivated(self):

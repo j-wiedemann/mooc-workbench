@@ -25,7 +25,7 @@
 
 __title__ = "MOOC Workbench"
 __author__ = "Jonathan Wiedemann"
-__url__ = "http://www.freecadweb.org"
+__url__ = "https://freecad-france.com"
 
 # to make gui
 from PySide import QtCore, QtGui
@@ -39,7 +39,7 @@ import moocwb_locator
 from os import listdir
 from os.path import isfile, join
 
-if (sys.version_info > (3, 0)):  # py3
+if sys.version_info > (3, 0):  # py3
     import importlib
 else:  # py2
     import imp
@@ -53,6 +53,8 @@ import webbrowser
 
 # import MoocChecker
 import MoocChecker
+import MoocCheckerSpreadsheet
+import MoocCheckerPart
 
 # to DEBUG purpose
 DEBUG = False
@@ -61,8 +63,12 @@ DEBUG = False
 if DEBUG:
     try:
         reload(MoocChecker)
+        reload(MoocCheckerSpreadsheet)
+        reload(MoocCheckerPart)
     except NameError:
         importlib.reload(MoocChecker)
+        importlib.reload(MoocCheckerSpreadsheet)
+        importlib.reload(MoocCheckerPart)
 
 
 def debug():
@@ -76,13 +82,14 @@ if DEBUG:
     TIMER.timeout.connect(debug)
 
 moocWB_path = os.path.dirname(moocwb_locator.__file__)
-moocWB_medias_path = os.path.join(moocWB_path, 'medias')
-moocWB_icons_path = os.path.join(moocWB_medias_path, 'icons')
+moocWB_medias_path = os.path.join(moocWB_path, "medias")
+moocWB_icons_path = os.path.join(moocWB_medias_path, "icons")
 
 QtWidgets = QtGui
 
+
 class Ui_MoocPlayer(QtWidgets.QDialog):
-    '''The FreeCAD Player interface'''
+    """The FreeCAD Player interface"""
 
     def __init__(self, parent=gui.getMainWindow()):
         super(Ui_MoocPlayer, self).__init__(parent)
@@ -91,7 +98,7 @@ class Ui_MoocPlayer(QtWidgets.QDialog):
         mw_size = parent.size()
         mw_pos = parent.pos()
         move_x = mw_pos.x() + mw_size.width() - self.size().width()
-        move_y = mw_pos.y() + mw_size.height()/2 - self.size().height()/2
+        move_y = mw_pos.y() + mw_size.height() / 2 - self.size().height() / 2
         self.move(move_x, move_y)
         self.setWindowFlags(self.windowFlags() | QtCore.Qt.WindowStaysOnTopHint)
         self.verticalLayout_left = QtWidgets.QVBoxLayout(self)
@@ -107,11 +114,15 @@ class Ui_MoocPlayer(QtWidgets.QDialog):
         self.horizontalLayout_play.setObjectName("horizontalLayout_play")
         self.btn_play = QtWidgets.QPushButton(self)
         self.btn_play.setObjectName("btn_play")
-        self.btn_play.setIcon(QtGui.QIcon(os.path.join(moocWB_icons_path, 'media-playback-start.svg')))
+        self.btn_play.setIcon(
+            QtGui.QIcon(os.path.join(moocWB_icons_path, "media-playback-start.svg"))
+        )
         self.horizontalLayout_play.addWidget(self.btn_play)
         self.btn_help = QtWidgets.QPushButton(self)
         self.btn_help.setObjectName("btn_help")
-        self.btn_help.setIcon(QtGui.QIcon(os.path.join(moocWB_icons_path, 'help-contents.svg')))
+        self.btn_help.setIcon(
+            QtGui.QIcon(os.path.join(moocWB_icons_path, "help-contents.svg"))
+        )
         self.horizontalLayout_play.addWidget(self.btn_help)
         self.verticalLayout_left.addLayout(self.horizontalLayout_play)
         self.label_objectifs = QtWidgets.QLabel(self)
@@ -119,13 +130,17 @@ class Ui_MoocPlayer(QtWidgets.QDialog):
         self.verticalLayout_left.addWidget(self.label_objectifs)
         self.listWidget_objectifs = QtWidgets.QListWidget(self)
         self.listWidget_objectifs.setObjectName("listWidget_objectifs")
-        self.listWidget_objectifs.setSelectionMode(QtWidgets.QAbstractItemView.SelectionMode.NoSelection)
+        self.listWidget_objectifs.setSelectionMode(
+            QtWidgets.QAbstractItemView.SelectionMode.NoSelection
+        )
         self.verticalLayout_left.addWidget(self.listWidget_objectifs)
         self.horizontalLayout_change_step = QtWidgets.QHBoxLayout()
         self.horizontalLayout_change_step.setObjectName("horizontalLayout_change_step")
         self.btn_previous_step = QtWidgets.QPushButton(self)
         self.btn_previous_step.setObjectName("btn_previous_step")
-        self.btn_previous_step.setIcon(QtGui.QIcon(os.path.join(moocWB_icons_path, 'go-previous.svg')))
+        self.btn_previous_step.setIcon(
+            QtGui.QIcon(os.path.join(moocWB_icons_path, "go-previous.svg"))
+        )
         self.horizontalLayout_change_step.addWidget(self.btn_previous_step)
         self.label_step = QtWidgets.QLabel(self)
         self.label_step.setAlignment(QtCore.Qt.AlignCenter)
@@ -133,7 +148,9 @@ class Ui_MoocPlayer(QtWidgets.QDialog):
         self.horizontalLayout_change_step.addWidget(self.label_step)
         self.btn_next_step = QtWidgets.QPushButton(self)
         self.btn_next_step.setObjectName("btn_next_step")
-        self.btn_next_step.setIcon(QtGui.QIcon(os.path.join(moocWB_icons_path, 'go-next.svg')))
+        self.btn_next_step.setIcon(
+            QtGui.QIcon(os.path.join(moocWB_icons_path, "go-next.svg"))
+        )
         self.horizontalLayout_change_step.addWidget(self.btn_next_step)
         self.verticalLayout_left.addLayout(self.horizontalLayout_change_step)
 
@@ -158,8 +175,8 @@ class Ui_MoocPlayer(QtWidgets.QDialog):
             print("Closing Mooc Player")
 
 
-class Manager_MoocPlayer():
-    '''functions to control and update the dialog'''
+class Manager_MoocPlayer:
+    """functions to control and update the dialog"""
 
     def __init__(self, lesson):
         self.form = Ui_MoocPlayer()
@@ -217,7 +234,9 @@ class Manager_MoocPlayer():
         self.form.listWidget_objectifs.setFixedHeight(
             (self.form.listWidget_objectifs.sizeHintForRow(0) + 10)
             * self.form.listWidget_objectifs.count()
-            + 10 * self.form.listWidget_objectifs.frameWidth() + 8)
+            + 10 * self.form.listWidget_objectifs.frameWidth()
+            + 8
+        )
 
     def play_video(self):
         step_data = self.lesson.get_data_step(self.current_step_id)
@@ -248,15 +267,19 @@ class Manager_MoocPlayer():
             for x in results:
                 if x == 0:
                     self.form.listWidget_objectifs.item(idx).setForeground(brush_red)
-                    self.form.listWidget_objectifs.item(idx).setIcon(QtGui.QIcon(os.path.join(moocWB_icons_path , 'window-close.svg')))
+                    self.form.listWidget_objectifs.item(idx).setIcon(
+                        QtGui.QIcon(os.path.join(moocWB_icons_path, "window-close.svg"))
+                    )
                 elif x == 1:
                     self.form.listWidget_objectifs.item(idx).setForeground(brush_green)
-                    self.form.listWidget_objectifs.item(idx).setIcon(QtGui.QIcon(os.path.join(moocWB_icons_path , 'dialog-apply.svg')))
+                    self.form.listWidget_objectifs.item(idx).setIcon(
+                        QtGui.QIcon(os.path.join(moocWB_icons_path, "dialog-apply.svg"))
+                    )
                 idx += 1
 
 
 class Ui_MoocChooser(QtWidgets.QDialog):
-    '''The FreeCAD Player chooser interface'''
+    """The FreeCAD Player chooser interface"""
 
     def setupUi(self, MoocPlayerChooser):
         MoocPlayerChooser.setObjectName("MoocPlayerChooser")
@@ -275,17 +298,31 @@ class Ui_MoocChooser(QtWidgets.QDialog):
         self.verticalLayout.addWidget(self.label_description)
         self.buttonBox = QtWidgets.QDialogButtonBox(MoocPlayerChooser)
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
-        self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
+        self.buttonBox.setStandardButtons(
+            QtWidgets.QDialogButtonBox.Cancel | QtWidgets.QDialogButtonBox.Ok
+        )
         self.buttonBox.setObjectName("buttonBox")
         self.verticalLayout.addWidget(self.buttonBox)
 
         self.get_lessons_title_list()
 
         self.retranslateUi(MoocPlayerChooser)
-        QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("accepted()"), MoocPlayerChooser.accept)
-        QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("rejected()"), MoocPlayerChooser.reject)
-        QtCore.QObject.connect(self.listWidget_trainings, QtCore.SIGNAL("itemDoubleClicked(QListWidgetItem *)"), MoocPlayerChooser.launch_mooc)
-        QtCore.QObject.connect(self.listWidget_trainings, QtCore.SIGNAL("itemClicked(QListWidgetItem *)"), MoocPlayerChooser.display_lesson_description)
+        QtCore.QObject.connect(
+            self.buttonBox, QtCore.SIGNAL("accepted()"), MoocPlayerChooser.accept
+        )
+        QtCore.QObject.connect(
+            self.buttonBox, QtCore.SIGNAL("rejected()"), MoocPlayerChooser.reject
+        )
+        QtCore.QObject.connect(
+            self.listWidget_trainings,
+            QtCore.SIGNAL("itemDoubleClicked(QListWidgetItem *)"),
+            MoocPlayerChooser.launch_mooc,
+        )
+        QtCore.QObject.connect(
+            self.listWidget_trainings,
+            QtCore.SIGNAL("itemClicked(QListWidgetItem *)"),
+            MoocPlayerChooser.display_lesson_description,
+        )
         QtCore.QMetaObject.connectSlotsByName(MoocPlayerChooser)
 
         self.show()
@@ -293,24 +330,36 @@ class Ui_MoocChooser(QtWidgets.QDialog):
     def retranslateUi(self, MoocPlayerChooser):
         MoocPlayerChooser.setWindowTitle(u"Choisir la leçon")
         self.label_welcome.setText(u"Quelle leçon souhaitez vous étudier aujourd'hui ?")
-        self.label_description.setText(u"Cliquer sur un éléments de la liste pour obtenir la description de la leçon.")
+        self.label_description.setText(
+            u"Cliquer sur un éléments de la liste pour obtenir la description de la leçon."
+        )
 
     def accept(self):
         self.launch_mooc(self.listWidget_trainings.currentItem())
 
     def get_lessons_list(self):
         moocWB_path = os.path.dirname(moocwb_locator.__file__)
-        moocWBpath_lessons = os.path.join(moocWB_path, 'lessons')
-        files = [f for f in listdir(moocWBpath_lessons) if isfile(join(moocWBpath_lessons, f))]
-        onlyfiles = [f for f in files if os.path.splitext(f)[1] == '.py']
-        onlyfiles.sort()
+        moocWB_path_lessons = os.path.join(moocWB_path, "lessons")
+        dirlist = [d for d in listdir(moocWB_path_lessons)]
+        lesson_fileslist = []
+        for dir in dirlist:
+            l = []
+            lesson_path = os.path.join(moocWB_path_lessons, dir)
+            for file in listdir(lesson_path):
+                if isfile(join(lesson_path, file)):
+                    if os.path.splitext(file)[-1] == ".py":
+                        l.append(file)
+                        l.append(dir)
+                        lesson_fileslist.append(l)
+        lesson_fileslist.sort()
         if DEBUG:
-            print(onlyfiles)
+            print(dirlist)
+            print(lesson_fileslist)
         self.lessons_list = []
-        for lesson in onlyfiles:
-            name, ext = os.path.splitext(lesson)
-            path = os.path.join(moocWBpath_lessons, lesson)
-            if (sys.version_info > (3, 0)):
+        for lesson in lesson_fileslist:
+            name, ext = os.path.splitext(lesson[0])
+            path = os.path.join(moocWB_path_lessons, lesson[1], lesson[0])
+            if sys.version_info > (3, 0):
                 spec = importlib.util.spec_from_file_location(name, path)
                 foo = importlib.util.module_from_spec(spec)
                 spec.loader.exec_module(foo)
@@ -338,16 +387,20 @@ class Ui_MoocChooser(QtWidgets.QDialog):
         Manager_MoocPlayer(lesson)
 
 
-class Command_MoocChooser():
+class Command_MoocChooser:
     "class to choose the lesson"
 
     def GetResources(self):
         # moocWB_path = os.path.dirname(moocwb_locator.__file__)
         # moocWB_medias_path = os.path.join(moocWB_path, 'medias')
         # moocWB_icons_path = os.path.join(moocWB_medias_path, 'icons')
-        return {'Pixmap': os.path.join(moocWB_icons_path, 'mooc-player.svg'),
-                'MenuText': QtCore.QT_TRANSLATE_NOOP(u"Mooc", "Voir un tutoriel."),
-                'ToolTip': QtCore.QT_TRANSLATE_NOOP(u"Mooc", "Permet de choisir et voir un tutoriel interactif.")}
+        return {
+            "Pixmap": os.path.join(moocWB_icons_path, "mooc-player.svg"),
+            "MenuText": QtCore.QT_TRANSLATE_NOOP(u"Mooc", "Voir un tutoriel."),
+            "ToolTip": QtCore.QT_TRANSLATE_NOOP(
+                u"Mooc", "Permet de choisir et voir un tutoriel interactif."
+            ),
+        }
 
     def IsActive(self):
         return True
@@ -359,4 +412,4 @@ class Command_MoocChooser():
 
 
 if app.GuiUp:
-    gui.addCommand('Mooc_Player', Command_MoocChooser())
+    gui.addCommand("Mooc_Player", Command_MoocChooser())

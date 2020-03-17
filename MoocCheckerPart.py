@@ -1,7 +1,7 @@
 # coding: utf-8
 ################################################
 #
-#  Init.py
+#  MoocChecker.py
 #
 #  Copyright 2018 Jonathan Wiedemann <contact at freecad-france dot com>
 #
@@ -23,4 +23,39 @@
 #
 ################################################
 
-# print "MOOC workbench Loaded"
+__title__ = "MOOC Workbench"
+__author__ = "Jonathan Wiedemann"
+__url__ = "http://www.freecadweb.org"
+
+import FreeCAD as app
+import FreeCADGui as gui
+
+import math
+
+
+# for debug purposes
+DEBUG = False
+
+if DEBUG:
+    print("MOOC CHECKER")
+
+
+def make_result(r):
+    """make_result(r) -> 0 or 1
+    make final result from list of result
+    to get 1 there must not be 0 in r
+    r=[1,1,1,0] => result = 0
+    r=[1,1,1,1] => result = 1
+    """
+    if DEBUG:
+        print("Check.make_result(r = %s)" % r)
+    if len(r) > 0:
+        if 0 in r:
+            result = 0
+        else:
+            result = 1
+    else:
+        result = 0
+    # if DEBUG:print('result = ', result)
+    # if DEBUG:print('End check')
+    return result
