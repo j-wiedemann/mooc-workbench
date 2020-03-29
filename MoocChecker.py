@@ -1310,22 +1310,46 @@ def checkParameter(name=None, parameter=None, value=None):
     return make_result(r)
 
 
-"""
 def checkPlacement(name=None, placement=None):
     if DEBUG:
-        print(
-            "checkPlacement(name=%s, parameter=%s)" % (name, parameter)
-        )
+        print("checkPlacement(name=%s, placement=%s)" % (name, placement))
     r = []
     doc = app.ActiveDocument
     if doc:
         if name:
-            obj = app.ActiveDocument.getObject(name)
-            if placement and hasattr(obj, 'Placement'):
-                if placement == obj.Placement:
+            obj = doc.getObject(name)
+            if placement and hasattr(obj, "Placement"):
+                if round(obj.Placement.Base.x, 2) == round(placement[0], 2):
                     r.append(1)
+                else:
+                    r.append(0)
+                if round(obj.Placement.Base.y, 2) == round(placement[1], 2):
+                    r.append(1)
+                else:
+                    r.append(0)
+                if round(obj.Placement.Base.z, 2) == round(placement[2], 2):
+                    r.append(1)
+                else:
+                    r.append(0)
+                if round(math.degrees(obj.Placement.Rotation.Angle), 2) == round(
+                    placement[3], 2
+                ):
+                    r.append(1)
+                else:
+                    r.append(0)
+                if round(obj.Placement.Rotation.Axis.x, 2) == round(placement[4], 2):
+                    r.append(1)
+                else:
+                    r.append(0)
+                if round(obj.Placement.Rotation.Axis.y, 2) == round(placement[5], 2):
+                    r.append(1)
+                else:
+                    r.append(0)
+                if round(obj.Placement.Rotation.Axis.z, 2) == round(placement[6], 2):
+                    r.append(1)
+                else:
+                    r.append(0)
     return make_result(r)
-"""
 
 
 def checkExpression(name=None, parameter=None, exp=None):
