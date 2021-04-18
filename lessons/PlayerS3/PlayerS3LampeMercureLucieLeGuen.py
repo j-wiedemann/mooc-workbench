@@ -32,6 +32,8 @@ __url__ = "http://www.freecadweb.org"
 import os
 import moocwb_locator
 
+import FreeCAD as app
+
 
 class lesson(object):
     def __init__(self):
@@ -40,12 +42,12 @@ class lesson(object):
         moocWB_icons_path = os.path.join(moocWB_medias_path, "icons")
         moocWB_images_path = os.path.join(moocWB_medias_path, 'images')
         self.data_tutorial = {}
-        self.data_tutorial["title"] = u'[FR] MOOC Semaine 3 - Lampe Mercure \
-de Lucie Le Guen'
-        self.data_tutorial["description"] = u'''[FR] MOOC Semaine 3 : \nCette \
+        self.data_tutorial["title"] = app.Qt.translate("MOOC", '[FR] MOOC Semaine 3 - Lampe Mercure \
+de Lucie Le Guen')
+        self.data_tutorial["description"] = app.Qt.translate("MOOC", '''[FR] MOOC Semaine 3 : \nCette \
 semaine nous allons modéliser \
 la Lampe Mercure de Lucie Le Guen. Nous allons travailler dans l'atelier \
-Part Design et utiliser des opérations de lissage, balayage et révolution.'''
+Part Design et utiliser des opérations de lissage, balayage et révolution.''')
         url = 'https://open.tube/videos/embed/579d5229-f1a8-426b-80ad-ec4ef1aa0a87'
         self.data_tutorial["steps"] = []
 
@@ -55,7 +57,7 @@ Part Design et utiliser des opérations de lissage, balayage et révolution.'''
         img2 = os.path.join(moocWB_icons_path, 'Workbench_PartDesign.svg')
         img3 = os.path.join(moocWB_icons_path, 'PartDesign_Body.png')
         img4 = os.path.join(moocWB_images_path, 'korrigans_final.png')
-        step["description"] = u'''<h3>Préparation</h3>
+        step["description"] = app.Qt.translate("MOOC", '''<h3>Préparation</h3>
             <p>Créer un nouveau document :
             <ul><li>en cliquant sur l'icone <img src= %s width="25"/> </li>
             <li>à l'aide du menu <i>Fichier</i> puis <i>Nouveau.</li>
@@ -70,22 +72,23 @@ Part Design et utiliser des opérations de lissage, balayage et révolution.'''
             <p>Sélectionner le corps de pièce puis renommer le corps de pièce en <b>Lampe</b> :
             <ul><li>en faisant un clic droit sur l'objet dans l'arborescence puis <b>Renommer</b></li>
             <li>à l'aide du raccourcis <b>F2</b></li>
-            <li>en modifiant la propriété <b>Label</b> dans l'onglet <b>Données</b> de ses paramètres</li></ul></p>''' % (img1, img2, img3)
+            <li>en modifiant la propriété <b>Label</b> dans l'onglet <b>Données</b> de ses paramètres</li></ul></p>''') % (img1, img2, img3)
 
         step["video"] = str(url) + str('?start=0m00s')
         step["objectives"] = [
-            u"Créer un nouveau document.",
-            u"Basculer dans l'atelier PartDesign.",
-            u"1 corps de pièce nommé 'Lampe'."]
-        step["checks"] = ['MoocChecker.document_presence()',
-        'MoocChecker.active_workbench("PartDesignWorkbench")',
-        'MoocChecker.body_presence(label="Lampe")',]
+            app.Qt.translate("MOOC", "Créer un nouveau document."),
+            app.Qt.translate("MOOC", "Basculer dans l'atelier PartDesign."),
+            app.Qt.translate("MOOC", "1 corps de pièce nommé 'Lampe'.")]
+        step["checks"] = [
+            'MoocChecker.document_presence()',
+            'MoocChecker.active_workbench("PartDesignWorkbench")',
+            'MoocChecker.body_presence(label="Lampe")',]
         self.data_tutorial["steps"].append(step)
 
         # Step 2
         step = {}
         img1 = os.path.join(moocWB_icons_path, 'PartDesign_Plane.svg')
-        step["description"] = u'''<h3>Créer des plans de référence</h3>
+        step["description"] = app.Qt.translate("MOOC", '''<h3>Créer des plans de référence</h3>
             <p>Nous avons besoin de 3 plans de références pour placer nos
              profils. Ils seront coplanaires au plan YZ et décalés respectivement de
              0mm, 50mm et 100 mm selon l'axe Z.</p>
@@ -97,16 +100,17 @@ Part Design et utiliser des opérations de lissage, balayage et révolution.'''
             <p>Pour créer les plans suivants on reproduit la même manipulaution mais
             cette fois on va paramétrer une compensation de placement dans l'onglet
             Tâches. Dans les paramètres de compensation on décalera le deuxième plan
-            de 50 mm selon Z et le troisième plan de 100 mm selon Z.</p>''' % (img1)
+            de 50 mm selon Z et le troisième plan de 100 mm selon Z.</p>''') % (img1)
 
         step["video"] = str(url) + str('?start=0m45s')
         step["objectives"] = [
-            u"1 plan de référence coplanaire à YZ et décalé de 0 mm selon Z.",
-            u"1 plan de référence coplanaire à YZ et décalé de 50 mm selon Z.",
-            u"1 plan de référence coplanaire à YZ et décalé de 100 mm selon Z."]
-        step["checks"] = ['MoocChecker.datum_plane_presence(support="YZ_Plane", offset=[0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0])',
-        'MoocChecker.datum_plane_presence(support="YZ_Plane", offset=[0.0, 0.0, 50.0, 0.0, 0.0, 1.0, 0.0])',
-        'MoocChecker.datum_plane_presence(support="YZ_Plane", offset=[0.0, 0.0, 100.0, 0.0, 0.0, 1.0, 0.0])',]
+            app.Qt.translate("MOOC", "1 plan de référence coplanaire à YZ et décalé de 0 mm selon Z."),
+            app.Qt.translate("MOOC", "1 plan de référence coplanaire à YZ et décalé de 50 mm selon Z."),
+            app.Qt.translate("MOOC", "1 plan de référence coplanaire à YZ et décalé de 100 mm selon Z.")]
+        step["checks"] = [
+            'MoocChecker.datum_plane_presence(support="YZ_Plane", offset=[0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0])',
+            'MoocChecker.datum_plane_presence(support="YZ_Plane", offset=[0.0, 0.0, 50.0, 0.0, 0.0, 1.0, 0.0])',
+            'MoocChecker.datum_plane_presence(support="YZ_Plane", offset=[0.0, 0.0, 100.0, 0.0, 0.0, 1.0, 0.0])',]
         self.data_tutorial["steps"].append(step)
 
         # Step 3
@@ -115,7 +119,7 @@ Part Design et utiliser des opérations de lissage, balayage et révolution.'''
         img1 = os.path.join(moocWB_icons_path, 'Sketcher_CreateHexagon.svg')
         img2 = os.path.join(moocWB_icons_path, 'Constraint_Vertical.svg')
         img3 = os.path.join(moocWB_icons_path, 'Constraint_Radius.svg')
-        step["description"] = u'''<h3>Création de la première esquisse</h3>
+        step["description"] = app.Qt.translate("MOOC", '''<h3>Création de la première esquisse</h3>
             <p>
             Créer une esquisse sur le premier plan de
             référence (DatumPlane) :<br>
@@ -135,18 +139,19 @@ Part Design et utiliser des opérations de lissage, balayage et révolution.'''
             Contraindre verticalement un des segments du second polygone.<br>
             L'esquisse est entièrement contrainte, fermer l'esquisse en cliquant
             sur Fermer dans l'onglet Tâches.
-            </p>''' % (img0, img1, img2, img3,)
+            </p>''') % (img0, img1, img2, img3,)
 
         step["video"] = str(url) + str('?start=1m45s')
         step["objectives"] = [
-            u"1 esquisse sur plan de référence.",
-            u"2 hexagones réguliers de ø 40 mm.",
-            u"1 contrainte de rayon de 17 mm.",
-            u"1 contrainte de rayon de 20 mm."]
-        step["checks"] = ['MoocChecker.sketch_presence(label="Sketch", support="DatumPlane")',
-        'MoocChecker.geometry_presence(sketch_label="Sketch", count=14, isclosed=True)',
-        'MoocChecker.dimension_constraint_presence(sketch_label="Sketch", type="Radius", value=17.0)',
-        'MoocChecker.dimension_constraint_presence(sketch_label="Sketch", type="Radius", value=20.0)',]
+            app.Qt.translate("MOOC", "1 esquisse sur plan de référence."),
+            app.Qt.translate("MOOC", "2 hexagones réguliers de ø 40 mm."),
+            app.Qt.translate("MOOC", "1 contrainte de rayon de 17 mm."),
+            app.Qt.translate("MOOC", "1 contrainte de rayon de 20 mm.")]
+        step["checks"] = [
+            'MoocChecker.sketch_presence(label="Sketch", support="DatumPlane")',
+            'MoocChecker.geometry_presence(sketch_label="Sketch", count=14, isclosed=True)',
+            'MoocChecker.dimension_constraint_presence(sketch_label="Sketch", type="Radius", value=17.0)',
+            'MoocChecker.dimension_constraint_presence(sketch_label="Sketch", type="Radius", value=20.0)',]
         self.data_tutorial["steps"].append(step)
 
         # Step 4
@@ -155,7 +160,7 @@ Part Design et utiliser des opérations de lissage, balayage et révolution.'''
         img1 = os.path.join(moocWB_icons_path, 'Sketcher_CreateHexagon.svg')
         img2 = os.path.join(moocWB_icons_path, 'Constraint_Vertical.svg')
         img3 = os.path.join(moocWB_icons_path, 'Constraint_Radius.svg')
-        step["description"] = u'''<h3>Création de la deuxième esquisse</h3>
+        step["description"] = app.Qt.translate("MOOC", '''<h3>Création de la deuxième esquisse</h3>
             <p>
             Créer une esquisse sur le deuxième plan de
             référence (DatumPlane001) :<br>
@@ -175,18 +180,19 @@ Part Design et utiliser des opérations de lissage, balayage et révolution.'''
             Contraindre verticalement un des segments du second polygone.<br>
             L'esquisse est entièrement contrainte, fermer l'esquisse en cliquant
             sur Fermer dans l'onglet Tâches.
-            </p>''' % (img0, img1, img2, img3,)
+            </p>''') % (img0, img1, img2, img3,)
 
         step["video"] = str(url) + str('?start=2m57s')
         step["objectives"] = [
-            u"1 esquisse sur DatumPlane001.",
-            u"2 hexagones réguliers.",
-            u"1 contrainte de rayon de 47 mm.",
-            u"1 contrainte de rayon de 50 mm."]
-        step["checks"] = ['MoocChecker.sketch_presence(label="Sketch001", support="DatumPlane001")',
-        'MoocChecker.geometry_presence(sketch_label="Sketch001", count=14, isclosed=True)',
-        'MoocChecker.dimension_constraint_presence(sketch_label="Sketch001", type="Radius", value=47.0)',
-        'MoocChecker.dimension_constraint_presence(sketch_label="Sketch001", type="Radius", value=50.0)',]
+            app.Qt.translate("MOOC", "1 esquisse sur DatumPlane001."),
+            app.Qt.translate("MOOC", "2 hexagones réguliers."),
+            app.Qt.translate("MOOC", "1 contrainte de rayon de 47 mm."),
+            app.Qt.translate("MOOC", "1 contrainte de rayon de 50 mm.")]
+        step["checks"] = [
+            'MoocChecker.sketch_presence(label="Sketch001", support="DatumPlane001")',
+            'MoocChecker.geometry_presence(sketch_label="Sketch001", count=14, isclosed=True)',
+            'MoocChecker.dimension_constraint_presence(sketch_label="Sketch001", type="Radius", value=47.0)',
+            'MoocChecker.dimension_constraint_presence(sketch_label="Sketch001", type="Radius", value=50.0)',]
         self.data_tutorial["steps"].append(step)
 
         # Step 5
@@ -194,7 +200,7 @@ Part Design et utiliser des opérations de lissage, balayage et révolution.'''
         img0 = os.path.join(moocWB_icons_path, 'Sketcher_NewSketch.svg')
         img1 = os.path.join(moocWB_icons_path, 'Sketcher_CreateCircle.svg')
         img3 = os.path.join(moocWB_icons_path, 'Constraint_Radius.svg')
-        step["description"] = u'''<h3>Création de la troisième esquisse</h3>
+        step["description"] = app.Qt.translate("MOOC", '''<h3>Création de la troisième esquisse</h3>
             <p>
             Créer une esquisse sur le troisème plan de
             référence (DatumPlane002) :<br>
@@ -207,14 +213,14 @@ Part Design et utiliser des opérations de lissage, balayage et révolution.'''
             Définir le rayon d'un des cercles à 20mm <img src= %s width="25"/>.<br>
             L'esquisse est entièrement contrainte, fermer l'esquisse en cliquant
             sur Fermer dans l'onglet Tâches.
-            </p>''' % (img0, img1, img3, img3,)
+            </p>''') % (img0, img1, img3, img3,)
 
         step["video"] = str(url) + str('?start=3m47s')
         step["objectives"] = [
-            u"1 esquisse sur DatumPlane002.",
-            u"2 cercles.",
-            u"1 contrainte de rayon de 17 mm.",
-            u"1 contrainte de rayon de 20 mm."]
+            app.Qt.translate("MOOC", "1 esquisse sur DatumPlane002."),
+            app.Qt.translate("MOOC", "2 cercles."),
+            app.Qt.translate("MOOC", "1 contrainte de rayon de 17 mm."),
+            app.Qt.translate("MOOC", "1 contrainte de rayon de 20 mm.")]
         step["checks"] = [
             'MoocChecker.sketch_presence(\
                 label="Sketch002", support="DatumPlane002")',
@@ -230,7 +236,7 @@ Part Design et utiliser des opérations de lissage, balayage et révolution.'''
         step = {}
         img1 = os.path.join(moocWB_icons_path, 'PartDesign_Additive_Loft.svg')
         img2 = os.path.join(moocWB_images_path, 'partdesign_loft_task.png')
-        step["description"] = u'''<h3>Lissage additif</h3>
+        step["description"] = app.Qt.translate("MOOC", '''<h3>Lissage additif</h3>
             <p>
             Créer un lissage qui passe par les 3 esquisses précédement créées :<br>
             <b>Sélectionner</b> la première esquisse, puis cliquer sur l'outil <img src= %s width="25"/> Lissage Additif.<br>
@@ -242,11 +248,11 @@ Part Design et utiliser des opérations de lissage, balayage et révolution.'''
             Cocher la case <b>Surface réglée</b> dans l'onglet taches.<br>
             La prévisualisation montre des surface planes et des arêtes vives.<br>
             <b>Valider</b> la forme en cliquant sur <b>OK</b>.
-            </p>''' % (img1, img2)
+            </p>''') % (img1, img2)
 
         step["video"] = str(url) + str('?start=4m25s')
         step["objectives"] = [
-            u"1 lissage additif passant par 3 esquisses avec surface réglée."]
+            app.Qt.translate("MOOC", "1 lissage additif passant par 3 esquisses avec surface réglée.")]
         step["checks"] = [
             'MoocChecker.additiveloft_presence(\
             outlist=3, ruled=True, closed=False)', ]
@@ -262,7 +268,7 @@ Part Design et utiliser des opérations de lissage, balayage et révolution.'''
         img6 = os.path.join(moocWB_icons_path, 'Constraint_Tangent.svg')
         img7 = os.path.join(moocWB_icons_path, 'Constraint_Perpendicular.svg')
         img8 = os.path.join(moocWB_images_path, 'lampe_external.png')
-        step["description"] = u'''<h3>Esquisse profil de révolution</h3>
+        step["description"] = app.Qt.translate("MOOC", '''<h3>Esquisse profil de révolution</h3>
             <p>
             Sélectionner le corps de pièce <b>Lampe</b> puis créer une nouvelle
             esquisse sur le plan XY.<br>
@@ -283,32 +289,32 @@ Part Design et utiliser des opérations de lissage, balayage et révolution.'''
             Enfin containdre perpendiculairement <img src= %s width="25"/> l'autre extrémité de l'arc de cercle et l'axe X.<br>
             <img src= %s width="320"/><br>
             <b>Fermer</b> l'esquisse lorsqu'elle est entièrement contrainte.
-            </p>''' % (img1, img2, img3, img4, img5, img6, img7, img8)
+            </p>''') % (img1, img2, img3, img4, img5, img6, img7, img8)
 
         step["video"] = str(url) + str('?start=5m20s')
-        step["objectives"] = [u"1 esquisse Sketch003 sur plan XY."]
+        step["objectives"] = [app.Qt.translate("MOOC", "1 esquisse Sketch003 sur plan XY.")]
         step["checks"] = ['MoocChecker.sketch_presence(label="Sketch003", support="XY_Plane")',]
         self.data_tutorial["steps"].append(step)
 
         # Step 8
         step = {}
         img1 = os.path.join(moocWB_icons_path, 'PartDesign_Revolution.svg')
-        step["description"] = u'''<h3>Révolution</h3>
+        step["description"] = app.Qt.translate("MOOC", '''<h3>Révolution</h3>
             <p>
             Sélectionner l'esquisse Sketch003 puis cliquer sur <img src= %s width="25"/> <b>Révolution</b>.<br>
             Choisir <b>Axe d'esquisse horizontal</b>.<br>
             Valider l'opération en cliquant sur OK.
-            </p>''' % (img1)
+            </p>''') % (img1)
 
         step["video"] = str(url) + str('?start=6m57s')
-        step["objectives"] = [u"1 révolution de 360°."]
+        step["objectives"] = [app.Qt.translate("MOOC", "1 révolution de 360°.")]
         step["checks"] = ['MoocChecker.revolution_presence()',]
         self.data_tutorial["steps"].append(step)
 
         # Step 9
         step = {}
         img1 = os.path.join(moocWB_icons_path, 'PartDesign_Fillet.svg')
-        step["description"] = u'''<h3>Congés (Fillet)</h3>
+        step["description"] = app.Qt.translate("MOOC", '''<h3>Congés (Fillet)</h3>
             <p>
             Nous allons appliquer des congés sur toutes les arêtes du volume.
             Pour sélectionner toutes les arêtes on va
@@ -318,10 +324,10 @@ Part Design et utiliser des opérations de lissage, balayage et révolution.'''
             cliquer sur l'outil <img src= %s width="25"/> Congé.<br>
             Paramétrer un rayon de 10 mm puis valider en cliquant sur OK.<br>
             Notre lampe est terminée.
-            </p>''' % (img1)
+            </p>''') % (img1)
 
         step["video"] = str(url) + str('?start=7m32s')
-        step["objectives"] = [u"1 fillet."]
+        step["objectives"] = [app.Qt.translate("MOOC", "1 fillet.")]
         step["checks"] = ['MoocChecker.fillet_presence(label="Fillet")', ]
         self.data_tutorial["steps"].append(step)
 
@@ -330,29 +336,30 @@ Part Design et utiliser des opérations de lissage, balayage et révolution.'''
         img1 = os.path.join(moocWB_icons_path, 'PartDesign_Body.png')
         img2 = os.path.join(moocWB_icons_path, 'Sketcher_NewSketch.svg')
         img3 = os.path.join(moocWB_icons_path, 'PartDesign_Revolution.svg')
-        step["description"] = u'''<h3>Modéliser le Capuchon</h3>
+        step["description"] = app.Qt.translate("MOOC", '''<h3>Modéliser le Capuchon</h3>
             <p>
             Créer un corps de pièce <img src= %s width="25"/> et le renommer en
             <b>Capuchon</b>.<br>
             Créer une esquisse <img src= %s width="25"/> sur le plan XZ et dessiner un arc de cercle avec épaisseur.<br>
             Réaliser une révolution <img src= %s width="25"/>.
-            </p>''' % (img1, img2, img3)
+            </p>''') % (img1, img2, img3)
 
         step["video"] = str(url) + str('?start=8m56s')
         step["objectives"] = [
-            u"1 corps de pièce Capuchon.",
-            u"1 esquisse .",
-            u"1 révolution."]
-        step["checks"] = ['MoocChecker.body_presence(label="Capuchon")',
-        'MoocChecker.sketch_presence(label="Sketch004", support="XZ_Plane001")',
-        'MoocChecker.revolution_presence()',]
+            app.Qt.translate("MOOC", "1 corps de pièce Capuchon."),
+            app.Qt.translate("MOOC", "1 esquisse ."),
+            app.Qt.translate("MOOC", "1 révolution.")]
+        step["checks"] = [
+            'MoocChecker.body_presence(label="Capuchon")',
+            'MoocChecker.sketch_presence(label="Sketch004", support="XZ_Plane001")',
+            'MoocChecker.revolution_presence()',]
         self.data_tutorial["steps"].append(step)
 
         # Step 11
         step = {}
         img1 = os.path.join(moocWB_icons_path, 'Sketcher_CreateBSpline.svg')
         img2 = os.path.join(moocWB_icons_path, 'PartDesign_Additive_Pipe.svg')
-        step["description"] = u'''<h3>Modéliser le Fil</h3>
+        step["description"] = app.Qt.translate("MOOC", '''<h3>Modéliser le Fil</h3>
             <p>
             Modéliser le fil électrique à l'aide de l'outil Balayage qui permet de
             générer du volume selon un ou plusieurs profils et le long d'un chemin.<br>
@@ -391,34 +398,35 @@ Part Design et utiliser des opérations de lissage, balayage et révolution.'''
             On valide en cliquant sur Ok.
 
             Et voilà on vient de créer un volume qui à une forme circulaire et suit un chemin spécifique.
-            </p>''' % (img1, img2)
+            </p>''') % (img1, img2)
 
         step["video"] = str(url) + str('?start=10m52s')
         step["objectives"] = [
-            u"1 corps de pièce Fil.",
-            u"1 esquisse sur le plan XY.",
-            u"1 plan de référence normal à la Spline.",
-            u"1 esquisse sur DatumPlane003",
-            u"1 balayage."]
-        step["checks"] = ['MoocChecker.body_presence(label="Fil")',
-        'MoocChecker.sketch_presence(label="Sketch005", support="XY_Plane002")',
-        'MoocChecker.datum_plane_presence(support="Sketch005")',
-        'MoocChecker.sketch_presence(label="Sketch006", support="DatumPlane003")',
-        'MoocChecker.additivepipe_presence(outlist=2)',]
+            app.Qt.translate("MOOC", "1 corps de pièce Fil."),
+            app.Qt.translate("MOOC", "1 esquisse sur le plan XY."),
+            app.Qt.translate("MOOC", "1 plan de référence normal à la Spline."),
+            app.Qt.translate("MOOC", "1 esquisse sur DatumPlane003"),
+            app.Qt.translate("MOOC", "1 balayage.")]
+        step["checks"] = [
+            'MoocChecker.body_presence(label="Fil")',
+            'MoocChecker.sketch_presence(label="Sketch005", support="XY_Plane002")',
+            'MoocChecker.datum_plane_presence(support="Sketch005")',
+            'MoocChecker.sketch_presence(label="Sketch006", support="DatumPlane003")',
+            'MoocChecker.additivepipe_presence(outlist=2)',]
         self.data_tutorial["steps"].append(step)
 
         # Step 12
         step = {}
         img1 = os.path.join(moocWB_icons_path, 'Document-save.svg')
         img2 = os.path.join(moocWB_images_path, 'freecadSaveDetail.png')
-        step["description"] = u'''<h3>Sauvegarder le document.</h3>
+        step["description"] = app.Qt.translate("MOOC", '''<h3>Sauvegarder le document.</h3>
             <p><img src=%s width="25"/> Sauvegader le document sous le nom <b>Lampe Mercure</b> :
             <ul><li>à l'aide du menu <i>Fichier</i> puis <i>Enregistrer sous ...</i></li>
             <li>à l'aide du raccourcis <b>Ctrl+Maj+S</b></li></lu></p>
-            <p><img src=%s width="360"/></p>''' % (img1, img2)
+            <p><img src=%s width="360"/></p>''') % (img1, img2)
 
         step["video"] = str(url) + str('?start=14m18s')
-        step["objectives"] = [u'Document sauvegardé : "Lampe Mercure"']
+        step["objectives"] = [app.Qt.translate("MOOC", 'Document sauvegardé : "Lampe Mercure"')]
         step["checks"] = ['MoocChecker.document_save("Lampe Mercure")',]
         self.data_tutorial["steps"].append(step)
 

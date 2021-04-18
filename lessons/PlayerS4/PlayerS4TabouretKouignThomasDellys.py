@@ -32,6 +32,8 @@ __url__ = "http://www.freecadweb.org"
 import os
 import moocwb_locator
 
+import FreeCAD as app
+
 class lesson(object):
     def __init__(self):
         moocWB_path = os.path.dirname(moocwb_locator.__file__)
@@ -39,17 +41,17 @@ class lesson(object):
         moocWB_icons_path = os.path.join(moocWB_medias_path, "icons")
         moocWB_images_path = os.path.join(moocWB_medias_path, 'images')
         self.data_tutorial = {}
-        self.data_tutorial["title"] = u'[FR] MOOC Semaine 4 - Tabouret Kouign de Thomas Dellys'
-        self.data_tutorial["description"] = u'''[FR] MOOC Semaine 4 : Cette semaine nous allons modéliser \
+        self.data_tutorial["title"] = app.Qt.translate("MOOC", '[FR] MOOC Semaine 4 - Tabouret Kouign de Thomas Dellys')
+        self.data_tutorial["description"] = app.Qt.translate("MOOC", '''[FR] MOOC Semaine 4 : Cette semaine nous allons modéliser \
     le tabouret Kouign de Thomas Dellys. Nous allons travailler dans l'atelier \
-    Part Design pour créer chaque élément puis nous allons utiliser l'atelier A2plus pour faire un assemblage.'''
+    Part Design pour créer chaque élément puis nous allons utiliser l'atelier A2plus pour faire un assemblage.''')
         url = 'https://open.tube/videos/watch/b915ad6c-f7d2-4257-a717-668bd6d3041e'
         self.data_tutorial["steps"] = []
 
         # Step 1
         step = {}
         img1 = os.path.join(moocWB_images_path, 'addon_manager_a2plus.png')
-        step["description"] = u'''<h3>Installer l'atelier A2plus</h3>
+        step["description"] = app.Qt.translate("MOOC", '''<h3>Installer l'atelier A2plus</h3>
             <p>Ouvrir l'addon manager depuis le menu <b>Outils</b> puis
             <b>Addon manager</b></p>
             <p>Dans la fenêtre qui s'ouvre et après que la liste des atelier se soit
@@ -60,24 +62,24 @@ class lesson(object):
             <b>"Succesfully installed"</b> il faut fermer la fenêtre en cliquant sur
             le bouton <b>Close</b> et, comme indiquer dans la fenêtre de dialogue,
             <b>Redémarrer FreeCAD</b>.</p>
-            <p>On se retrouve après le redémarrage de FreeCAD.</p>''' % (img1)
+            <p>On se retrouve après le redémarrage de FreeCAD.</p>''') % (img1)
 
         step["video"] = str(url) + str('?start=0m00s')
-        step["objectives"] = [u"Ouvrir l'Addon manager."]
+        step["objectives"] = [app.Qt.translate("MOOC", "Ouvrir l'Addon manager.")]
         step["checks"] = ['MoocChecker.workbench_presence("a2pWorkbench")',]
         self.data_tutorial['steps'].append(step)
 
         # Step 2
         step = {}
         img1 = os.path.join(moocWB_images_path, 'workbench_list_a2plus.png')
-        step["description"] = u'''<h3>Vérifier l'installation</h3>
+        step["description"] = app.Qt.translate("MOOC", '''<h3>Vérifier l'installation</h3>
             <p>Vérifier que l'atelier A2plus est bien installé en
             parcourant la liste des ateliers disponible depuis le sélecteur d'atelier :<br>
             <img src= %s/><br>
-            Si il y a bien A2plus dans la liste alors l'installation à réussi.</p>''' % (img1)
+            Si il y a bien A2plus dans la liste alors l'installation à réussi.</p>''') % (img1)
 
         step["video"] = str(url) + str('?start=1m07s')
-        step["objectives"] = [u"L'atelier A2plus est installé."]
+        step["objectives"] = [app.Qt.translate("MOOC", "L'atelier A2plus est installé.")]
         step["checks"] = ['MoocChecker.workbench_presence("a2pWorkbench")',]
         self.data_tutorial['steps'].append(step)
 
@@ -93,7 +95,7 @@ class lesson(object):
         img8 = os.path.join(moocWB_icons_path, 'Constraint_HorizontalDistance.svg')
         img9 = os.path.join(moocWB_icons_path, 'Constraint_VerticalDistance.svg')
         img10 = os.path.join(moocWB_icons_path, 'PartDesign_Pad.svg')
-        step["description"] = u'''<h3>Modélisation de l'Entretoise</h3>
+        step["description"] = app.Qt.translate("MOOC", '''<h3>Modélisation de l'Entretoise</h3>
             <p>Plan et vue 3d de la pièce à modéliser :<br>
             <img src= %s width="360"/><br>
             <img src= %s width="360"/><br>
@@ -111,22 +113,23 @@ class lesson(object):
             Distance verticale <img src= %s width="25">, paramètrer une distance de 58 mm et valider.<br>
             L’esquisse est entièrement contrainte on peut donc valider en cliquant sur Fermer.<br>
             On va réaliser une protrusion <img src= %s width="25"> de 29 mm et symétrique au plan de l'esquisse.</p>
-            <p>On sauvegarde le document sous le nom Entretoise.</p>''' % (img1, img2, img3, img4, img5, img6, img7, img8, img9, img10 )
+            <p>On sauvegarde le document sous le nom Entretoise.</p>''') % (img1, img2, img3, img4, img5, img6, img7, img8, img9, img10 )
 
         step["video"] = str(url) + str('?start=1m30s')
         step["objectives"] = [
-            u"1 corps de pièce.",
-            u"1 esquisse sur plan XY.",
-            u"1 protrusion de 29 mm.",
-            u"La boite englobante est correcte.",
-            u"Le volume du modèle est correct.",
-            u"Document sauvegardé : 'Tabouret - Entretoise'."]
-        step["checks"] = ['MoocChecker.body_presence()',
-        'MoocChecker.sketch_presence(label="Sketch", support="XY_Plane")',
-        'MoocChecker.pad_presence(length=29.00)',
-        'MoocChecker.boundbox_dimensions(typeId="PartDesign::Body", x=355, y=58, z=29)',
-        'MoocChecker.volume(typeId="PartDesign::Body", target=597110)',
-        'MoocChecker.document_save("Tabouret - Entretoise")',]
+            app.Qt.translate("MOOC", "1 corps de pièce."),
+            app.Qt.translate("MOOC", "1 esquisse sur plan XY."),
+            app.Qt.translate("MOOC", "1 protrusion de 29 mm."),
+            app.Qt.translate("MOOC", "La boite englobante est correcte."),
+            app.Qt.translate("MOOC", "Le volume du modèle est correct."),
+            app.Qt.translate("MOOC", "Document sauvegardé : 'Tabouret - Entretoise'.")]
+        step["checks"] = [
+            'MoocChecker.body_presence()',
+            'MoocChecker.sketch_presence(label="Sketch", support="XY_Plane")',
+            'MoocChecker.pad_presence(length=29.00)',
+            'MoocChecker.boundbox_dimensions(typeId="PartDesign::Body", x=355, y=58, z=29)',
+            'MoocChecker.volume(typeId="PartDesign::Body", target=597110)',
+            'MoocChecker.document_save("Tabouret - Entretoise")',]
         self.data_tutorial['steps'].append(step)
 
         # Step 4
@@ -146,7 +149,7 @@ class lesson(object):
         img13 = os.path.join(moocWB_icons_path, 'Sketcher_ViewSection.svg')
         img14 = os.path.join(moocWB_icons_path, 'PartDesign_Pocket.svg')
         img15 = os.path.join(moocWB_icons_path, 'PartDesign_PolarPattern.svg')
-        step["description"] =  u'''<h3>Modélisation de l'Assise</h3>
+        step["description"] =  app.Qt.translate("MOOC", '''<h3>Modélisation de l'Assise</h3>
             <p>
             Plan et vue 3d de la pièce à modéliser :<br>
             <img src= %s width="360"/><br>
@@ -194,26 +197,27 @@ class lesson(object):
             </p>
             <p>
             L' Assise est terminée, sauvegarder le document sous le nom <b>Assise</b>.
-            </p>''' % (img1, img2, img3, img4, img5, img6, img7, img8, img8, img9,
+            </p>''') % (img1, img2, img3, img4, img5, img6, img7, img8, img8, img9,
             img10, img11, img12, img5, img13, img6, img14, img15)
 
         step["video"] = str(url) + str('?start=3m45s')
         step["objectives"] = [
-            u"1 corps de pièce.",
-            u"La boite englobante est correcte.",
-            u"Le volume du modèle est correct.",
-            u"Document sauvegardé : 'Tabouret - Assise'"]
-        step["checks"] = ['MoocChecker.body_presence()',
-        'MoocChecker.boundbox_dimensions(typeId="PartDesign::Body", x=368, y=368, z=16)',
-        'MoocChecker.volume(typeId="PartDesign::Body", target=2028678)',
-        'MoocChecker.document_save("Tabouret - Assise")',]
+            app.Qt.translate("MOOC", "1 corps de pièce."),
+            app.Qt.translate("MOOC", "La boite englobante est correcte."),
+            app.Qt.translate("MOOC", "Le volume du modèle est correct."),
+            app.Qt.translate("MOOC", "Document sauvegardé : 'Tabouret - Assise'")]
+        step["checks"] = [
+            'MoocChecker.body_presence()',
+            'MoocChecker.boundbox_dimensions(typeId="PartDesign::Body", x=368, y=368, z=16)',
+            'MoocChecker.volume(typeId="PartDesign::Body", target=2028678)',
+            'MoocChecker.document_save("Tabouret - Assise")',]
         self.data_tutorial['steps'].append(step)
 
         # Step 5
         step = {}
         img1 = os.path.join(moocWB_images_path, 'piedA_3d.png')
         img2 = os.path.join(moocWB_images_path, 'piedA_plan.png')
-        step["description"] = u'''<h3>Modélisation Pied A</h3>
+        step["description"] = app.Qt.translate("MOOC", '''<h3>Modélisation Pied A</h3>
             <p>
             Plan et vue 3d de la pièce à modéliser :<br>
             <img src= %s width="360"/><br>
@@ -232,25 +236,26 @@ class lesson(object):
             <li>Ajouter ensuite uniquement des contraintes <b>géométrique</b>.</li>
             <li>Enfin, ajouter des contrainte de <b>distances</b>.</li>
             </ul>
-            </p>''' % (img1, img2)
+            </p>''') % (img1, img2)
 
         step["video"] = str(url) + str('?start=7m22s')
         step["objectives"] = [
-            u"1 corps de pièce.",
-            u"La boite englobante est correcte.",
-            u"Le volume du modèle est correct.",
-            u"Document sauvegardé : 'Tabouret-Pied A'"]
-        step["checks"] = ['MoocChecker.body_presence()',
-        'MoocChecker.boundbox_dimensions(typeId="PartDesign::Body", x=452, y=736, z=29)',
-        'MoocChecker.volume(typeId="PartDesign::Body", target=2402935)',
-        'MoocChecker.document_save("Tabouret - Pied A")',]
+            app.Qt.translate("MOOC", "1 corps de pièce."),
+            app.Qt.translate("MOOC", "La boite englobante est correcte."),
+            app.Qt.translate("MOOC", "Le volume du modèle est correct."),
+            app.Qt.translate("MOOC", "Document sauvegardé : 'Tabouret-Pied A'")]
+        step["checks"] = [
+            'MoocChecker.body_presence()',
+            'MoocChecker.boundbox_dimensions(typeId="PartDesign::Body", x=452, y=736, z=29)',
+            'MoocChecker.volume(typeId="PartDesign::Body", target=2402935)',
+            'MoocChecker.document_save("Tabouret - Pied A")',]
         self.data_tutorial['steps'].append(step)
 
         # Step 6
         step = {}
         img1 = os.path.join(moocWB_images_path, 'piedB_3d.png')
         img2 = os.path.join(moocWB_images_path, 'piedB_plan.png')
-        step["description"] = u'''<h3>Modélisation Pied B</h3>
+        step["description"] = app.Qt.translate("MOOC", '''<h3>Modélisation Pied B</h3>
             <p>
             Plan et vue 3d de la pièce à modéliser :<br>
             <img src= %s width="360"/><br>
@@ -269,18 +274,19 @@ class lesson(object):
             <li>Ajouter ensuite uniquement des contraintes <b>géométrique</b>.</li>
             <li>Enfin, ajouter des contrainte de <b>distances</b>.</li>
             </ul>
-            </p>''' % (img1, img2)
+            </p>''') % (img1, img2)
 
         step["video"] = str(url) + str('?start=11m40s')
         step["objectives"] = [
-            u"1 corps de pièce.",
-            u"La boite englobante est correcte.",
-            u"Le volume du modèle est correct.",
-            u"Document sauvegardé : 'Tabouret - Pied B'"]
-        step["checks"] = ['MoocChecker.body_presence()',
-        'MoocChecker.boundbox_dimensions(typeId="PartDesign::Body", x=452, y=736, z=29)',
-        'MoocChecker.volume(typeId="PartDesign::Body", target=2986647)',
-        'MoocChecker.document_save("Tabouret - Pied B")',]
+            app.Qt.translate("MOOC", "1 corps de pièce."),
+            app.Qt.translate("MOOC", "La boite englobante est correcte."),
+            app.Qt.translate("MOOC", "Le volume du modèle est correct."),
+            app.Qt.translate("MOOC", "Document sauvegardé : 'Tabouret - Pied B'")]
+        step["checks"] = [
+            'MoocChecker.body_presence()',
+            'MoocChecker.boundbox_dimensions(typeId="PartDesign::Body", x=452, y=736, z=29)',
+            'MoocChecker.volume(typeId="PartDesign::Body", target=2986647)',
+            'MoocChecker.document_save("Tabouret - Pied B")',]
         self.data_tutorial['steps'].append(step)
 
         # Step 7
@@ -294,7 +300,7 @@ class lesson(object):
         img6 = os.path.join(moocWB_icons_path, 'a2p_DOFs.svg')
         img7 = os.path.join(moocWB_icons_path, 'a2p_MovePart.svg')
 
-        step["description"] = u'''<h3>Assemblage</h3>
+        step["description"] = app.Qt.translate("MOOC", '''<h3>Assemblage</h3>
             <p>
             Vue d'ensemble :<br>
             <img src= %s width="300"/>
@@ -366,19 +372,19 @@ class lesson(object):
             </p>
             <p>
             <b>Sauvegarder le document.</b>
-            </p>''' % (img0, img1, img2, img2, img3, img3, img5, img6, img2, img5, img3, img6, img7, img4, img6, img2, img5)
+            </p>''') % (img0, img1, img2, img2, img3, img3, img5, img6, img2, img5, img3, img6, img7, img4, img6, img2, img5)
 
         step["video"] = str(url) + str('?start=15m27s')
         step["objectives"] = [
-            u"Basculer dans l'atelier A2plus",
-            u"Document sauvegardé : 'Tabouret - Assemblage'",
-            u"Importer Pied A",
-            u"Importer Pied B",
-            u"Contrainte Plans Coïncident",
-            u"Contrainte Axes Coïncident",
-            u"Importer Entretoise",
-            u"Contrainte de plans prallèles",
-            u"Importer Assise", ]
+            app.Qt.translate("MOOC", "Basculer dans l'atelier A2plus"),
+            app.Qt.translate("MOOC", "Document sauvegardé : 'Tabouret - Assemblage'"),
+            app.Qt.translate("MOOC", "Importer Pied A"),
+            app.Qt.translate("MOOC", "Importer Pied B"),
+            app.Qt.translate("MOOC", "Contrainte Plans Coïncident"),
+            app.Qt.translate("MOOC", "Contrainte Axes Coïncident"),
+            app.Qt.translate("MOOC", "Importer Entretoise"),
+            app.Qt.translate("MOOC", "Contrainte de plans prallèles"),
+            app.Qt.translate("MOOC", "Importer Assise"), ]
         step["checks"] = [
             'MoocChecker.active_workbench("A2plusWorkbench")',
             'MoocChecker.document_save("Tabouret - Assemblage")',
@@ -398,7 +404,7 @@ class lesson(object):
         img3 = os.path.join(moocWB_icons_path, 'a2p_ImportPart_Update.svg')
         img4 = os.path.join(moocWB_icons_path, 'a2p_DeleteConnections.svg')
 
-        step["description"] = u'''<h3>Modification</h3>
+        step["description"] = app.Qt.translate("MOOC", '''<h3>Modification</h3>
             <p>
             <img src= %s width="300"/>
             </p>
@@ -426,34 +432,35 @@ class lesson(object):
             contraintes associées à l'entretoise en sélectionnant l'entretoise puis
             en cliquant sur <img src= %s width="25"> "Delete all constraints".<br>
             Il faudra alors re-contraindre la pièce comme vu précédemment.
-            </p>''' % (img1, img2, img3, img4)
+            </p>''') % (img1, img2, img3, img4)
 
         step["video"] = str(url) + str('?start=20m48s')
         step["objectives"] = [
-            u"1 corps de pièce.",
-            u"1 esquisse sur plan XY.",
-            u"1 protrusion de 29 mm.",
-            u"1 cavité.",
-            u"La boite englobante est correcte.",
-            u"Le volume du modèle est correct.",
-            u"Document sauvegardé : 'Tabouret - Entretoise'."]
-        step["checks"] = ['MoocChecker.body_presence()',
-        'MoocChecker.sketch_presence(label="Sketch", support="XY_Plane")',
-        'MoocChecker.pad_presence(length=29.00)',
-        'MoocChecker.boundbox_dimensions(typeId="PartDesign::Body", x=355, y=58, z=29)',
-        'MoocChecker.pocket_presence()',
-        'MoocChecker.volume(typeId="PartDesign::Body", target=572721)',
-        'MoocChecker.document_save("Tabouret - Entretoise")',]
+            app.Qt.translate("MOOC", "1 corps de pièce."),
+            app.Qt.translate("MOOC", "1 esquisse sur plan XY."),
+            app.Qt.translate("MOOC", "1 protrusion de 29 mm."),
+            app.Qt.translate("MOOC", "1 cavité."),
+            app.Qt.translate("MOOC", "La boite englobante est correcte."),
+            app.Qt.translate("MOOC", "Le volume du modèle est correct."),
+            app.Qt.translate("MOOC", "Document sauvegardé : 'Tabouret - Entretoise'.")]
+        step["checks"] = [
+            'MoocChecker.body_presence()',
+            'MoocChecker.sketch_presence(label="Sketch", support="XY_Plane")',
+            'MoocChecker.pad_presence(length=29.00)',
+            'MoocChecker.boundbox_dimensions(typeId="PartDesign::Body", x=355, y=58, z=29)',
+            'MoocChecker.pocket_presence()',
+            'MoocChecker.volume(typeId="PartDesign::Body", target=572721)',
+            'MoocChecker.document_save("Tabouret - Entretoise")',]
         self.data_tutorial['steps'].append(step)
 
         # Step 9
         step = {}
-        step["description"] = u'''<h3>Fin</h3>
+        step["description"] = app.Qt.translate("MOOC", '''<h3>Fin</h3>
             <p>Félicitation vous venez de faire votre premier assemblage à l'aide de l'atelier A2plus.<br>
-            Pensez à sauvegarder votre travail sous le nom <b>Assemblage Tabouret</b>.</p>'''
+            Pensez à sauvegarder votre travail sous le nom <b>Assemblage Tabouret</b>.</p>''')
 
         step["video"] = str(url) + str('?start=23m30s')
-        step["objectives"] = [u"Document sauvegardé : 'Tabouret - Assemblage'."]
+        step["objectives"] = [app.Qt.translate("MOOC", "Document sauvegardé : 'Tabouret - Assemblage'.")]
         step["checks"] = ['MoocChecker.document_save("Tabouret - Assemblage")',]
         self.data_tutorial['steps'].append(step)
 

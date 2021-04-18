@@ -36,13 +36,13 @@ import os, moocwb_locator
 
 
 def get_title():
-    title = u'[FR] MOOC Semaine 2 - Combat des Trentes'
+    title = app.Qt.translate("MOOC", '[FR] MOOC Semaine 2 - Combat des Trentes')
     return title
 
 def get_description():
-    description = u'''[FR] MOOC Semaine 2 : Cette semaine nous \
+    description = app.Qt.translate("MOOC", '''[FR] MOOC Semaine 2 : Cette semaine nous \
 allons voir comment modéliser le Korrigans de Valérian HENRY à l'aide d'esquisses \
-et de fonctions d'ajout et d'enlèvement de matière.'''
+et de fonctions d'ajout et d'enlèvement de matière.''')
     return description
 
 def get_instructions():
@@ -71,41 +71,41 @@ def grader(doc_name):
     # Check for a Body presence
     grader_dict["notes"].append(Check.body_presence(doc))
     if grader_dict["notes"][step_id] == 1 :
-        grader_dict["messages"].append(u"Il y a un corps de pièce.")
+        grader_dict["messages"].append(app.Qt.translate("MOOC", "Il y a un corps de pièce."))
     elif grader_dict["notes"][step_id] == 0 :
-        grader_dict["messages"].append(u"Il n'y a pas de corps de pièce.")
+        grader_dict["messages"].append(app.Qt.translate("MOOC", "Il n'y a pas de corps de pièce."))
 
     step_id += 1
     # Check for a Pad presence
     grader_dict["notes"].append(Check.pad_presence(doc, name=None, type="Length", length=18.0, midplane=None))
     if grader_dict["notes"][step_id] == 1 :
-        grader_dict["messages"].append(u"Il y a une protrusion de 18 mm.")
+        grader_dict["messages"].append(app.Qt.translate("MOOC", "Il y a une protrusion de 18 mm."))
     elif grader_dict["notes"][step_id] == 0 :
-        grader_dict["messages"].append(u"Il n'y a pas de protrusion de 18 mm.")
+        grader_dict["messages"].append(app.Qt.translate("MOOC", "Il n'y a pas de protrusion de 18 mm."))
 
     step_id += 1
     # Check for a Pocket presence
     grader_dict["notes"].append(Check.pocket_presence(doc, name=None, type="ThroughAll", length=None, midplane=None, reversed=None))
     if grader_dict["notes"][step_id] == 1 :
-        grader_dict["messages"].append(u"Il y a une cavité de type À Travers Tout.")
+        grader_dict["messages"].append(app.Qt.translate("MOOC", "Il y a une cavité de type À Travers Tout."))
     elif grader_dict["notes"][step_id] == 0 :
-        grader_dict["messages"].append(u"Il n'y a pas de cavité de type À Travers Tout.")
+        grader_dict["messages"].append(app.Qt.translate("MOOC", "Il n'y a pas de cavité de type À Travers Tout."))
 
     step_id += 1
     # Check volume
     grader_dict["notes"].append(Check.volume(doc, name=None, typeId='PartDesign::Body', target=29292.00))
     if grader_dict["notes"][step_id] == 1 :
-        grader_dict["messages"].append(u"Le volume correspond.")
+        grader_dict["messages"].append(app.Qt.translate("MOOC", "Le volume correspond."))
     elif grader_dict["notes"][step_id] == 0 :
-        grader_dict["messages"].append(u"Le volume ne correspond pas.")
+        grader_dict["messages"].append(app.Qt.translate("MOOC", "Le volume ne correspond pas."))
 
     step_id += 1
     # Check boundbox
     grader_dict["notes"].append(Check.boundbox_dimensions(doc, name=None, typeId='PartDesign::Body', x=40.00, y=18.00, z=65.00))
     if grader_dict["notes"][step_id] == 1 :
-        grader_dict["messages"].append(u"Les dimensions de la boite englobante correpsondent.")
+        grader_dict["messages"].append(app.Qt.translate("MOOC", "Les dimensions de la boite englobante correpsondent."))
     elif grader_dict["notes"][step_id] == 0 :
-        grader_dict["messages"].append(u"Les dimensions de la boite englobante ne correpsondent pas.")
+        grader_dict["messages"].append(app.Qt.translate("MOOC", "Les dimensions de la boite englobante ne correpsondent pas."))
 
 
     return grader_dict

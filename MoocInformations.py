@@ -23,6 +23,8 @@
 #
 ################################################
 
+import FreeCAD
+
 __title__ = "MOOC Workbench"
 __author__ = "Jonathan Wiedemann"
 __url__ = "http://www.freecadweb.org"
@@ -46,7 +48,7 @@ def checkMoocWBVersion(MOOC_VERSION):
                 print(u'Please update Mooc Workbench !')
                 import MoocInformations
                 from PySide2 import QtWidgets
-                reply = QtWidgets.QMessageBox.information(None, u'Mise à jour nécessaire...',
-                    u'''Votre version de l'atelier MOOC est obsolète.\nMerci de le mettre à jour à l'aide de l'addon manager.''')
+                reply = QtWidgets.QMessageBox.information(None, FreeCAD.Qt.translate("MOOC", 'Mise à jour nécessaire...'),
+                    FreeCAD.Qt.translate("MOOC", '''Votre version de l'atelier MOOC est obsolète.\nMerci de le mettre à jour à l'aide de l'addon manager.'''))
             # only check the first occurence
             break

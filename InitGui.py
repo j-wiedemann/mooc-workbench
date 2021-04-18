@@ -32,26 +32,31 @@ import os
 import moocwb_locator
 
 # import freecad and its gui
-import FreeCAD as app
-import FreeCADGui as gui
+import FreeCAD
+import FreeCADGui
+
 
 global MOOC_VERSION
-MOOC_VERSION = "V1.2.0"
+MOOC_VERSION = "V1.3.0"
 
 moocWB_path = os.path.dirname(moocwb_locator.__file__)
 moocWB_medias_path = os.path.join(moocWB_path, "medias")
+moocWB_translation_path = os.path.join(moocWB_path, "translations")
 moocWB_icons_path = os.path.join(moocWB_medias_path, "icons")
+FreeCADGui.addLanguagePath(moocWB_translation_path)
+FreeCADGui.updateLocale()
 
 global main_moocWB_Icon
 main_moocWB_Icon = os.path.join(moocWB_icons_path, "mooc-workbench.svg")
 
 
-class MoocWorkbench(Workbench):
-
+class MoocWorkbench(Gui.Workbench):
+    """The MOOC Workbench."""
+    from PySide.QtCore import QT_TRANSLATE_NOOP
     global main_moocWB_Icon
 
     MenuText = "MOOC"
-    ToolTip = "Learn FreeCAD"
+    ToolTip = FreeCAD.Qt.translate("MOOC", "Apprenez FreeCAD")
     Icon = main_moocWB_Icon
 
     def Initialize(self):
@@ -77,4 +82,4 @@ class MoocWorkbench(Workbench):
         return "Gui::PythonWorkbench"
 
 
-gui.addWorkbench(MoocWorkbench())
+FreeCADGui.addWorkbench(MoocWorkbench())

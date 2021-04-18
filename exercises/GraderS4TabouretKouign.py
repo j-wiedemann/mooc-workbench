@@ -36,11 +36,11 @@ import os, moocwb_locator
 
 
 def get_title():
-    title = u'[FR] MOOC Semaine 4 - Tabouret Kouign'
+    title = app.Qt.translate("MOOC", '[FR] MOOC Semaine 4 - Tabouret Kouign')
     return title
 
 def get_description():
-    description = u'''[FR] MOOC Semaine 4 : Tabouret Kouign'''
+    description = app.Qt.translate("MOOC", '''[FR] MOOC Semaine 4 : Tabouret Kouign''')
     return description
 
 def get_instructions():
@@ -68,51 +68,51 @@ def grader(doc_name):
     step_id = 0
     grader_dict["notes"].append(Check.a2p_importedPart_presence(doc, label="pied a"))
     if grader_dict["notes"][step_id] == 1 :
-        grader_dict["messages"].append(u"Pied A importé avec a2plus.")
+        grader_dict["messages"].append(app.Qt.translate("MOOC", "Pied A importé avec a2plus."))
     elif grader_dict["notes"][step_id] == 0 :
-        grader_dict["messages"].append(u"Pied A n'est pas importé avec a2plus.")
+        grader_dict["messages"].append(app.Qt.translate("MOOC", "Pied A n'est pas importé avec a2plus."))
 
     step_id += 1
     grader_dict["notes"].append(Check.a2p_importedPart_presence(doc, label="pied b"))
     if grader_dict["notes"][step_id] == 1 :
-        grader_dict["messages"].append(u"Pied B importé avec a2plus.")
+        grader_dict["messages"].append(app.Qt.translate("MOOC", "Pied B importé avec a2plus."))
     elif grader_dict["notes"][step_id] == 0 :
-        grader_dict["messages"].append(u"Pied B n'est pas importé avec a2plus.")
+        grader_dict["messages"].append(app.Qt.translate("MOOC", "Pied B n'est pas importé avec a2plus."))
 
     step_id += 1
     grader_dict["notes"].append(Check.a2p_importedPart_presence(doc, label="entretoise"))
     if grader_dict["notes"][step_id] == 1 :
-        grader_dict["messages"].append(u"Entretoise importé avec a2plus.")
+        grader_dict["messages"].append(app.Qt.translate("MOOC", "Entretoise importé avec a2plus."))
     elif grader_dict["notes"][step_id] == 0 :
-        grader_dict["messages"].append(u"Entretoise n'est pas importé avec a2plus.")
+        grader_dict["messages"].append(app.Qt.translate("MOOC", "Entretoise n'est pas importé avec a2plus."))
 
     step_id += 1
     grader_dict["notes"].append(Check.a2p_importedPart_presence(doc, label="assise"))
     if grader_dict["notes"][step_id] == 1 :
-        grader_dict["messages"].append(u"Assise importé avec a2plus.")
+        grader_dict["messages"].append(app.Qt.translate("MOOC", "Assise importé avec a2plus."))
     elif grader_dict["notes"][step_id] == 0 :
-        grader_dict["messages"].append(u"Assise n'est pas importé avec a2plus.")
+        grader_dict["messages"].append(app.Qt.translate("MOOC", "Assise n'est pas importé avec a2plus."))
 
     step_id += 1
     grader_dict["notes"].append(Check.a2p_constraint_presence(doc, type='plane'))
     if grader_dict["notes"][step_id] == 1 :
-        grader_dict["messages"].append(u"Il y a une contrainte de plan coïncident.")
+        grader_dict["messages"].append(app.Qt.translate("MOOC", "Il y a une contrainte de plan coïncident."))
     elif grader_dict["notes"][step_id] == 0 :
-        grader_dict["messages"].append(u"Il ,'y a pas contrainte de plan coïncident.")
+        grader_dict["messages"].append(app.Qt.translate("MOOC", "Il ,'y a pas contrainte de plan coïncident."))
 
     step_id += 1
     grader_dict["notes"].append(Check.a2p_constraint_presence(doc, type='axial'))
     if grader_dict["notes"][step_id] == 1 :
-        grader_dict["messages"].append(u"Il y a une contrainte d'axe coïncident.")
+        grader_dict["messages"].append(app.Qt.translate("MOOC", "Il y a une contrainte d'axe coïncident."))
     elif grader_dict["notes"][step_id] == 0 :
-        grader_dict["messages"].append(u"Il ,'y a pas contrainte d'axe coïncident.")
+        grader_dict["messages"].append(app.Qt.translate("MOOC", "Il ,'y a pas contrainte d'axe coïncident."))
 
     step_id += 1
     grader_dict["notes"].append(Check.a2p_constraint_presence(doc, type='planesParallel'))
     if grader_dict["notes"][step_id] == 1 :
-        grader_dict["messages"].append(u"Il y a une contrainte de plan parallèle.")
+        grader_dict["messages"].append(app.Qt.translate("MOOC", "Il y a une contrainte de plan parallèle."))
     elif grader_dict["notes"][step_id] == 0 :
-        grader_dict["messages"].append(u"Il ,'y a pas contrainte de plan parallèle.")
+        grader_dict["messages"].append(app.Qt.translate("MOOC", "Il ,'y a pas contrainte de plan parallèle."))
 
 
     return grader_dict

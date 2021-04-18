@@ -158,14 +158,14 @@ class Ui_FreeCADGrader(QtWidgets.QDialog):
         self.pushButton_show_instructions.clicked.connect(self.show_instructions)
 
     def retranslateUi(self, FreeCADGrader):
-        FreeCADGrader.setWindowTitle(u"FreeCAD Grader")
-        self.label.setText(u"1. Évaluation")
-        self.label_2.setText(u"Choisissez l'exercice à évaluer dans la liste suivante :")
-        self.label_3.setText(u"Choisissez le document à évaluer dans la liste suivante :")
-        self.pushButton.setText(u"Lancer l\'évaluation")
-        self.label_4.setText(u"2. Résultats")
-        self.pushButton_2.setText(u"Envoyer les résultats")
-        self.pushButton_show_instructions.setText(u"Voir les instructions")
+        FreeCADGrader.setWindowTitle(app.Qt.translate("MOOC", "FreeCAD Grader"))
+        self.label.setText(app.Qt.translate("MOOC", "1. Évaluation"))
+        self.label_2.setText(app.Qt.translate("MOOC", "Choisissez l'exercice à évaluer dans la liste suivante :"))
+        self.label_3.setText(app.Qt.translate("MOOC", "Choisissez le document à évaluer dans la liste suivante :"))
+        self.pushButton.setText(app.Qt.translate("MOOC", "Lancer l\'évaluation"))
+        self.label_4.setText(app.Qt.translate("MOOC", "2. Résultats"))
+        self.pushButton_2.setText(app.Qt.translate("MOOC", "Envoyer les résultats"))
+        self.pushButton_show_instructions.setText(app.Qt.translate("MOOC", "Voir les instructions"))
 
     def fill_comboBox_2(self):
         self.comboBox_2.clear()
@@ -179,7 +179,7 @@ class Ui_FreeCADGrader(QtWidgets.QDialog):
                 self.comboBox_2.addItem(doc[1].Label)
                 n += 1
         else:
-            self.comboBox_2.addItem(u"Il n'y a pas de document à évaluer.")
+            self.comboBox_2.addItem(app.Qt.translate("MOOC", "Il n'y a pas de document à évaluer."))
 
     def eval_button(self):
         if DEBUG:
@@ -195,8 +195,8 @@ class Ui_FreeCADGrader(QtWidgets.QDialog):
             self.grader_notes = None
             self.listWidget.clear()
             msgBox = QtWidgets.QMessageBox()
-            msgBox.setText(u"Il n'y aucun document à évaluer !")
-            msgBox.setText(u"Veuillez ouvrir un document et relancer FreeCAD Grader")
+            msgBox.setText(app.Qt.translate("MOOC", "Il n'y aucun document à évaluer !"))
+            msgBox.setText(app.Qt.translate("MOOC", "Veuillez ouvrir un document et relancer FreeCAD Grader"))
             msgBox.exec_()
 
     def grader_launch(self, doc_name):
@@ -231,7 +231,7 @@ class Ui_FreeCADGrader(QtWidgets.QDialog):
                 print("No results")
             self.grader_notes = None
             msgBox = QtWidgets.QMessageBox()
-            msgBox.setText(u"Cela n'a donné aucun résultat :(")
+            msgBox.setText(app.Qt.translate("MOOC", "Cela n'a donné aucun résultat :("))
             msgBox.exec_()
 
     def show_hash(self):
@@ -242,7 +242,7 @@ class Ui_FreeCADGrader(QtWidgets.QDialog):
             dialog.exec_()
         else:
             msgBox = QtWidgets.QMessageBox()
-            msgBox.setText(u"Veuillez d'abord lancer l'évaluation pour obtenir des résultats.")
+            msgBox.setText(app.Qt.translate("MOOC", "Veuillez d'abord lancer l'évaluation pour obtenir des résultats."))
             msgBox.exec_()
 
     def closeEvent(self, event):
@@ -320,15 +320,15 @@ class Ui_FreeCADGraderResults(QtWidgets.QDialog):
         self.pushButton.clicked.connect(self.copy_to_clipboard)
 
     def retranslateUi(self, FreeCADGraderResults):
-        FreeCADGraderResults.setWindowTitle(u"Envoyer les résultats")
-        self.label.setText(u"3. Copier/coller le code suivant dans l\'interface FUN-MOOC")
-        self.pushButton.setText(u"Copier")
+        FreeCADGraderResults.setWindowTitle(app.Qt.translate("MOOC", "Envoyer les résultats"))
+        self.label.setText(app.Qt.translate("MOOC", "3. Copier/coller le code suivant dans l\'interface FUN-MOOC"))
+        self.pushButton.setText(app.Qt.translate("MOOC", "Copier"))
 
     def copy_to_clipboard(self):
         cb = QtGui.QClipboard()
         cb.setText(self.lineEdit.text())
-        self.pushButton.setText(u"Copié !")
-        self.label_clipboard_copy.setText(u"Le code est copié dans le presse papier.\nColler le à l'aide d'un clic droit ou du raccourcis clavier CTRL+V.")
+        self.pushButton.setText(app.Qt.translate("MOOC", "Copié !"))
+        self.label_clipboard_copy.setText(app.Qt.translate("MOOC", "Le code est copié dans le presse papier.\nColler le à l'aide d'un clic droit ou du raccourcis clavier CTRL+V."))
 
 
 class MoocGraderCommand():
@@ -336,8 +336,8 @@ class MoocGraderCommand():
 
     def GetResources(self):
         return {'Pixmap': os.path.join(moocWB_icons_path, 'mooc-grader.svg'),
-                'MenuText': QtCore.QT_TRANSLATE_NOOP("Mooc", "Évaluer un exercice."),
-                'ToolTip': QtCore.QT_TRANSLATE_NOOP("Mooc", "Éxécute l'outil d'analyse et vérification d'un document FreeCAD.")}
+                'MenuText': app.Qt.translate("MOOC", "Évaluer un exercice."),
+                'ToolTip': app.Qt.translate("MOOC", "Éxécute l'outil d'analyse et vérification d'un document FreeCAD.")}
 
     def IsActive(self):
         return True
