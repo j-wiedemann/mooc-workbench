@@ -377,7 +377,7 @@ Cette semaine nous allons voir comment modéliser l&apos;humidificateur de Steve
             &lt;ul&gt;&lt;li&gt;à l&apos;aide d&apos;un clic droit dans l&apos;espace de travail, style de navigation puis choisir Gesture.&lt;/li&gt;
             &lt;li&gt;à l&apos;aide du sélecteur de style de navigation dans la barre de status en bas à droite de la fenêtre.&lt;/li&gt;             &lt;/ul&gt;&lt;/p&gt;
             &lt;p&gt;&lt;b&gt;Voici le modèle 3D que l&apos;on va modéliser :&lt;/b&gt; &lt;br&gt;
-            &lt;img src= %s width=&quot;320&quot; /&gt;&lt;/p&gt;</source>
+            &lt;img src= %s width=340 /&gt;&lt;/p&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -408,7 +408,7 @@ Cette semaine nous allons voir comment modéliser l&apos;humidificateur de Steve
     <message>
         <source>&lt;h3&gt;Cube additif&lt;/h3&gt;
             &lt;p&gt;Nous commencerons par ajouter un cube primitif.&lt;/p&gt;
-            &lt;p&gt;&lt;img src= %s width=&quot;25&quot;/&gt; Créer un cube primitif :
+            &lt;p&gt;&lt;img src={} width=&quot;25&quot;/&gt; Créer un cube primitif :
             &lt;ul&gt;&lt;li&gt;à l&apos;aide du menu &lt;i&gt;Part Design&lt;/i&gt; puis
             &lt;i&gt;Créer une primitive additive&lt;/i&gt; puis &lt;i&gt;Cube additif&lt;/i&gt;.&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;
             &lt;p&gt;Dans l&apos;onglet tâches de la vue combinée on paramètre les dimensions suivantes :
@@ -418,7 +418,7 @@ Cette semaine nous allons voir comment modéliser l&apos;humidificateur de Steve
             &lt;p&gt;Maintenant nous allons attacher la primitive au plan XY du corps de
             pièce en cliquant sur le plan XY dans la vue 3D.&lt;/p&gt;
             &lt;p&gt;On valide la tâche en cours en cliquant sur OK&lt;/p&gt;
-            &lt;p&gt;&lt;img src= %s width=&quot;auto&quot;/&gt;&lt;/p&gt;</source>
+            &lt;p&gt;&lt;img src={} width=1134/&gt;&lt;/p&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -442,7 +442,7 @@ Cette semaine nous allons voir comment modéliser l&apos;humidificateur de Steve
             &lt;li&gt;Y = 40 mm&lt;/li&gt;
             &lt;li&gt;Z = 0 mm&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;
             &lt;p&gt;On valide la tâche en cours en cliquant sur OK.&lt;/p&gt;
-            &lt;p&gt;&lt;img src= %s width=&quot;auto&quot;/&gt;&lt;/p&gt;</source>
+            &lt;p&gt;&lt;img src= %s width=1076/&gt;&lt;/p&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -452,7 +452,7 @@ Cette semaine nous allons voir comment modéliser l&apos;humidificateur de Steve
     <message>
         <source>&lt;h3&gt;Cylindre additif&lt;/h3&gt;             &lt;p&gt;On recommence l&apos;opération mais cette fois on compensera la position
             du cylindre de 100 mm en X et 40 mm en Y.&lt;/p&gt;
-            &lt;p&gt;&lt;img src= %s width=&quot;25&quot;/&gt; Créer un cylindre additif :
+            &lt;p&gt;&lt;img src=%s width=&quot;25&quot;/&gt; Créer un cylindre additif :
             &lt;ul&gt;&lt;li&gt;à l&apos;aide du menu &lt;i&gt;Part Design&lt;/i&gt; puis
             &lt;i&gt;Créer une primitive additive&lt;/i&gt; puis &lt;i&gt;Cylindre additif&lt;/i&gt;.&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;
             &lt;p&gt;Dans l&apos;onglet tâches de la vue combinée on paramètre les dimensions suivantes :
@@ -465,7 +465,7 @@ Cette semaine nous allons voir comment modéliser l&apos;humidificateur de Steve
             &lt;li&gt;Y = 40 mm&lt;/li&gt;
             &lt;li&gt;Z = 0 mm&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;
             &lt;p&gt;On valide la tâche en cours en cliquant sur OK.&lt;/p&gt;
-            &lt;p&gt;&lt;img src= %s width=&quot;auto&quot;/&gt;&lt;/p&gt;</source>
+            &lt;p&gt;&lt;img src=%s width=1031/&gt;&lt;/p&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -475,7 +475,7 @@ Cette semaine nous allons voir comment modéliser l&apos;humidificateur de Steve
     <message>
         <source>&lt;h3&gt;Cube soustractif&lt;/h3&gt;
             &lt;p&gt;Pour enlever de la matière en bas de la pièce nous allons ajouter un cube soustractif.&lt;/p&gt;
-            &lt;p&gt;&lt;img src= %s width=&quot;25&quot;/&gt; Créer un cube soustractif :
+            &lt;p&gt;&lt;img src=%s width=&quot;25&quot;/&gt; Créer un cube soustractif :
             &lt;ul&gt;&lt;li&gt;à l&apos;aide du menu &lt;i&gt;Part Design&lt;/i&gt; puis
             &lt;i&gt;Créer une primitive soustractive&lt;/i&gt; puis &lt;i&gt;Cube soustractif&lt;/i&gt;.&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;
             &lt;p&gt;Dans l&apos;onglet tâches de la vue combinée on paramètre les dimensions suivantes :
@@ -489,7 +489,7 @@ Cette semaine nous allons voir comment modéliser l&apos;humidificateur de Steve
             &lt;li&gt;Y = 0 mm&lt;/li&gt;
             &lt;li&gt;Z = 0 mm&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;
             &lt;p&gt;On valide la tâche en cours en cliquant sur OK.&lt;/p&gt;
-            &lt;p&gt;&lt;img src= %s width=&quot;auto&quot;/&gt;&lt;/p&gt;</source>
+            &lt;p&gt;&lt;img src= %s width=454/&gt;&lt;/p&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -511,7 +511,9 @@ Cette semaine nous allons voir comment modéliser l&apos;humidificateur de Steve
             &lt;ul&gt;&lt;li&gt;X = 0 mm&lt;/li&gt;
             &lt;li&gt;Y = 40 mm&lt;/li&gt;
             &lt;li&gt;Z = 110 mm&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;
-            &lt;p&gt;On valide la tâche en cours en cliquant sur OK.&lt;/p&gt;</source>
+            &lt;p&gt;On valide la tâche en cours en cliquant sur OK.&lt;/p&gt;
+            &lt;p&gt;&lt;img src= %s width=925/&gt;&lt;/p&gt;
+            &lt;p&gt;&lt;img src= %s width=391/&gt;&lt;/p&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -533,7 +535,9 @@ Cette semaine nous allons voir comment modéliser l&apos;humidificateur de Steve
             &lt;ul&gt;&lt;li&gt;X = 100 mm&lt;/li&gt;
             &lt;li&gt;Y = 40 mm&lt;/li&gt;
             &lt;li&gt;Z = 110 mm&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;
-            &lt;p&gt;On valide la tâche en cours en cliquant sur OK.&lt;/p&gt;</source>
+            &lt;p&gt;On valide la tâche en cours en cliquant sur OK.&lt;/p&gt;
+            &lt;p&gt;&lt;img src= %s width=1003/&gt;&lt;/p&gt;
+            &lt;p&gt;&lt;img src= %s width=444/&gt;&lt;/p&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -556,7 +560,9 @@ Cette semaine nous allons voir comment modéliser l&apos;humidificateur de Steve
             &lt;ul&gt;&lt;li&gt;X = 0 mm&lt;/li&gt;
             &lt;li&gt;Y = 4 mm&lt;/li&gt;
             &lt;li&gt;Z = 110 mm&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;
-            &lt;p&gt;On valide la tâche en cours en cliquant sur OK&lt;/p&gt;</source>
+            &lt;p&gt;On valide la tâche en cours en cliquant sur OK&lt;/p&gt;
+            &lt;p&gt;&lt;img src= %s width=989/&gt;&lt;/p&gt;
+            &lt;p&gt;&lt;img src= %s width=513/&gt;&lt;/p&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -573,7 +579,10 @@ Cette semaine nous allons voir comment modéliser l&apos;humidificateur de Steve
             &lt;i&gt;Congé&lt;/i&gt;.&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;
             &lt;p&gt;Pour faciliter la sélection des arêtes on peut basculer en affichage filaire.
              Pour cela aller dans le menu &lt;i&gt;Affichage&lt;/i&gt; puis &lt;i&gt;Style de représentation&lt;/i&gt; puis cliquer sur &lt;i&gt;Filaire&lt;/i&gt;.&lt;/p&gt;
-            &lt;p&gt;Vous pouvez revenir à l&apos;affichage normale en cliquant sur &lt;i&gt;Comme actuellement&lt;/i&gt;.</source>
+            &lt;p&gt;Vous pouvez revenir à l&apos;affichage normale en cliquant sur &lt;i&gt;Comme actuellement&lt;/i&gt;.&lt;/p&gt;
+            &lt;p&gt;&lt;img src= %s width=644/&gt;&lt;/p&gt;
+            &lt;p&gt;&lt;img src= %s width=946/&gt;&lt;/p&gt;
+            &lt;p&gt;&lt;img src= %s width=528/&gt;&lt;/p&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -581,7 +590,7 @@ Cette semaine nous allons voir comment modéliser l&apos;humidificateur de Steve
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;h3&gt;Sauvegarder le document&lt;/h3&gt;             &lt;p&gt;&lt;img src=%s width=&quot;25&quot;/&gt; Sauvegader le document sous le nom &lt;b&gt;Humidificateur&lt;/b&gt; :             &lt;ul&gt;&lt;li&gt;à l&apos;aide du menu &lt;i&gt;Fichier&lt;/i&gt; puis &lt;i&gt;Enregistrer sous ...&lt;/i&gt;&lt;/li&gt;             &lt;li&gt;à l&apos;aide du raccourcis &lt;b&gt;Ctrl+Maj+S&lt;/b&gt;&lt;/li&gt;&lt;/lu&gt;&lt;/p&gt;             &lt;p&gt;&lt;img src=%s width=&quot;360&quot;/&gt;&lt;/p&gt;</source>
+        <source>&lt;h3&gt;Sauvegarder le document&lt;/h3&gt;             &lt;p&gt;&lt;img src=%s width=&quot;25&quot;/&gt; Sauvegader le document sous le nom &lt;b&gt;Humidificateur&lt;/b&gt; :             &lt;ul&gt;&lt;li&gt;à l&apos;aide du menu &lt;i&gt;Fichier&lt;/i&gt; puis &lt;i&gt;Enregistrer sous ...&lt;/i&gt;&lt;/li&gt;             &lt;li&gt;à l&apos;aide du raccourcis &lt;b&gt;Ctrl+Maj+S&lt;/b&gt;&lt;/li&gt;&lt;/lu&gt;&lt;/p&gt;             &lt;p&gt;&lt;img src=%s width=340/&gt;&lt;/p&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
