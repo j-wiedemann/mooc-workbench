@@ -66,7 +66,7 @@ l'humidificateur de Steven avec des formes primitives uniquement.''')
             <li>à l'aide du sélecteur de style de navigation dans la barre de status en bas à droite de la fenêtre.</li> \
             </ul></p>
             <p><b>Voici le modèle 3D que l'on va modéliser :</b> <br>
-            <img src= %s width="320" /></p>''') % (img1, img2, img3, img4)
+            <img src= %s width=340 /></p>''') % (img1, img2, img3, img4)
 
         step["video"] = str(url) + str('?start=0m00s')
         step["objectives"] = [
@@ -101,7 +101,7 @@ l'humidificateur de Steven avec des formes primitives uniquement.''')
         img2 = os.path.join(moocWB_images_path, 'S1-Step3-1.png')
         step["description"] = app.Qt.translate("MOOC", '''<h3>Cube additif</h3>
             <p>Nous commencerons par ajouter un cube primitif.</p>
-            <p><img src= %s width="25"/> Créer un cube primitif :
+            <p><img src={} width="25"/> Créer un cube primitif :
             <ul><li>à l'aide du menu <i>Part Design</i> puis
             <i>Créer une primitive additive</i> puis <i>Cube additif</i>.</li></ul></p>
             <p>Dans l'onglet tâches de la vue combinée on paramètre les dimensions suivantes :
@@ -111,7 +111,7 @@ l'humidificateur de Steven avec des formes primitives uniquement.''')
             <p>Maintenant nous allons attacher la primitive au plan XY du corps de
             pièce en cliquant sur le plan XY dans la vue 3D.</p>
             <p>On valide la tâche en cours en cliquant sur OK</p>
-            <p><img src= %s width="auto"/></p>''') % (img1, img2)
+            <p><img src={} width=1134/></p>''').format(img1, img2)
 
         step["video"] = str(url) + str('?start=2m23s')
         step["objectives"] = [app.Qt.translate("MOOC", "1 Cube additif (Box) 100 x 80 x 140 mm sur le plan XY")]
@@ -139,7 +139,7 @@ l'humidificateur de Steven avec des formes primitives uniquement.''')
             <li>Y = 40 mm</li>
             <li>Z = 0 mm</li></ul></p>
             <p>On valide la tâche en cours en cliquant sur OK.</p>
-            <p><img src= %s width="auto"/></p>''') % (img1, img2)
+            <p><img src= %s width=1076/></p>''') % (img1, img2)
 
         step["video"] = str(url) + str('?start=3m32s')
         step["objectives"] = [app.Qt.translate("MOOC", "1 Cylindre additif (Cylindre) r40 x 140 mm sur le plan XY et décalé de 40 mm selon Y.")]
@@ -153,7 +153,7 @@ l'humidificateur de Steven avec des formes primitives uniquement.''')
         step["description"] = app.Qt.translate("MOOC", '''<h3>Cylindre additif</h3> \
             <p>On recommence l'opération mais cette fois on compensera la position
             du cylindre de 100 mm en X et 40 mm en Y.</p>
-            <p><img src= %s width="25"/> Créer un cylindre additif :
+            <p><img src=%s width="25"/> Créer un cylindre additif :
             <ul><li>à l'aide du menu <i>Part Design</i> puis
             <i>Créer une primitive additive</i> puis <i>Cylindre additif</i>.</li></ul></p>
             <p>Dans l'onglet tâches de la vue combinée on paramètre les dimensions suivantes :
@@ -166,7 +166,7 @@ l'humidificateur de Steven avec des formes primitives uniquement.''')
             <li>Y = 40 mm</li>
             <li>Z = 0 mm</li></ul></p>
             <p>On valide la tâche en cours en cliquant sur OK.</p>
-            <p><img src= %s width="auto"/></p>''') % (img1, img2)
+            <p><img src=%s width=1031/></p>''') % (img1, img2)
 
         step["video"] = str(url) + str('?start=4m21s')
         step["objectives"] = [app.Qt.translate("MOOC", "1 Cylindre additif r40 x 140 mm sur le plan XY et décalé de 100 mm selon X et 40 mm selon Y.")]
@@ -179,7 +179,7 @@ l'humidificateur de Steven avec des formes primitives uniquement.''')
         img2 = os.path.join(moocWB_images_path, 'S1-Step6-2.png')
         step["description"] = app.Qt.translate("MOOC", '''<h3>Cube soustractif</h3>
             <p>Pour enlever de la matière en bas de la pièce nous allons ajouter un cube soustractif.</p>
-            <p><img src= %s width="25"/> Créer un cube soustractif :
+            <p><img src=%s width="25"/> Créer un cube soustractif :
             <ul><li>à l'aide du menu <i>Part Design</i> puis
             <i>Créer une primitive soustractive</i> puis <i>Cube soustractif</i>.</li></ul></p>
             <p>Dans l'onglet tâches de la vue combinée on paramètre les dimensions suivantes :
@@ -193,7 +193,7 @@ l'humidificateur de Steven avec des formes primitives uniquement.''')
             <li>Y = 0 mm</li>
             <li>Z = 0 mm</li></ul></p>
             <p>On valide la tâche en cours en cliquant sur OK.</p>
-            <p><img src= %s width="auto"/></p>''') % (img1, img2)
+            <p><img src= %s width=454/></p>''') % (img1, img2)
 
         step["video"] = str(url) + str('?start=4m52s')
         step["objectives"] = [app.Qt.translate("MOOC", "1 Cube soustractif de 80 x 80 x 20 mm sur le plan XY et décalé de 10 mm selon X.")]
@@ -203,6 +203,8 @@ l'humidificateur de Steven avec des formes primitives uniquement.''')
         # Step 7
         step = {}
         img1 = os.path.join(moocWB_icons_path, 'PartDesign_Subtractive_Cylinder.svg')
+        img2 = os.path.join(moocWB_images_path, 'S1-Step7-1.png')
+        img3 = os.path.join(moocWB_images_path, 'S1-Step7-2.png')
         step["description"] = app.Qt.translate("MOOC", '''<h3>Cylindre soustractif</h3>
             <p>Pour enlever de la matière en haut de la pièce nous allons ajouter un cylindre soustractif.</p>
             <p><img src= %s width="25"/> Créer un cylindre soustractif :
@@ -217,7 +219,9 @@ l'humidificateur de Steven avec des formes primitives uniquement.''')
             <ul><li>X = 0 mm</li>
             <li>Y = 40 mm</li>
             <li>Z = 110 mm</li></ul></p>
-            <p>On valide la tâche en cours en cliquant sur OK.</p>''') % (img1)
+            <p>On valide la tâche en cours en cliquant sur OK.</p>
+            <p><img src= %s width=925/></p>
+            <p><img src= %s width=391/></p>''') % (img1, img2, img3)
 
         step["video"] = str(url) + str('?start=5m38s')
         step["objectives"] = [app.Qt.translate("MOOC", "1 cylindre soustractif de r36 x 30 mm sur le plan XY et décalé de 40 mm selon Y et 110 mm selon Z.")]
@@ -227,6 +231,8 @@ l'humidificateur de Steven avec des formes primitives uniquement.''')
         # Step 8
         step = {}
         img1 = os.path.join(moocWB_icons_path, 'PartDesign_Subtractive_Cylinder.svg')
+        img2 = os.path.join(moocWB_images_path, 'S1-Step8-1.png')
+        img3 = os.path.join(moocWB_images_path, 'S1-Step8-2.png')
         step["description"] = app.Qt.translate("MOOC", '''<h3>Cylindre soustractif 2</h3>
             <p>Pour enlever de la matière en haut de la pièce nous allons ajouter un cylindre soustractif.</p>
             <p><img src= %s width="25"/> Créer un cylindre soustractif :
@@ -241,7 +247,9 @@ l'humidificateur de Steven avec des formes primitives uniquement.''')
             <ul><li>X = 100 mm</li>
             <li>Y = 40 mm</li>
             <li>Z = 110 mm</li></ul></p>
-            <p>On valide la tâche en cours en cliquant sur OK.</p>''') % (img1)
+            <p>On valide la tâche en cours en cliquant sur OK.</p>
+            <p><img src= %s width=1003/></p>
+            <p><img src= %s width=444/></p>''') % (img1, img2, img3)
 
         step["video"] = str(url) + str('?start=6m20s')
         step["objectives"] = [app.Qt.translate("MOOC", "1 cylindre soustractif de r36 x 30 mm sur le plan XY et décalé de 100 mm selon X, 40 mm selon Y et 110 mm selon Z.")]
@@ -251,6 +259,8 @@ l'humidificateur de Steven avec des formes primitives uniquement.''')
         # Step 9
         step = {}
         img1 = os.path.join(moocWB_icons_path, 'PartDesign_Subtractive_Box.svg')
+        img2 = os.path.join(moocWB_images_path, 'S1-Step9-1.png')
+        img3 = os.path.join(moocWB_images_path, 'S1-Step9-2.png')
         step["description"] = app.Qt.translate("MOOC", '''<h3>Cube soustractif</h3>
             <p>Pour enlever de la matière entre les deux trous cylindriques nous allons ajouter un cube soustractif.</p>
             <p><img src= %s width="25"/> Créer un cube soustractif :
@@ -266,7 +276,9 @@ l'humidificateur de Steven avec des formes primitives uniquement.''')
             <ul><li>X = 0 mm</li>
             <li>Y = 4 mm</li>
             <li>Z = 110 mm</li></ul></p>
-            <p>On valide la tâche en cours en cliquant sur OK</p>''') % (img1)
+            <p>On valide la tâche en cours en cliquant sur OK</p>
+            <p><img src= %s width=989/></p>
+            <p><img src= %s width=513/></p>''') % (img1, img2, img3)
 
         step["video"] = str(url) + str('?start=6m51s')
         step["objectives"] = [app.Qt.translate("MOOC", "1 cube soustractif de 100 x 72 x 30 mm sur le plan XY et décalé de 4 mm selon Y et 110 mm selon Z.")]
@@ -276,6 +288,9 @@ l'humidificateur de Steven avec des formes primitives uniquement.''')
         # Step 10
         step = {}
         img1 = os.path.join(moocWB_icons_path, 'PartDesign_Fillet.svg')
+        img2 = os.path.join(moocWB_images_path, 'S1-Step10-1.png')
+        img3 = os.path.join(moocWB_images_path, 'S1-Step10-2.png')
+        img4 = os.path.join(moocWB_images_path, 'S1-Step10-3.png')
         step["description"] = app.Qt.translate("MOOC", '''<h3>Faire un congé</h3> \
             <p>Pour arrondir les angles en bas de la pièce nous allons utiliser
             l'outil Congé qui créer un arrondi sur les arêtes sélectionnées et selon le rayon demandé.</p>
@@ -286,7 +301,10 @@ l'humidificateur de Steven avec des formes primitives uniquement.''')
             <i>Congé</i>.</li></ol><p>
             <p>Pour faciliter la sélection des arêtes on peut basculer en affichage filaire.
              Pour cela aller dans le menu <i>Affichage</i> puis <i>Style de représentation</i> puis cliquer sur <i>Filaire</i>.</p>
-            <p>Vous pouvez revenir à l'affichage normale en cliquant sur <i>Comme actuellement</i>.''') % (img1)
+            <p>Vous pouvez revenir à l'affichage normale en cliquant sur <i>Comme actuellement</i>.</p>
+            <p><img src= %s width=644/></p>
+            <p><img src= %s width=946/></p>
+            <p><img src= %s width=528/></p>''') % (img1, img2, img3, img4)
 
         step["video"] = str(url) + str('?start=7m47s')
         step["objectives"] = [app.Qt.translate("MOOC", "1 congé de 9 mm de rayon")]
@@ -301,7 +319,7 @@ l'humidificateur de Steven avec des formes primitives uniquement.''')
             <p><img src=%s width="25"/> Sauvegader le document sous le nom <b>Humidificateur</b> : \
             <ul><li>à l'aide du menu <i>Fichier</i> puis <i>Enregistrer sous ...</i></li> \
             <li>à l'aide du raccourcis <b>Ctrl+Maj+S</b></li></lu></p> \
-            <p><img src=%s width="360"/></p>''') % (img1, img2)
+            <p><img src=%s width=340/></p>''') % (img1, img2)
 
         step["video"] = str(url) + str('?start=9m45s')
         step["objectives"] = [app.Qt.translate("MOOC", "1 Sauvegarder le document sous le nom Humidificateur.")]
