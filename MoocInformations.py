@@ -50,5 +50,5 @@ def checkMoocWBVersion(MOOC_VERSION):
                 from PySide2 import QtWidgets
                 reply = QtWidgets.QMessageBox.information(None, FreeCAD.Qt.translate("MOOC", 'Mise à jour nécessaire...'),
                     FreeCAD.Qt.translate("MOOC", '''Votre version de l'atelier MOOC est obsolète.\nMerci de le mettre à jour à l'aide de l'addon manager.'''))
-            # only check the first occurence
+            # only check the first occurrence
             break

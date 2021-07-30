@@ -484,7 +484,7 @@ def geometry_presence(doc=None, sketch_label=None, count=None, isclosed=None):
                          sketch_label=None,
                          count=None,
                          isclosed=None) -> 0 or 1
-    check if the skecth have the count of geometrie and if the wire is closed
+    check if the sketch has the geometry count and if the wire is closed
     """
     if DEBUG:
         print(
@@ -541,7 +541,7 @@ def external_geometry_presence(doc=None, sketch_label=None, count=None):
     """external_geometry_presence(doc=None,
                                   sketch_label=None,
                                   count=None) -> 0 or 1
-    Check if the skecth contain the count of geometrie and if the wire is
+    Check if the sketch contains the count of geometry and if the wire is
      closed.
      """
     if DEBUG:
@@ -583,7 +583,7 @@ def constraint_presence(doc=None, sketch_label=None, count=None, type=None, valu
                             count=None,
                             type=None,
                             value=None) -> 0 or 1
-    Check if the skecth contain the count of constraint's type and value.
+    Check if the sketch contains the count of constraint's type and value.
     """
     if DEBUG:
         print(
@@ -649,7 +649,7 @@ def dimension_constraint_presence(
                                       type=None,
                                       value=None,
                                       count=None) -> 0 or 1
-    Check if the skecth contain the count of constraint's type and value.
+    Check if the sketch contains the count of constraint's type and value.
     """
     if DEBUG:
         print(
@@ -709,7 +709,7 @@ def pad_presence(doc=None, name=None, type=None, length=None, midplane=None):
                      type=None,
                      length=None,
                      midplane=None) -> 0 or 1
-    Check the presence of pad.
+    Check for the presence of pad.
     """
     r = []
     doc = get_document(doc)
@@ -758,7 +758,7 @@ def pocket_presence(
                         length=None,
                         midplane=None,
                         reversed=None) -> 0 or 1
-    Check the presence of pocket.
+    Check for the presence of pocket.
     """
     if DEBUG:
         print(
@@ -841,7 +841,7 @@ def additiveloft_presence(doc=None, name=None, outlist=None, ruled=None, closed=
                               outlist=None,
                               ruled=None,
                               closed=None) -> 0 or 1
-    Check the presence of pocket.
+    Check for the presence of pocket.
     """
     if DEBUG:
         print(
@@ -913,7 +913,7 @@ def additivepipe_presence(doc=None, name=None, outlist=None, ruled=None, closed=
                               outlist=None,
                               ruled=None,
                               closed=None) -> 0 or 1
-    Check the presence of pocket.
+    Check for the presence of pocket.
     """
     if DEBUG:
         print(
@@ -981,7 +981,7 @@ ruled=%s, closed=%s)"
 
 def revolution_presence(doc=None):
     """revolution_presence(doc=None) -> 0 or 1
-    Check the presence of revolution.
+    Check for the presence of revolution.
     """
     r = []
     doc = get_document(doc)
@@ -996,7 +996,7 @@ def revolution_presence(doc=None):
 
 def groove_presence(doc=None):
     """groove_presence(doc=None) -> 0 or 1
-    Check the presence of groove.
+    Check for the presence of groove.
     """
     r = []
     doc = get_document(doc)
@@ -1018,7 +1018,7 @@ def polar_pattern_presence(
                                angle=None,
                                occurrences=None,
                                axis=None) -> 0 or 1
-    Check the presence of polar pattern.
+    Check for the presence of polar pattern.
     """
     r = []
     doc = get_document(doc)
@@ -1066,7 +1066,7 @@ def polar_pattern_presence(
 
 def linear_pattern_presence(doc=None):
     """linear_pattern_presence(doc=None) -> 0 or 1
-    Check the presence of linear pattern.
+    Check for the presence of linear pattern.
     """
     r = []
     doc = get_document(doc)
@@ -1087,7 +1087,7 @@ def mirrored_pattern_presence(
                                   plane_name=None,
                                   plane_axis=None,
                                   bf_name=None) -> 0 or 1
-    Check the presence of mirrored pattern.
+    Check for the presence of mirrored pattern.
     """
     r = []
     doc = get_document(doc)
@@ -1132,7 +1132,7 @@ def boundbox_dimensions(doc=None, name=None, typeId=None, x=None, y=None, z=None
                             x=None,
                             y=None,
                             z=None) -> 0 or 1
-    Check the length's dimensions of boundbox.
+    Check for the length's dimensions of boundbox.
     """
     r = []
     doc = get_document(doc)

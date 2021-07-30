@@ -24,7 +24,7 @@ Cet atelier FreeCAD vous suivra tous le long de ce mooc pour vous guider dans l'
 4. Dans la fenêtre qui s'ouvre, attendre le chargement de la liste des addons.
 5. Chercher l'atelier MOOC et cliquer une fois dessus.
 6. Cliquer sur le bouton Install / update
-7. À la fin de l'installation quand la fenêtre dit "Succesfully installed ..." cliquer sur le bouton Close.
+7. À la fin de l'installation quand la fenêtre dit "Successfully installed ..." cliquer sur le bouton Close.
 8. Enfin REDÉMARRER FreeCAD.
 
 
