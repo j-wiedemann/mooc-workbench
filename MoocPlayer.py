@@ -48,7 +48,7 @@ else:  # py2
 import FreeCAD as app
 import FreeCADGui as gui
 
-# import webbrowser to play video inside defaut web Browser
+# import webbrowser to play video inside default web Browser
 import webbrowser
 
 # import MoocChecker
@@ -222,7 +222,7 @@ class Manager_MoocPlayer:
             self.fill_data()
         else:
             if DEBUG:
-                print("This is the begining !")
+                print("This is the beginning !")
             pass
 
     def fill_data(self):
@@ -378,7 +378,7 @@ class Ui_MoocChooser(QtWidgets.QDialog):
         row = self.listWidget_trainings.row(item)
         # description is
         desc = self.lessons_list[row].get_description()
-        # display descritpion in label_description
+        # display description in label_description
         self.label_description.setText(desc)
 
     def launch_mooc(self, item):
