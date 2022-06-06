@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<package format="1" xmlns="https://wiki.freecad.org/Package_Metadata">
+  <name>MOOC</name>
+  <description>Learn FreeCAD</description>
+  <version>2022.04.21</version>
+  <maintainer email="contact@freecad-france.com">Jonathan Wiedemann</maintainer>
+  <license file="LICENSE">GPLv2.1</license>
+  <url type="repository" branch="master">https://github.com/j-wiedemann/mooc-workbench</url>
+  <url type="website">https://www.fun-mooc.fr/fr/cours/modeliser-en-3d-avec-freecad/</url>
+  <icon>medias/icons/mooc-workbench.svg</icon>
+
+  <content>
+    <workbench>
+      <name>MOOC</name>
+      <classname>MoocWorkbench</classname>
+      <subdirectory>./</subdirectory>
+      <freecadmin>0.19.0</freecadmin>
+    </workbench>
+  </content>
+
+</package>
