@@ -25,7 +25,7 @@
 
 __title__ = "MOOC Workbench"
 __author__ = "Jonathan Wiedemann"
-__url__ = "http://www.freecadweb.org"
+__url__ = "https://www.freecadweb.org"
 
 # import freecad and its gui
 import FreeCAD as app
